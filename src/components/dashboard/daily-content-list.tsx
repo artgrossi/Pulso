@@ -49,10 +49,13 @@ export function DailyContentList({ contents, completedIds: initialCompletedIds }
 
   if (contents.length === 0) {
     return (
-      <div className="rounded-2xl border border-gray-800 bg-gray-900/60 p-8 text-center backdrop-blur-sm">
-        <div className="mb-3 text-3xl">📚</div>
-        <p className="text-sm text-gray-400">
-          Nenhum conteúdo disponível ainda. Em breve teremos novidades para você!
+      <div className="rounded-2xl border border-dashed border-gray-700 bg-gray-900/30 p-10 text-center">
+        <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-gray-800/60 text-2xl">
+          📚
+        </div>
+        <h3 className="mb-1 text-sm font-semibold text-gray-300">Nenhum conteúdo disponível</h3>
+        <p className="mx-auto max-w-xs text-xs text-gray-500">
+          Novos conteúdos serão liberados conforme você avança na trilha. Continue voltando!
         </p>
       </div>
     );

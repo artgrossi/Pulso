@@ -6,7 +6,19 @@ interface AchievementsListProps {
 }
 
 export function AchievementsList({ achievements, unlockedIds }: AchievementsListProps) {
-  if (achievements.length === 0) return null;
+  if (achievements.length === 0) {
+    return (
+      <div className="rounded-2xl border border-dashed border-gray-700 bg-gray-900/30 p-10 text-center">
+        <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-gray-800/60 text-2xl">
+          🏆
+        </div>
+        <h3 className="mb-1 text-sm font-semibold text-gray-300">Nenhuma conquista ainda</h3>
+        <p className="mx-auto max-w-xs text-xs text-gray-500">
+          Complete conteúdos e mantenha seu streak para desbloquear conquistas.
+        </p>
+      </div>
+    );
+  }
 
   const unlocked = achievements.filter(a => unlockedIds.has(a.id));
   const locked = achievements.filter(a => !unlockedIds.has(a.id));
