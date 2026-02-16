@@ -2,6 +2,7 @@
 
 import { createClient } from '@/lib/supabase/server';
 import { getStreakMultiplier } from '@/lib/constants';
+import { checkTrackProgression } from './track-progression';
 
 export async function completeContent(contentId: string) {
   const supabase = await createClient();
@@ -87,7 +88,15 @@ export async function completeContent(contentId: string) {
   // Update streak
   await updateStreak(user.id);
 
-  return { alreadyCompleted: false, coinsEarned };
+  // Check if user qualifies for track advancement
+  const progression = await checkTrackProgression(user.id);
+
+  return {
+    alreadyCompleted: false,
+    coinsEarned,
+    trackAdvanced: progression.advanced,
+    newTrackName: progression.newTrackName,
+  };
 }
 
 export async function submitQuizAttempt(
@@ -163,7 +172,16 @@ export async function submitQuizAttempt(
 
   await updateStreak(user.id);
 
-  return { score, total: questions.length, coinsEarned };
+  // Check if user qualifies for track advancement
+  const progression = await checkTrackProgression(user.id);
+
+  return {
+    score,
+    total: questions.length,
+    coinsEarned,
+    trackAdvanced: progression.advanced,
+    newTrackName: progression.newTrackName,
+  };
 }
 
 async function updateStreak(userId: string) {

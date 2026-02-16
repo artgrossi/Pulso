@@ -7,6 +7,7 @@ import { TrackCard } from '@/components/dashboard/track-card';
 import { DailyContentList } from '@/components/dashboard/daily-content-list';
 import { AchievementsList } from '@/components/dashboard/achievements-list';
 import type { Track, DailyContent, UserStreak, Achievement } from '@/lib/types/database';
+import { getTrackProgress } from '@/lib/actions/track-progression';
 
 export const metadata: Metadata = {
   title: 'Dashboard',
@@ -92,6 +93,9 @@ export default async function DashboardPage() {
     (userAchievements ?? []).map(ua => ua.achievement_id)
   );
 
+  // Fetch overall track progress
+  const trackProgress = await getTrackProgress(user.id);
+
   // Calculate today's progress
   const todayContentIds = (todayContent ?? []).map(c => c.id);
   const todayCompleted = todayContentIds.filter(id => completedIds.has(id)).length;
@@ -115,6 +119,7 @@ export default async function DashboardPage() {
             track={track as Track}
             contentCompletedToday={todayCompleted}
             totalContentToday={todayContentIds.length}
+            overallProgress={trackProgress}
           />
         )}
         <StreakCard streak={streak as UserStreak | null} />

@@ -17,6 +17,7 @@ export function DailyContentList({ contents, completedIds: initialCompletedIds }
   const [isPending, startTransition] = useTransition();
   const [lastEarned, setLastEarned] = useState<{ id: string; coins: number } | null>(null);
   const { addToast } = useToast();
+  const [trackAdvancement, setTrackAdvancement] = useState<string | null>(null);
 
   function handleComplete(contentId: string) {
     startTransition(async () => {
@@ -30,6 +31,10 @@ export function DailyContentList({ contents, completedIds: initialCompletedIds }
           title: 'Conteúdo concluído!',
           description: `Você ganhou ${result.coinsEarned} moedas.`,
         });
+
+        if (result.trackAdvanced && result.newTrackName) {
+          setTrackAdvancement(result.newTrackName);
+        }
       }
     });
   }
@@ -64,6 +69,23 @@ export function DailyContentList({ contents, completedIds: initialCompletedIds }
 
   return (
     <div className="space-y-3">
+      {/* Track Advancement Celebration */}
+      {trackAdvancement && (
+        <div className="rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-6 text-center animate-pulse">
+          <div className="mb-2 text-4xl">🎉</div>
+          <h3 className="text-lg font-bold text-emerald-400">Parabéns!</h3>
+          <p className="mt-1 text-sm text-gray-300">
+            Você avançou para a trilha <strong>{trackAdvancement}</strong>!
+          </p>
+          <button
+            onClick={() => window.location.reload()}
+            className="mt-4 rounded-lg bg-emerald-600 px-6 py-2 text-sm font-medium text-white transition-colors hover:bg-emerald-500"
+          >
+            Ver nova trilha
+          </button>
+        </div>
+      )}
+
       <h3 className="text-xs font-medium uppercase tracking-wider text-gray-500">
         Conteúdo de Hoje
       </h3>
