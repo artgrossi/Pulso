@@ -92,9 +92,9 @@ export default async function DashboardPage() {
   const todayCompleted = todayContentIds.filter(id => completedIds.has(id)).length;
 
   return (
-    <div className="space-y-6">
+    <div className="stagger-children space-y-6">
       {/* Greeting */}
-      <div>
+      <div className="animate-fade-in-up">
         <h2 className="text-xl font-bold">
           Olá{profile.full_name ? `, ${profile.full_name.split(' ')[0]}` : ''}!
         </h2>
@@ -104,7 +104,7 @@ export default async function DashboardPage() {
       </div>
 
       {/* Track + Streak row */}
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <div className="animate-fade-in-up grid grid-cols-1 gap-4 sm:grid-cols-2">
         {track && (
           <TrackCard
             track={track as Track}
@@ -116,22 +116,28 @@ export default async function DashboardPage() {
       </div>
 
       {/* Coins */}
-      <CoinsCard
-        profile={profile as unknown as import('@/lib/types/database').Profile}
-        track={track as Track | null}
-      />
+      <div className="animate-fade-in-up">
+        <CoinsCard
+          profile={profile as unknown as import('@/lib/types/database').Profile}
+          track={track as Track | null}
+        />
+      </div>
 
       {/* Daily Content */}
-      <DailyContentList
-        contents={(todayContent ?? []) as unknown as DailyContent[]}
-        completedIds={completedIds}
-      />
+      <div className="animate-fade-in-up">
+        <DailyContentList
+          contents={(todayContent ?? []) as unknown as DailyContent[]}
+          completedIds={completedIds}
+        />
+      </div>
 
       {/* Achievements */}
-      <AchievementsList
-        achievements={(achievements ?? []) as unknown as Achievement[]}
-        unlockedIds={unlockedAchievementIds}
-      />
+      <div className="animate-fade-in-up">
+        <AchievementsList
+          achievements={(achievements ?? []) as unknown as Achievement[]}
+          unlockedIds={unlockedAchievementIds}
+        />
+      </div>
     </div>
   );
 }

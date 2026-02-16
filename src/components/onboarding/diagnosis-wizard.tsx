@@ -57,7 +57,7 @@ export function DiagnosisWizard() {
     const track = TRACK_CONFIG[trackSlug];
 
     return (
-      <div className="mx-auto w-full max-w-lg">
+      <div className="mx-auto w-full max-w-lg animate-scale-in">
         <div className="rounded-2xl border border-gray-800 bg-gray-900/60 p-8 backdrop-blur-sm">
           <div className="mb-6 text-center">
             <div className={`mx-auto mb-4 inline-flex h-16 w-16 items-center justify-center rounded-2xl ${track.bgColor} text-3xl`}>
@@ -103,21 +103,21 @@ export function DiagnosisWizard() {
       </div>
 
       {/* Question card */}
-      <div className="rounded-2xl border border-gray-800 bg-gray-900/60 p-8 backdrop-blur-sm">
+      <div key={currentStep} className="animate-fade-in-up rounded-2xl border border-gray-800 bg-gray-900/60 p-8 backdrop-blur-sm">
         <h2 className="mb-8 text-center text-xl font-semibold leading-relaxed">
           {question.question}
         </h2>
 
         <div className="space-y-3">
           <button
-            onClick={() => handleAnswer(question.field === 'has_overdue_debt' ? true : true)}
-            className="w-full rounded-xl border border-gray-700 bg-gray-800/50 px-6 py-4 text-left text-sm font-medium text-white transition-all hover:border-emerald-500/50 hover:bg-emerald-500/10"
+            onClick={() => handleAnswer(true)}
+            className="w-full rounded-xl border border-gray-700 bg-gray-800/50 px-6 py-4 text-left text-sm font-medium text-white transition-all hover:border-emerald-500/50 hover:bg-emerald-500/10 active:scale-[0.98]"
           >
             {question.yes_label}
           </button>
           <button
-            onClick={() => handleAnswer(question.field === 'has_overdue_debt' ? false : false)}
-            className="w-full rounded-xl border border-gray-700 bg-gray-800/50 px-6 py-4 text-left text-sm font-medium text-white transition-all hover:border-emerald-500/50 hover:bg-emerald-500/10"
+            onClick={() => handleAnswer(false)}
+            className="w-full rounded-xl border border-gray-700 bg-gray-800/50 px-6 py-4 text-left text-sm font-medium text-white transition-all hover:border-emerald-500/50 hover:bg-emerald-500/10 active:scale-[0.98]"
           >
             {question.no_label}
           </button>
