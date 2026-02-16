@@ -10,6 +10,7 @@ import { QuickActions } from '@/components/dashboard/quick-actions';
 import { QuizCard } from '@/components/dashboard/quiz-card';
 import type { Track, DailyContent, UserStreak, Achievement } from '@/lib/types/database';
 import { getTrackProgress } from '@/lib/actions/track-progression';
+import Logo from '@/components/branding/Logo';
 
 export default async function DashboardPage() {
   const supabase = await createClient();
@@ -144,11 +145,7 @@ export default async function DashboardPage() {
       {/* Header */}
       <header className="border-b border-gray-800/50 bg-gray-950/80 backdrop-blur-sm sticky top-0 z-40">
         <div className="mx-auto flex max-w-2xl items-center justify-between px-4 py-3">
-          <h1 className="text-lg font-bold">
-            <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
-              Pulso
-            </span>
-          </h1>
+          <Logo variant="full" size="sm" animated />
           <div className="flex items-center gap-3">
             <div className="flex items-center gap-1 rounded-full bg-amber-500/10 px-3 py-1 text-xs text-amber-400">
               <span>🪙</span>

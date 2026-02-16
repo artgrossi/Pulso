@@ -1,6 +1,7 @@
 import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 import { AuthForm } from "./auth-form";
+import Logo from "@/components/branding/Logo";
 
 export default async function Home() {
   const supabase = await createClient();
@@ -28,11 +29,9 @@ export default async function Home() {
       <div className="mx-auto flex min-h-screen max-w-4xl flex-col items-center justify-center px-6">
         {/* Hero */}
         <div className="mb-12 text-center">
-          <h1 className="mb-2 text-5xl font-bold tracking-tight sm:text-6xl">
-            <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
-              Pulso
-            </span>
-          </h1>
+          <div className="mb-4 flex justify-center">
+            <Logo variant="full" size="xl" animated />
+          </div>
           <p className="mb-4 text-lg text-gray-400">
             Bem-estar Financeiro Gamificado
           </p>

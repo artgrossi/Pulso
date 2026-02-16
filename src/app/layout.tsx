@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "Pulso - Bem-estar Financeiro Gamificado",
   description:
     "Transforme sua vida financeira com gamificação. Acompanhe, aprenda e evolua suas finanças pessoais.",
+  icons: {
+    icon: "/logo/pulso-icon.svg",
+  },
 };
 
 export default function RootLayout({
@@ -14,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
-      <body className="antialiased">{children}</body>
+      <body className="font-sans antialiased">{children}</body>
     </html>
   );
 }
