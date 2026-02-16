@@ -4,6 +4,7 @@ import { useState, useTransition } from 'react';
 import type { DailyContent } from '@/lib/types/database';
 import { completeContent } from '@/lib/actions/content';
 import { useToast } from '@/components/ui/toast';
+import { ContentBlockRenderer } from '@/components/content/content-block-renderer';
 
 interface DailyContentListProps {
   contents: DailyContent[];
@@ -118,30 +119,14 @@ export function DailyContentList({ contents, completedIds: initialCompletedIds }
             </button>
 
             {isExpanded && (
-              <div className="border-t border-gray-800 px-4 pb-4 pt-3">
-                {content.body?.blocks?.map((block, i) => (
-                  <div key={i} className="mb-3 last:mb-0">
-                    {block.type === 'text' && (
-                      <p className="text-sm leading-relaxed text-gray-300 whitespace-pre-line">{block.content}</p>
-                    )}
-                    {block.type === 'tip' && (
-                      <div className="rounded-lg bg-emerald-500/10 p-3 text-sm text-emerald-300">
-                        💡 {block.content}
-                      </div>
-                    )}
-                    {block.type === 'warning' && (
-                      <div className="rounded-lg bg-red-500/10 p-3 text-sm text-red-300">
-                        ⚠️ {block.content}
-                      </div>
-                    )}
-                  </div>
-                ))}
+              <div className="border-t border-gray-800 px-4 pb-4 pt-4 sm:px-5">
+                <ContentBlockRenderer blocks={content.body?.blocks ?? []} />
 
                 {!isCompleted && (
                   <button
                     onClick={() => handleComplete(content.id)}
                     disabled={isPending}
-                    className="mt-4 w-full rounded-lg bg-emerald-600 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-emerald-500 disabled:opacity-50"
+                    className="mt-5 w-full rounded-xl bg-emerald-600 px-4 py-3 text-sm font-medium text-white transition-all hover:bg-emerald-500 active:scale-[0.98] disabled:opacity-50"
                   >
                     {isPending ? 'Salvando...' : 'Marcar como concluído'}
                   </button>
