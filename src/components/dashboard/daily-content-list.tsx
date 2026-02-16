@@ -1,8 +1,9 @@
 'use client';
 
 import { useState, useTransition } from 'react';
-import type { DailyContent, UserContentProgress } from '@/lib/types/database';
+import type { DailyContent } from '@/lib/types/database';
 import { completeContent } from '@/lib/actions/content';
+import { useToast } from '@/components/ui/toast';
 
 interface DailyContentListProps {
   contents: DailyContent[];
@@ -14,6 +15,7 @@ export function DailyContentList({ contents, completedIds: initialCompletedIds }
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
   const [lastEarned, setLastEarned] = useState<{ id: string; coins: number } | null>(null);
+  const { addToast } = useToast();
 
   function handleComplete(contentId: string) {
     startTransition(async () => {
@@ -22,6 +24,11 @@ export function DailyContentList({ contents, completedIds: initialCompletedIds }
         setCompletedIds(prev => new Set([...prev, contentId]));
         setLastEarned({ id: contentId, coins: result.coinsEarned });
         setTimeout(() => setLastEarned(null), 3000);
+        addToast({
+          type: 'success',
+          title: 'Conteúdo concluído!',
+          description: `Você ganhou ${result.coinsEarned} moedas.`,
+        });
       }
     });
   }
