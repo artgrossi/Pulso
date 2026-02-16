@@ -59,6 +59,52 @@ insert into public.daily_content (track_id, day_number, title, subtitle, content
    10, 3, true);
 
 -- ============================================================================
+-- DAILY CONTENT - Trilha Crescimento (primeiros 5 dias)
+-- ============================================================================
+insert into public.daily_content (track_id, day_number, title, subtitle, content_type, body, coins_reward, duration_minutes, is_published) values
+  ((select id from public.tracks where slug = 'crescimento'), 1, 'Diversificacao: por que nao colocar tudo no mesmo lugar', 'Proteja seu patrimonio', 'micro_lesson',
+   '{"blocks": [{"type": "text", "content": "Diversificar e distribuir seus investimentos entre diferentes classes de ativos para reduzir riscos."}, {"type": "text", "content": "**Classes principais:**\n- Renda Fixa (Tesouro, CDB, LCI/LCA)\n- Renda Variavel (Acoes, FIIs)\n- Previdencia (PGBL/VGBL)\n- Internacional (BDRs, ETFs globais)"}, {"type": "tip", "content": "Uma regra simples: subtraia sua idade de 100. O resultado e a porcentagem sugerida em renda variavel. 30 anos = 70% variavel, 50 anos = 50% variavel."}]}',
+   15, 4, true),
+  ((select id from public.tracks where slug = 'crescimento'), 1, 'Revise sua alocacao atual', 'Onde esta seu dinheiro hoje?', 'practical_action',
+   '{"blocks": [{"type": "text", "content": "Liste todos os seus investimentos e calcule a porcentagem de cada classe de ativo no seu patrimonio total."}, {"type": "tip", "content": "Inclua previdencia corporativa, FGTS, poupanca e qualquer outro investimento. Muita gente esquece de considerar a previdencia da empresa."}]}',
+   25, 5, true),
+  ((select id from public.tracks where slug = 'crescimento'), 2, 'Fundos Imobiliarios: renda passiva mensal', 'Como funcionam os FIIs', 'micro_lesson',
+   '{"blocks": [{"type": "text", "content": "Fundos Imobiliarios (FIIs) sao uma forma acessivel de investir em imoveis e receber renda mensal."}, {"type": "text", "content": "**Vantagens:**\n- Dividendos mensais isentos de IR para pessoa fisica\n- Investimento a partir de R$ 10-100\n- Diversificacao em varios imoveis com pouco dinheiro\n- Liquidez (compra e vende na bolsa)"}, {"type": "warning", "content": "FIIs tem risco de mercado. O preco da cota pode cair, e os dividendos podem variar. Nao invista o dinheiro da reserva de emergencia em FIIs."}]}',
+   15, 4, true),
+  ((select id from public.tracks where slug = 'crescimento'), 3, 'Tesouro IPCA+ vs Tesouro Selic', 'Quando usar cada um', 'micro_lesson',
+   '{"blocks": [{"type": "text", "content": "**Tesouro Selic:** Liquidez diaria, baixa volatilidade. Ideal para reserva de emergencia e objetivos de curto prazo."}, {"type": "text", "content": "**Tesouro IPCA+:** Protege contra inflacao, mas tem volatilidade no curto prazo. Ideal para objetivos de longo prazo (aposentadoria, educacao dos filhos)."}, {"type": "tip", "content": "Se voce precisa do dinheiro em menos de 2 anos, prefira Tesouro Selic. Para prazos maiores, IPCA+ tende a render mais em termos reais."}]}',
+   15, 3, true),
+  ((select id from public.tracks where slug = 'crescimento'), 4, 'Previdencia: quando vale a pena aportar mais', 'Otimize sua aposentadoria', 'micro_lesson',
+   '{"blocks": [{"type": "text", "content": "Se sua empresa oferece match na previdencia, aportar o maximo que a empresa acompanha e a melhor decisao financeira que existe."}, {"type": "text", "content": "**Exemplo:** Empresa faz match de 100% ate 5% do salario.\nSalario: R$ 10.000\nSeu aporte: R$ 500 (5%)\nMatch da empresa: +R$ 500\nTotal mensal: R$ 1.000 investidos, sendo que voce so tirou R$ 500 do bolso."}, {"type": "tip", "content": "Alem do match, lembre que PGBL permite deduzir ate 12% da renda bruta no IR. Se voce esta na faixa de 27.5%, sao quase 3 meses de aporte de volta."}]}',
+   15, 4, true),
+  ((select id from public.tracks where slug = 'crescimento'), 5, 'Rebalanceamento: quando e como ajustar', 'Mantenha sua estrategia no trilho', 'micro_lesson',
+   '{"blocks": [{"type": "text", "content": "Com o tempo, seus investimentos crescem em ritmos diferentes. Acoes podem subir mais que renda fixa, mudando sua alocacao original."}, {"type": "text", "content": "**Rebalancear** e voltar a alocacao planejada. Voce pode:\n1. Direcionar novos aportes para a classe defasada\n2. Vender o que cresceu demais e comprar o que ficou abaixo\n3. Fazer isso 1-2x por ano (nao precisa ser mensal)"}, {"type": "tip", "content": "A forma mais simples: a cada novo aporte, invista na classe que esta mais abaixo da sua meta. Assim voce rebalanceia naturalmente sem vender nada."}]}',
+   15, 3, true);
+
+-- ============================================================================
+-- DAILY CONTENT - Trilha Expertise (primeiros 5 dias)
+-- ============================================================================
+insert into public.daily_content (track_id, day_number, title, subtitle, content_type, body, coins_reward, duration_minutes, is_published) values
+  ((select id from public.tracks where slug = 'expertise'), 1, 'Come-cotas: o imposto silencioso dos fundos', 'Entenda o impacto real no longo prazo', 'micro_lesson',
+   '{"blocks": [{"type": "text", "content": "O come-cotas e a antecipacao de IR que ocorre em maio e novembro nos fundos de investimento abertos. Ele come suas cotas mesmo que voce nao resgate."}, {"type": "text", "content": "**Impacto real:**\nR$ 100.000 investidos por 20 anos a 10% a.a.\n- Sem come-cotas: R$ 672.749\n- Com come-cotas (15%): R$ 592.893\n- Diferenca: R$ 79.856 (quase 12% do resultado!)"}, {"type": "tip", "content": "ETFs e previdencia (PGBL/VGBL) NAO tem come-cotas. Por isso podem ser mais eficientes para o longo prazo."}]}',
+   20, 5, true),
+  ((select id from public.tracks where slug = 'expertise'), 1, 'Calcule o impacto do come-cotas nos seus fundos', 'Quanto voce esta perdendo?', 'practical_action',
+   '{"blocks": [{"type": "text", "content": "Se voce tem dinheiro em fundos de investimento abertos, use a calculadora de juros compostos do Pulso para simular o impacto do come-cotas no seu patrimonio."}, {"type": "tip", "content": "Compare: simule com a taxa cheia e depois com a taxa descontando 15% semestral. A diferenca e o custo do come-cotas."}]}',
+   30, 5, true),
+  ((select id from public.tracks where slug = 'expertise'), 2, 'Portabilidade de previdencia sem impostos', 'Troque de fundo sem pagar IR', 'micro_lesson',
+   '{"blocks": [{"type": "text", "content": "A portabilidade de previdencia permite mudar de administradora, fundo ou plano sem pagar impostos. E um direito garantido por lei."}, {"type": "text", "content": "**Quando fazer:**\n- Taxa de administracao acima de 1% a.a.\n- Fundo com baixa rentabilidade historica\n- Plano sem opcoes de fundos diversificados\n- Transferencia de VGBL para VGBL ou PGBL para PGBL"}, {"type": "warning", "content": "Portabilidade de PGBL para VGBL (ou vice-versa) NAO e permitida. Planeje com cuidado."}]}',
+   20, 4, true),
+  ((select id from public.tracks where slug = 'expertise'), 3, 'Investimentos internacionais: BDRs e ETFs globais', 'Diversifique alem do Brasil', 'micro_lesson',
+   '{"blocks": [{"type": "text", "content": "Investir internacionalmente reduz o risco-pais e da acesso a empresas e economias que nao existem no Brasil."}, {"type": "text", "content": "**Opcoes acessiveis:**\n- BDRs: Recibos de acoes estrangeiras negociados na B3 (Apple, Google, etc)\n- ETFs internacionais: IVVB11 (S&P 500), NASD11 (Nasdaq), EURP11 (Europa)\n- ETFs no exterior: Via corretora internacional (mais opcoes, menor custo)"}, {"type": "tip", "content": "Uma alocacao de 10-30% em ativos internacionais ja traz beneficios significativos de diversificacao. Comece com ETFs de indice amplo."}]}',
+   20, 5, true),
+  ((select id from public.tracks where slug = 'expertise'), 4, 'Planejamento sucessorio e tributario', 'Proteja seu patrimonio para a familia', 'micro_lesson',
+   '{"blocks": [{"type": "text", "content": "Previdencia privada (PGBL/VGBL) tem uma vantagem unica: nao entra em inventario. Em caso de falecimento, o beneficiario recebe diretamente, sem custos de ITCMD em muitos estados."}, {"type": "text", "content": "**Estrategia tributaria:**\n- VGBL com tabela regressiva: apos 10 anos, so 10% de IR sobre os rendimentos\n- PGBL: IR sobre o total, mas com deducao na entrada\n- Combinacao ideal depende da sua faixa de IR e horizonte"}, {"type": "tip", "content": "Se voce tem dependentes, considere ter pelo menos uma parte do patrimonio em previdencia. A liquidez para a familia em caso de emergencia e muito mais rapida que inventario."}]}',
+   20, 5, true),
+  ((select id from public.tracks where slug = 'expertise'), 5, 'Construindo renda passiva sustentavel', 'Monte sua estrategia de independencia financeira', 'micro_lesson',
+   '{"blocks": [{"type": "text", "content": "Renda passiva sustentavel vem de multiplas fontes que se complementam:"}, {"type": "text", "content": "**Fontes de renda passiva:**\n1. Dividendos de FIIs (mensal, isento de IR)\n2. Dividendos de acoes (trimestral/anual)\n3. Previdencia privada (renda mensal na aposentadoria)\n4. Tesouro IPCA+ com cupom (semestral)\n5. Alugueis (se aplicavel)"}, {"type": "text", "content": "**Regra dos 4%:** Para manter uma renda de R$ 10.000/mes, voce precisa de aproximadamente R$ 3.000.000 investidos (sacando 4% ao ano, ajustado pela inflacao)."}, {"type": "tip", "content": "Nao espere ter o valor total para comecar. Construa cada fonte gradualmente. Ate R$ 500/mes de FIIs ja e um começo real."}]}',
+   20, 5, true);
+
+-- ============================================================================
 -- QUIZZES - Sample quizzes for each track
 -- ============================================================================
 
@@ -97,6 +143,46 @@ insert into public.quiz_questions (quiz_id, question_text, options, correct_opti
    'O que deve vir primeiro na sua jornada financeira?',
    '["Investir em ações", "Montar a reserva de emergência", "Contratar previdência privada"]',
    1, 'A reserva de emergência é a base da segurança financeira. Sem ela, qualquer imprevisto pode te jogar de volta para as dívidas.', 2);
+
+-- Crescimento Quiz
+insert into public.quizzes (track_id, content_id, title, description, coins_reward) values
+  ((select id from public.tracks where slug = 'crescimento'),
+   (select id from public.daily_content where track_id = (select id from public.tracks where slug = 'crescimento') and day_number = 1 and content_type = 'micro_lesson'),
+   'Quiz: Diversificacao', 'Teste seus conhecimentos sobre diversificacao de investimentos', 15);
+
+insert into public.quiz_questions (quiz_id, question_text, options, correct_option_index, explanation, sort_order) values
+  ((select id from public.quizzes where title = 'Quiz: Diversificacao'),
+   'Qual o principal objetivo da diversificacao?',
+   '["Ganhar mais dinheiro rapidamente", "Reduzir o risco total da carteira", "Evitar pagar impostos"]',
+   1, 'Diversificar distribui o risco entre diferentes ativos. Se um cai, outros podem compensar.', 1),
+  ((select id from public.quizzes where title = 'Quiz: Diversificacao'),
+   'Uma pessoa de 30 anos, pela regra idade-100, deveria ter quanto em renda variavel?',
+   '["30%", "70%", "50%"]',
+   1, 'Pela regra 100 menos idade: 100 - 30 = 70% em renda variavel. E uma referencia, nao uma regra absoluta.', 2),
+  ((select id from public.quizzes where title = 'Quiz: Diversificacao'),
+   'Qual a frequencia ideal de rebalanceamento para a maioria dos investidores?',
+   '["Diariamente", "1-2 vezes por ano", "Nunca, o mercado se ajusta sozinho"]',
+   1, 'Rebalancear 1-2x por ano e suficiente. Rebalancear demais gera custos e impostos desnecessarios.', 3);
+
+-- Expertise Quiz
+insert into public.quizzes (track_id, content_id, title, description, coins_reward) values
+  ((select id from public.tracks where slug = 'expertise'),
+   (select id from public.daily_content where track_id = (select id from public.tracks where slug = 'expertise') and day_number = 1 and content_type = 'micro_lesson'),
+   'Quiz: Eficiencia Tributaria', 'Teste seus conhecimentos sobre come-cotas e previdencia', 20);
+
+insert into public.quiz_questions (quiz_id, question_text, options, correct_option_index, explanation, sort_order) values
+  ((select id from public.quizzes where title = 'Quiz: Eficiencia Tributaria'),
+   'O que e o come-cotas?',
+   '["Taxa de administracao cobrada semestralmente", "Antecipacao de IR em maio e novembro", "Imposto sobre dividendos de fundos"]',
+   1, 'O come-cotas e a antecipacao semestral de IR que reduz a quantidade de cotas do investidor, mesmo sem resgate.', 1),
+  ((select id from public.quizzes where title = 'Quiz: Eficiencia Tributaria'),
+   'Qual desses investimentos NAO tem come-cotas?',
+   '["Fundo multimercado", "ETF de renda variavel", "Fundo de renda fixa"]',
+   1, 'ETFs nao sofrem come-cotas. Previdencia privada tambem nao. Isso pode fazer grande diferenca no longo prazo.', 2),
+  ((select id from public.quizzes where title = 'Quiz: Eficiencia Tributaria'),
+   'E possivel fazer portabilidade de PGBL para VGBL?',
+   '["Sim, a qualquer momento", "Nao, sao modalidades diferentes", "Sim, mas so apos 10 anos"]',
+   1, 'Portabilidade so e permitida dentro da mesma modalidade: PGBL para PGBL ou VGBL para VGBL.', 3);
 
 -- ============================================================================
 -- ACHIEVEMENTS
