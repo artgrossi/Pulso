@@ -74,7 +74,7 @@ export function AuthForm() {
             onChange={(e) => setEmail(e.target.value)}
             required
             placeholder="seu@email.com"
-            className="w-full rounded-lg border border-gray-700 bg-gray-800/50 px-4 py-2.5 text-sm text-white placeholder-gray-500 outline-none transition-colors focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
+            className="w-full rounded-lg border border-gray-700 bg-gray-800/50 px-4 py-2.5 text-sm text-white placeholder-gray-500 outline-none transition-colors focus:border-pulso-primary focus:ring-1 focus:ring-pulso-primary"
           />
         </div>
 
@@ -93,7 +93,7 @@ export function AuthForm() {
             required
             minLength={6}
             placeholder="Mínimo 6 caracteres"
-            className="w-full rounded-lg border border-gray-700 bg-gray-800/50 px-4 py-2.5 text-sm text-white placeholder-gray-500 outline-none transition-colors focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500"
+            className="w-full rounded-lg border border-gray-700 bg-gray-800/50 px-4 py-2.5 text-sm text-white placeholder-gray-500 outline-none transition-colors focus:border-pulso-primary focus:ring-1 focus:ring-pulso-primary"
           />
         </div>
 
@@ -102,7 +102,7 @@ export function AuthForm() {
             className={`rounded-lg p-3 text-xs ${
               message.type === "error"
                 ? "bg-red-500/10 text-red-400"
-                : "bg-emerald-500/10 text-emerald-400"
+                : "bg-pulso-primary/10 text-pulso-primary"
             }`}
           >
             {message.text}
@@ -112,7 +112,7 @@ export function AuthForm() {
         <button
           type="submit"
           disabled={loading}
-          className="w-full rounded-lg bg-emerald-600 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-emerald-500 disabled:opacity-50"
+          className="w-full rounded-xl pulso-gradient px-4 py-2.5 text-sm font-semibold text-white transition-all hover:scale-105 hover:shadow-lg disabled:opacity-50 disabled:hover:scale-100"
         >
           {loading
             ? "Carregando..."
@@ -129,7 +129,7 @@ export function AuthForm() {
             setMode(mode === "login" ? "signup" : "login");
             setMessage(null);
           }}
-          className="text-emerald-400 hover:underline"
+          className="text-pulso-primary hover:underline"
         >
           {mode === "login" ? "Criar conta" : "Entrar"}
         </button>

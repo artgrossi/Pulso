@@ -1,6 +1,7 @@
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import { DiagnosisWizard } from '@/components/onboarding/diagnosis-wizard';
+import Logo from '@/components/branding/Logo';
 
 export default async function OnboardingPage() {
   const supabase = await createClient();
@@ -26,10 +27,11 @@ export default async function OnboardingPage() {
       <div className="mx-auto flex min-h-screen max-w-4xl flex-col items-center justify-center px-6 py-12">
         {/* Header */}
         <div className="mb-10 text-center">
-          <h1 className="mb-2 text-3xl font-bold tracking-tight">
-            <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
-              Diagnóstico Financeiro
-            </span>
+          <div className="mb-4 flex justify-center">
+            <Logo variant="full" size="md" animated />
+          </div>
+          <h1 className="mb-2 text-3xl font-bold tracking-tight pulso-gradient-text">
+            Diagnóstico Financeiro
           </h1>
           <p className="text-sm text-gray-400">
             Responda 5 perguntas rápidas para personalizarmos sua jornada

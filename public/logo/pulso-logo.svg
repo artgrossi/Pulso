@@ -1,0 +1,29 @@
+<svg width="220" height="60" viewBox="0 0 220 60" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="pulsoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4facfe;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00f2fe;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- Icon with pulsing circles -->
+  <g transform="translate(5, 5)">
+    <!-- Outer animated circle -->
+    <circle cx="25" cy="25" r="23" fill="none" stroke="url(#pulsoGradient)" stroke-width="1.5" opacity="0.3">
+      <animate attributeName="r" values="23;28;23" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.3;0.1;0.3" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <!-- Middle circle -->
+    <circle cx="25" cy="25" r="18" fill="none" stroke="url(#pulsoGradient)" stroke-width="2" opacity="0.5">
+      <animate attributeName="r" values="18;21;18" dur="2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.5;0.2;0.5" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <!-- Filled center circle -->
+    <circle cx="25" cy="25" r="13" fill="url(#pulsoGradient)"/>
+    <!-- White center dot -->
+    <circle cx="25" cy="25" r="4" fill="white" opacity="0.9"/>
+  </g>
+  <!-- "Pulso" text -->
+  <text x="65" y="40" font-family="Inter, Arial, sans-serif" font-size="32" font-weight="800" fill="url(#pulsoGradient)">
+    Pulso
+  </text>
+</svg>
