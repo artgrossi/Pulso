@@ -2,6 +2,8 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import { CoinsCard } from '@/components/dashboard/coins-card';
 import { StreakCard } from '@/components/dashboard/streak-card';
+import { EditProfileForm } from '@/components/profile/edit-profile-form';
+import { ChangePasswordForm } from '@/components/profile/change-password-form';
 import type { Profile, Track, UserStreak } from '@/lib/types/database';
 import { TRACK_CONFIG } from '@/lib/constants';
 
@@ -64,6 +66,8 @@ export default async function PerfilPage() {
           </div>
         </div>
 
+        <EditProfileForm currentName={profile.full_name} />
+
         {/* Stats */}
         <div className="mt-6 grid grid-cols-3 gap-4">
           <div className="text-center">
@@ -104,12 +108,16 @@ export default async function PerfilPage() {
         track={track as Track | null}
       />
 
-      {/* Logout - desktop only (mobile has nav) */}
-      <div className="hidden sm:block">
+      {/* Account section */}
+      <div className="space-y-3">
+        <h3 className="text-xs font-medium uppercase tracking-wider text-gray-500">
+          Conta
+        </h3>
+        <ChangePasswordForm />
         <form action="/auth/signout" method="post">
           <button
             type="submit"
-            className="w-full rounded-xl border border-gray-800 bg-gray-900/60 px-6 py-3 text-sm text-gray-400 transition-colors hover:bg-gray-800 hover:text-white"
+            className="w-full rounded-xl border border-gray-800 bg-gray-900/60 px-6 py-3 text-left text-sm text-red-400 transition-colors hover:bg-red-500/10"
           >
             Sair da conta
           </button>
