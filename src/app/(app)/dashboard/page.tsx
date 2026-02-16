@@ -5,6 +5,9 @@ import { CoinsCard } from '@/components/dashboard/coins-card';
 import { TrackCard } from '@/components/dashboard/track-card';
 import { DailyContentList } from '@/components/dashboard/daily-content-list';
 import { AchievementsList } from '@/components/dashboard/achievements-list';
+import { WeeklySummary } from '@/components/dashboard/weekly-summary';
+import { QuickActions } from '@/components/dashboard/quick-actions';
+import { QuizCard } from '@/components/dashboard/quiz-card';
 import type { Track, DailyContent, UserStreak, Achievement } from '@/lib/types/database';
 import { getTrackProgress } from '@/lib/actions/track-progression';
 
@@ -46,13 +49,12 @@ export default async function DashboardPage() {
     .single();
 
   // Fetch today's content for the user's track
-  // For now, determine "day" based on content progress count + 1
   const { count: completedCount } = await supabase
     .from('user_content_progress')
     .select('*', { count: 'exact', head: true })
     .eq('user_id', user.id);
 
-  const currentDay = Math.floor((completedCount ?? 0) / 2) + 1; // ~2 contents per day
+  const currentDay = Math.floor((completedCount ?? 0) / 2) + 1;
 
   const { data: todayContent } = await supabase
     .from('daily_content')
@@ -89,6 +91,33 @@ export default async function DashboardPage() {
     (userAchievements ?? []).map(ua => ua.achievement_id)
   );
 
+  // Fetch quizzes for current track
+  const { data: quizzes } = await supabase
+    .from('quizzes')
+    .select('*')
+    .eq('track_id', profile.current_track_id!);
+
+  // Fetch quiz questions for each quiz
+  const quizIds = (quizzes ?? []).map(q => q.id);
+  const { data: quizQuestions } = quizIds.length > 0
+    ? await supabase
+        .from('quiz_questions')
+        .select('*')
+        .in('quiz_id', quizIds)
+        .order('sort_order')
+    : { data: [] };
+
+  // Fetch user's quiz attempts
+  const { data: quizAttempts } = quizIds.length > 0
+    ? await supabase
+        .from('quiz_attempts')
+        .select('quiz_id')
+        .eq('user_id', user.id)
+        .in('quiz_id', quizIds)
+    : { data: [] };
+
+  const attemptedQuizIds = new Set((quizAttempts ?? []).map(a => a.quiz_id));
+
   // Fetch overall track progress
   const trackProgress = await getTrackProgress(user.id);
 
@@ -96,11 +125,25 @@ export default async function DashboardPage() {
   const todayContentIds = (todayContent ?? []).map(c => c.id);
   const todayCompleted = todayContentIds.filter(id => completedIds.has(id)).length;
 
+  // Fetch recent coin activity for weekly summary
+  const sevenDaysAgo = new Date();
+  sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+
+  const { data: recentCoins } = await supabase
+    .from('coins_ledger')
+    .select('*')
+    .eq('user_id', user.id)
+    .gte('created_at', sevenDaysAgo.toISOString())
+    .order('created_at', { ascending: false });
+
+  const weeklyCoins = (recentCoins ?? []).reduce((sum, entry) => sum + entry.amount, 0);
+  const weeklyActivities = (recentCoins ?? []).length;
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950 text-white">
+    <>
       {/* Header */}
-      <header className="border-b border-gray-800/50 bg-gray-950/80 backdrop-blur-sm">
-        <div className="mx-auto flex max-w-2xl items-center justify-between px-4 py-4">
+      <header className="border-b border-gray-800/50 bg-gray-950/80 backdrop-blur-sm sticky top-0 z-40">
+        <div className="mx-auto flex max-w-2xl items-center justify-between px-4 py-3">
           <h1 className="text-lg font-bold">
             <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
               Pulso
@@ -111,14 +154,12 @@ export default async function DashboardPage() {
               <span>🪙</span>
               <span className="font-semibold">{profile.total_coins}</span>
             </div>
-            <form action="/auth/signout" method="post">
-              <button
-                type="submit"
-                className="rounded-lg px-3 py-1.5 text-xs text-gray-500 transition-colors hover:bg-gray-800 hover:text-gray-300"
-              >
-                Sair
-              </button>
-            </form>
+            {streak && (streak as UserStreak).current_streak > 0 && (
+              <div className="flex items-center gap-1 rounded-full bg-orange-500/10 px-3 py-1 text-xs text-orange-400">
+                <span>🔥</span>
+                <span className="font-semibold">{(streak as UserStreak).current_streak}</span>
+              </div>
+            )}
           </div>
         </div>
       </header>
@@ -129,12 +170,23 @@ export default async function DashboardPage() {
           {/* Greeting */}
           <div>
             <h2 className="text-xl font-bold">
-              Olá{profile.full_name ? `, ${profile.full_name.split(' ')[0]}` : ''}! 👋
+              Ola{profile.full_name ? `, ${profile.full_name.split(' ')[0]}` : ''}!
             </h2>
             <p className="text-sm text-gray-400">
               Continue sua jornada de bem-estar financeiro.
             </p>
           </div>
+
+          {/* Weekly Summary */}
+          <WeeklySummary
+            weeklyCoins={weeklyCoins}
+            weeklyActivities={weeklyActivities}
+            currentStreak={(streak as UserStreak | null)?.current_streak ?? 0}
+            totalCoins={profile.total_coins}
+          />
+
+          {/* Quick Actions */}
+          <QuickActions />
 
           {/* Track + Streak row */}
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -149,17 +201,31 @@ export default async function DashboardPage() {
             <StreakCard streak={streak as UserStreak | null} />
           </div>
 
-          {/* Coins */}
-          <CoinsCard
-            profile={profile as unknown as import('@/lib/types/database').Profile}
-            track={track as Track | null}
-          />
-
           {/* Daily Content */}
           <DailyContentList
             contents={(todayContent ?? []) as unknown as DailyContent[]}
             completedIds={completedIds}
           />
+
+          {/* Quizzes */}
+          {(quizzes ?? []).length > 0 && (
+            <div className="space-y-3">
+              <h3 className="text-xs font-medium uppercase tracking-wider text-gray-500">
+                Quizzes Disponiveis
+              </h3>
+              {(quizzes ?? []).map((quiz) => (
+                <QuizCard
+                  key={quiz.id}
+                  quizId={quiz.id}
+                  title={quiz.title}
+                  description={quiz.description}
+                  questions={(quizQuestions ?? []).filter(q => q.quiz_id === quiz.id)}
+                  coinsReward={quiz.coins_reward}
+                  alreadyAttempted={attemptedQuizIds.has(quiz.id)}
+                />
+              ))}
+            </div>
+          )}
 
           {/* Achievements */}
           <AchievementsList
@@ -168,6 +234,6 @@ export default async function DashboardPage() {
           />
         </div>
       </main>
-    </div>
+    </>
   );
 }
