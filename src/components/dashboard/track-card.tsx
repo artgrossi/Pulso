@@ -11,19 +11,19 @@ export function TrackCard({ track, contentCompletedToday, totalContentToday }: T
   const config = TRACK_CONFIG[track.slug];
 
   return (
-    <div className={`rounded-2xl border ${config.borderColor} ${config.bgColor} p-6`}>
+    <div className={`rounded-2xl border ${config.borderColor} ${config.bgColor} p-5 sm:p-6`}>
       <div className="flex items-center gap-3">
-        <span className="text-3xl">{config.icon}</span>
-        <div>
-          <h3 className={`text-lg font-bold ${config.color}`}>
+        <span className="text-2xl sm:text-3xl">{config.icon}</span>
+        <div className="min-w-0 flex-1">
+          <h3 className={`text-base font-bold sm:text-lg ${config.color}`}>
             Trilha {config.name}
           </h3>
-          <p className="text-xs text-gray-400">{config.description}</p>
+          <p className="truncate text-[11px] text-gray-400 sm:text-xs">{config.description}</p>
         </div>
       </div>
 
-      <div className="mt-4">
-        <div className="mb-1 flex items-center justify-between text-xs">
+      <div className="mt-3 sm:mt-4">
+        <div className="mb-1 flex items-center justify-between text-[11px] sm:text-xs">
           <span className="text-gray-400">Progresso de hoje</span>
           <span className={config.color}>
             {contentCompletedToday}/{totalContentToday}
