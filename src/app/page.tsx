@@ -1,4 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
+import { redirect } from "next/navigation";
 import { AuthForm } from "./auth-form";
 
 export default async function Home() {
@@ -6,6 +7,21 @@ export default async function Home() {
   const {
     data: { user },
   } = await supabase.auth.getUser();
+
+  if (user) {
+    // Check if onboarding is complete
+    const { data: profile } = await supabase
+      .from("profiles")
+      .select("onboarding_completed")
+      .eq("id", user.id)
+      .single();
+
+    if (profile?.onboarding_completed) {
+      redirect("/dashboard");
+    } else {
+      redirect("/onboarding");
+    }
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950 text-white">
@@ -26,46 +42,31 @@ export default async function Home() {
           </p>
         </div>
 
-        {/* Auth / Dashboard */}
-        {user ? (
-          <div className="w-full max-w-sm rounded-2xl border border-gray-800 bg-gray-900/60 p-8 text-center backdrop-blur-sm">
-            <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-emerald-500/10 text-2xl">
-              🎯
-            </div>
-            <h2 className="mb-1 text-xl font-semibold">
-              Bem-vindo de volta!
-            </h2>
-            <p className="mb-6 text-sm text-gray-400">{user.email}</p>
-            <form action="/auth/signout" method="post">
-              <button
-                type="submit"
-                className="w-full rounded-lg bg-gray-800 px-4 py-2.5 text-sm font-medium text-gray-300 transition-colors hover:bg-gray-700"
-              >
-                Sair
-              </button>
-            </form>
-          </div>
-        ) : (
-          <AuthForm />
-        )}
+        {/* Auth */}
+        <AuthForm />
 
         {/* Features */}
-        <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-3">
+        <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-4">
           {[
             {
-              icon: "📊",
-              title: "Acompanhe",
-              desc: "Visualize seus gastos e receitas em tempo real",
+              icon: "🔄",
+              title: "Retomada",
+              desc: "Organize dívidas e retome o controle",
             },
             {
-              icon: "🏆",
-              title: "Conquiste",
-              desc: "Desbloqueie conquistas ao atingir suas metas",
+              icon: "🏗️",
+              title: "Fundação",
+              desc: "Construa sua reserva de emergência",
             },
             {
               icon: "📈",
-              title: "Evolua",
-              desc: "Suba de nível conforme melhora seus hábitos",
+              title: "Crescimento",
+              desc: "Otimize investimentos e previdência",
+            },
+            {
+              icon: "🎓",
+              title: "Expertise",
+              desc: "Conteúdo avançado e ferramentas pro",
             },
           ].map((feature) => (
             <div
