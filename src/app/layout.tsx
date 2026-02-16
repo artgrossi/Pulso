@@ -11,9 +11,27 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Pulso - Bem-estar Financeiro Gamificado",
+  title: {
+    default: "Pulso - Bem-estar Financeiro Gamificado",
+    template: "%s | Pulso",
+  },
   description:
     "Transforme sua vida financeira com gamificação. Acompanhe, aprenda e evolua suas finanças pessoais.",
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "Pulso",
+  },
+  formatDetection: {
+    telephone: false,
+  },
+  openGraph: {
+    type: "website",
+    title: "Pulso - Bem-estar Financeiro Gamificado",
+    description: "Transforme sua vida financeira com gamificação.",
+    siteName: "Pulso",
+  },
 };
 
 export default function RootLayout({

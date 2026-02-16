@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import { StreakCard } from '@/components/dashboard/streak-card';
@@ -6,6 +7,10 @@ import { TrackCard } from '@/components/dashboard/track-card';
 import { DailyContentList } from '@/components/dashboard/daily-content-list';
 import { AchievementsList } from '@/components/dashboard/achievements-list';
 import type { Track, DailyContent, UserStreak, Achievement } from '@/lib/types/database';
+
+export const metadata: Metadata = {
+  title: 'Dashboard',
+};
 
 export default async function DashboardPage() {
   const supabase = await createClient();

@@ -1,0 +1,25 @@
+{
+  "name": "Pulso - Bem-estar Financeiro Gamificado",
+  "short_name": "Pulso",
+  "description": "Transforme sua vida financeira com gamificação. Acompanhe, aprenda e evolua.",
+  "start_url": "/dashboard",
+  "display": "standalone",
+  "background_color": "#030712",
+  "theme_color": "#030712",
+  "orientation": "portrait-primary",
+  "categories": ["finance", "education"],
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
