@@ -192,7 +192,7 @@ export function DebtCalculator() {
             type="number"
             value={extraPayment}
             onChange={(e) => setExtraPayment(parseFloat(e.target.value) || 0)}
-            className="flex-1 rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-white focus:border-amber-500 focus:outline-none"
+            className="flex-1 rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-900 focus:border-amber-500 focus:outline-none"
           />
         </div>
       </div>
