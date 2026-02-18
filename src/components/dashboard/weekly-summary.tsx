@@ -13,7 +13,7 @@ export function WeeklySummary({ weeklyCoins, weeklyActivities, currentStreak, to
   const stats: { label: string; value: string; color: string; bg: string; iconColor: string; icon: IconName }[] = [
     { label: 'Moedas esta semana', value: `+${weeklyCoins}`, color: 'text-amber-600', bg: 'bg-amber-50', iconColor: 'text-amber-500', icon: 'coin' },
     { label: 'Atividades', value: weeklyActivities.toString(), color: 'text-blue-600', bg: 'bg-blue-50', iconColor: 'text-blue-500', icon: 'document-text' },
-    { label: 'Streak', value: `${currentStreak}d`, color: currentStreak > 0 ? 'text-orange-500' : 'text-gray-400', bg: currentStreak > 0 ? 'bg-orange-50' : 'bg-gray-50', iconColor: currentStreak > 0 ? 'text-orange-500' : 'text-gray-400', icon: currentStreak > 0 ? 'flame' : 'snowflake' },
+    { label: 'Streak', value: `${currentStreak}d`, color: currentStreak > 0 ? 'text-orange-500' : 'text-pulso-text-muted', bg: currentStreak > 0 ? 'bg-orange-50' : 'bg-pulso-muted', iconColor: currentStreak > 0 ? 'text-orange-500' : 'text-pulso-text-muted', icon: currentStreak > 0 ? 'flame' : 'snowflake' },
     { label: 'Total', value: totalCoins.toString(), color: 'text-emerald-600', bg: 'bg-emerald-50', iconColor: 'text-emerald-500', icon: 'banknotes' },
   ];
 
@@ -25,7 +25,7 @@ export function WeeklySummary({ weeklyCoins, weeklyActivities, currentStreak, to
             <Icon name={stat.icon} size={20} className={stat.iconColor} />
           </div>
           <div className={`text-lg font-bold ${stat.color}`}>{stat.value}</div>
-          <div className="text-[10px] text-gray-400 leading-tight">{stat.label}</div>
+          <div className="text-[10px] text-pulso-text-muted leading-tight">{stat.label}</div>
         </div>
       ))}
     </div>

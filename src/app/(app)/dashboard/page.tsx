@@ -145,7 +145,7 @@ export default async function DashboardPage() {
   return (
     <>
       {/* Header */}
-      <header className="border-b border-gray-100 bg-white/80 backdrop-blur-md sticky top-0 z-40 animate-slide-down">
+      <header className="border-b border-pulso-border-subtle bg-pulso-elevated/80 backdrop-blur-md sticky top-0 z-40 animate-slide-down">
         <div className="mx-auto flex max-w-2xl items-center justify-between px-4 py-3">
           <Logo variant="full" size="sm" animated />
           <div className="flex items-center gap-2">
@@ -168,10 +168,10 @@ export default async function DashboardPage() {
         <div className="space-y-6">
           {/* Greeting */}
           <div>
-            <h2 className="text-xl font-bold text-gray-800">
+            <h2 className="text-xl font-bold text-pulso-text">
               Ola{profile.full_name ? `, ${profile.full_name.split(' ')[0]}` : ''}!
             </h2>
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-pulso-text-secondary">
               Continue sua jornada de bem-estar financeiro.
             </p>
           </div>
@@ -212,7 +212,7 @@ export default async function DashboardPage() {
           {/* Quizzes */}
           {(quizzes ?? []).length > 0 && (
             <div className="space-y-3">
-              <h3 className="text-xs font-medium uppercase tracking-wider text-gray-500">
+              <h3 className="text-xs font-medium uppercase tracking-wider text-pulso-text-secondary">
                 Quizzes Disponiveis
               </h3>
               {(quizzes ?? []).map((quiz) => (

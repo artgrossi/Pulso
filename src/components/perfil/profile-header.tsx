@@ -55,15 +55,15 @@ export function ProfileHeader({
   }
 
   return (
-    <div className="rounded-2xl border border-gray-100 bg-white shadow-sm p-6 backdrop-blur-sm">
+    <div className="rounded-2xl border border-pulso-border-subtle bg-pulso-elevated shadow-sm p-6 backdrop-blur-sm">
       <div className="flex items-start gap-4">
         {/* Avatar */}
         <div className="relative flex-shrink-0">
           <div className="flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-emerald-500 to-cyan-500 text-3xl font-bold text-white shadow-lg shadow-emerald-500/20">
             {initials || '?'}
           </div>
-          <div className="absolute -bottom-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full bg-white shadow-sm border border-gray-100">
-            <Icon name={trackIcon ?? 'target'} size={14} className={trackColor ?? 'text-gray-500'} />
+          <div className="absolute -bottom-1 -right-1 flex h-6 w-6 items-center justify-center rounded-full bg-pulso-elevated shadow-sm border border-pulso-border-subtle">
+            <Icon name={trackIcon ?? 'target'} size={14} className={trackColor ?? 'text-pulso-text-secondary'} />
           </div>
         </div>
 
@@ -72,11 +72,11 @@ export function ProfileHeader({
           <div className="flex items-start justify-between gap-2">
             <div className="min-w-0">
               <h2 className="text-xl font-bold truncate">{fullName || 'Usuario'}</h2>
-              <p className="text-sm text-gray-500 truncate">{email}</p>
+              <p className="text-sm text-pulso-text-secondary truncate">{email}</p>
             </div>
             <button
               onClick={() => setIsEditing(true)}
-              className="flex-shrink-0 rounded-lg bg-gray-50 px-3 py-1.5 text-xs font-medium text-gray-600 transition-colors hover:bg-gray-100 border border-gray-200"
+              className="flex-shrink-0 rounded-lg bg-pulso-muted px-3 py-1.5 text-xs font-medium text-pulso-text-secondary transition-colors hover:bg-pulso-muted border border-pulso-border"
             >
               Editar
             </button>
@@ -84,17 +84,17 @@ export function ProfileHeader({
 
           {/* Details row */}
           <div className="mt-2 flex flex-wrap gap-x-3 gap-y-1">
-            <span className="text-xs text-gray-400">Membro desde {memberSince}</span>
+            <span className="text-xs text-pulso-text-muted">Membro desde {memberSince}</span>
             {formattedBirth && (
               <>
-                <span className="text-xs text-gray-300">|</span>
-                <span className="text-xs text-gray-400">Nasc. {formattedBirth}</span>
+                <span className="text-xs text-pulso-text-muted">|</span>
+                <span className="text-xs text-pulso-text-muted">Nasc. {formattedBirth}</span>
               </>
             )}
             {incomeRange && (
               <>
-                <span className="text-xs text-gray-300">|</span>
-                <span className="text-xs text-gray-400">{INCOME_RANGE_LABELS[incomeRange]}</span>
+                <span className="text-xs text-pulso-text-muted">|</span>
+                <span className="text-xs text-pulso-text-muted">{INCOME_RANGE_LABELS[incomeRange]}</span>
               </>
             )}
           </div>

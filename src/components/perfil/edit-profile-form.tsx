@@ -62,12 +62,12 @@ export function EditProfileForm({ fullName, email, birthDate, incomeRange, onClo
   }
 
   return (
-    <div className="rounded-2xl border border-gray-100 bg-white shadow-sm p-5 backdrop-blur-sm">
+    <div className="rounded-2xl border border-pulso-border-subtle bg-pulso-elevated shadow-sm p-5 backdrop-blur-sm">
       <div className="flex items-center justify-between mb-5">
         <h3 className="text-base font-semibold">Editar Perfil</h3>
         <button
           onClick={onClose}
-          className="rounded-lg p-1.5 text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-600"
+          className="rounded-lg p-1.5 text-pulso-text-muted transition-colors hover:bg-pulso-muted hover:text-pulso-text-secondary"
         >
           <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -78,26 +78,26 @@ export function EditProfileForm({ fullName, email, birthDate, incomeRange, onClo
       <form onSubmit={handleSubmit} className="space-y-4">
         {/* Name */}
         <div>
-          <label className="mb-1 block text-xs font-medium text-gray-500">Nome completo</label>
+          <label className="mb-1 block text-xs font-medium text-pulso-text-secondary">Nome completo</label>
           <input
             type="text"
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
             maxLength={100}
-            className="w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2.5 text-sm text-gray-900 outline-none transition-all focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/20"
+            className="w-full rounded-lg border border-pulso-border bg-pulso-muted px-3 py-2.5 text-sm text-pulso-text outline-none transition-all focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/20"
           />
         </div>
 
         {/* Email */}
         <div>
-          <label className="mb-1 block text-xs font-medium text-gray-500">Email</label>
+          <label className="mb-1 block text-xs font-medium text-pulso-text-secondary">Email</label>
           <input
             type="email"
             value={newEmail}
             onChange={(e) => setNewEmail(e.target.value)}
             required
-            className="w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2.5 text-sm text-gray-900 outline-none transition-all focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/20"
+            className="w-full rounded-lg border border-pulso-border bg-pulso-muted px-3 py-2.5 text-sm text-pulso-text outline-none transition-all focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/20"
           />
           {newEmail.trim().toLowerCase() !== email.toLowerCase() && (
             <p className="mt-1 text-[10px] text-amber-500">
@@ -108,23 +108,23 @@ export function EditProfileForm({ fullName, email, birthDate, incomeRange, onClo
 
         {/* Birth date */}
         <div>
-          <label className="mb-1 block text-xs font-medium text-gray-500">Data de nascimento</label>
+          <label className="mb-1 block text-xs font-medium text-pulso-text-secondary">Data de nascimento</label>
           <input
             type="date"
             value={birth}
             onChange={(e) => setBirth(e.target.value)}
             max={new Date().toISOString().split('T')[0]}
-            className="w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2.5 text-sm text-gray-900 outline-none transition-all focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/20"
+            className="w-full rounded-lg border border-pulso-border bg-pulso-muted px-3 py-2.5 text-sm text-pulso-text outline-none transition-all focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/20"
           />
         </div>
 
         {/* Income range */}
         <div>
-          <label className="mb-1 block text-xs font-medium text-gray-500">Faixa de renda mensal</label>
+          <label className="mb-1 block text-xs font-medium text-pulso-text-secondary">Faixa de renda mensal</label>
           <select
             value={income}
             onChange={(e) => setIncome(e.target.value as IncomeRange | '')}
-            className="w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2.5 text-sm text-gray-900 outline-none transition-all focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/20"
+            className="w-full rounded-lg border border-pulso-border bg-pulso-muted px-3 py-2.5 text-sm text-pulso-text outline-none transition-all focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/20"
           >
             <option value="">Selecione...</option>
             {incomeOptions.map(([value, label]) => (
@@ -154,7 +154,7 @@ export function EditProfileForm({ fullName, email, birthDate, incomeRange, onClo
             type="button"
             onClick={onClose}
             disabled={saving}
-            className="rounded-xl bg-gray-100 px-4 py-2.5 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-200"
+            className="rounded-xl bg-pulso-muted px-4 py-2.5 text-sm font-medium text-pulso-text-secondary transition-colors hover:bg-pulso-border"
           >
             Cancelar
           </button>

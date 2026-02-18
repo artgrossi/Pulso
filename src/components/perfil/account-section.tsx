@@ -32,7 +32,7 @@ export function AccountSection() {
       {/* Sign out */}
       {showSignOutConfirm ? (
         <div className="rounded-xl border border-red-100 bg-red-50/50 p-4">
-          <p className="text-sm font-medium text-gray-800 mb-3">Tem certeza que deseja sair?</p>
+          <p className="text-sm font-medium text-pulso-text mb-3">Tem certeza que deseja sair?</p>
           <div className="flex gap-2">
             <form action="/auth/signout" method="post" className="flex-1">
               <button
@@ -44,7 +44,7 @@ export function AccountSection() {
             </form>
             <button
               onClick={() => setShowSignOutConfirm(false)}
-              className="flex-1 rounded-lg bg-white px-3 py-2 text-xs font-medium text-gray-600 border border-gray-200 transition-colors hover:bg-gray-50"
+              className="flex-1 rounded-lg bg-pulso-elevated px-3 py-2 text-xs font-medium text-pulso-text-secondary border border-pulso-border transition-colors hover:bg-pulso-muted"
             >
               Cancelar
             </button>
@@ -53,7 +53,7 @@ export function AccountSection() {
       ) : (
         <button
           onClick={() => setShowSignOutConfirm(true)}
-          className="flex w-full items-center gap-3 rounded-xl border border-gray-100 bg-white/80 p-4 transition-colors hover:border-red-200 hover:bg-red-50/50"
+          className="flex w-full items-center gap-3 rounded-xl border border-pulso-border-subtle bg-pulso-elevated/80 p-4 transition-colors hover:border-red-200 hover:bg-red-50/50"
         >
           <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-red-50">
             <svg className="h-4 w-4 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -62,7 +62,7 @@ export function AccountSection() {
           </span>
           <div className="flex-1 text-left">
             <div className="text-sm font-medium text-red-600">Sair da conta</div>
-            <div className="text-[10px] text-gray-500">Encerrar sua sessao</div>
+            <div className="text-[10px] text-pulso-text-secondary">Encerrar sua sessao</div>
           </div>
         </button>
       )}
@@ -90,7 +90,7 @@ export function AccountSection() {
               value={deleteText}
               onChange={(e) => setDeleteText(e.target.value)}
               placeholder="EXCLUIR"
-              className="w-full rounded-lg border border-red-200 bg-white px-3 py-2 text-sm text-gray-900 outline-none focus:border-red-400 focus:ring-2 focus:ring-red-400/20"
+              className="w-full rounded-lg border border-red-200 bg-pulso-elevated px-3 py-2 text-sm text-pulso-text outline-none focus:border-red-400 focus:ring-2 focus:ring-red-400/20"
             />
           </div>
           {error && (
@@ -106,7 +106,7 @@ export function AccountSection() {
             </button>
             <button
               onClick={() => { setShowDeleteConfirm(false); setDeleteText(''); setError(null); }}
-              className="flex-1 rounded-lg bg-white px-3 py-2 text-xs font-medium text-gray-600 border border-gray-200 transition-colors hover:bg-gray-50"
+              className="flex-1 rounded-lg bg-pulso-elevated px-3 py-2 text-xs font-medium text-pulso-text-secondary border border-pulso-border transition-colors hover:bg-pulso-muted"
             >
               Cancelar
             </button>
@@ -115,16 +115,16 @@ export function AccountSection() {
       ) : (
         <button
           onClick={() => setShowDeleteConfirm(true)}
-          className="flex w-full items-center gap-3 rounded-xl border border-gray-100 bg-white/80 p-4 transition-colors hover:border-red-200 hover:bg-red-50/50"
+          className="flex w-full items-center gap-3 rounded-xl border border-pulso-border-subtle bg-pulso-elevated/80 p-4 transition-colors hover:border-red-200 hover:bg-red-50/50"
         >
-          <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-gray-100">
-            <svg className="h-4 w-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-pulso-muted">
+            <svg className="h-4 w-4 text-pulso-text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
             </svg>
           </span>
           <div className="flex-1 text-left">
-            <div className="text-sm font-medium text-gray-600">Excluir conta</div>
-            <div className="text-[10px] text-gray-500">Remover permanentemente seus dados</div>
+            <div className="text-sm font-medium text-pulso-text-secondary">Excluir conta</div>
+            <div className="text-[10px] text-pulso-text-secondary">Remover permanentemente seus dados</div>
           </div>
         </button>
       )}

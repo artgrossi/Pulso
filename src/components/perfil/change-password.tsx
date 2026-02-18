@@ -57,18 +57,18 @@ export function ChangePassword() {
     return (
       <button
         onClick={() => setIsOpen(true)}
-        className="flex w-full items-center gap-3 rounded-xl border border-gray-100 bg-white/80 p-4 transition-colors hover:border-gray-200"
+        className="flex w-full items-center gap-3 rounded-xl border border-pulso-border-subtle bg-pulso-elevated/80 p-4 transition-colors hover:border-pulso-border"
       >
-        <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-gray-100">
-          <svg className="h-4 w-4 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-pulso-muted">
+          <svg className="h-4 w-4 text-pulso-text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
           </svg>
         </span>
         <div className="flex-1 text-left">
           <div className="text-sm font-medium">Alterar Senha</div>
-          <div className="text-[10px] text-gray-500">Atualize sua senha de acesso</div>
+          <div className="text-[10px] text-pulso-text-secondary">Atualize sua senha de acesso</div>
         </div>
-        <svg className="h-4 w-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <svg className="h-4 w-4 text-pulso-text-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
         </svg>
       </button>
@@ -76,12 +76,12 @@ export function ChangePassword() {
   }
 
   return (
-    <div className="rounded-2xl border border-gray-100 bg-white shadow-sm p-5 backdrop-blur-sm">
+    <div className="rounded-2xl border border-pulso-border-subtle bg-pulso-elevated shadow-sm p-5 backdrop-blur-sm">
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-sm font-semibold">Alterar Senha</h3>
         <button
           onClick={reset}
-          className="text-xs text-gray-400 hover:text-gray-600 transition-colors"
+          className="text-xs text-pulso-text-muted hover:text-pulso-text-secondary transition-colors"
         >
           Cancelar
         </button>
@@ -89,17 +89,17 @@ export function ChangePassword() {
 
       <form onSubmit={handleSubmit} className="space-y-3">
         <div>
-          <label className="mb-1 block text-xs font-medium text-gray-500">Senha atual</label>
+          <label className="mb-1 block text-xs font-medium text-pulso-text-secondary">Senha atual</label>
           <input
             type="password"
             value={currentPassword}
             onChange={(e) => setCurrentPassword(e.target.value)}
             required
-            className="w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-900 outline-none transition-all focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/20"
+            className="w-full rounded-lg border border-pulso-border bg-pulso-muted px-3 py-2 text-sm text-pulso-text outline-none transition-all focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/20"
           />
         </div>
         <div>
-          <label className="mb-1 block text-xs font-medium text-gray-500">Nova senha</label>
+          <label className="mb-1 block text-xs font-medium text-pulso-text-secondary">Nova senha</label>
           <input
             type="password"
             value={newPassword}
@@ -107,18 +107,18 @@ export function ChangePassword() {
             required
             minLength={6}
             placeholder="Minimo 6 caracteres"
-            className="w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 outline-none transition-all focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/20"
+            className="w-full rounded-lg border border-pulso-border bg-pulso-muted px-3 py-2 text-sm text-pulso-text placeholder-pulso-text-muted outline-none transition-all focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/20"
           />
         </div>
         <div>
-          <label className="mb-1 block text-xs font-medium text-gray-500">Confirmar nova senha</label>
+          <label className="mb-1 block text-xs font-medium text-pulso-text-secondary">Confirmar nova senha</label>
           <input
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
             minLength={6}
-            className="w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-900 outline-none transition-all focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/20"
+            className="w-full rounded-lg border border-pulso-border bg-pulso-muted px-3 py-2 text-sm text-pulso-text outline-none transition-all focus:border-emerald-400 focus:ring-2 focus:ring-emerald-400/20"
           />
         </div>
 

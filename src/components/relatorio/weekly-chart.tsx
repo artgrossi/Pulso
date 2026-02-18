@@ -17,7 +17,7 @@ export function WeeklyChart({ data }: WeeklyChartProps) {
 
           return (
             <div key={d.day} className="flex flex-1 flex-col items-center gap-1">
-              <span className="text-[10px] text-gray-500">
+              <span className="text-[10px] text-pulso-text-secondary">
                 {d.coins > 0 ? `+${d.coins}` : ''}
               </span>
               <div className="w-full flex items-end" style={{ height: 80 }}>
@@ -27,12 +27,12 @@ export function WeeklyChart({ data }: WeeklyChartProps) {
                       ? 'bg-gradient-to-t from-emerald-600 to-emerald-400'
                       : d.coins > 0
                         ? 'bg-gradient-to-t from-emerald-800 to-emerald-600'
-                        : 'bg-gray-100'
+                        : 'bg-pulso-muted'
                   }`}
                   style={{ height: `${Math.max(height, 4)}%` }}
                 />
               </div>
-              <span className={`text-[10px] ${isToday ? 'font-medium text-emerald-400' : 'text-gray-600'}`}>
+              <span className={`text-[10px] ${isToday ? 'font-medium text-emerald-400' : 'text-pulso-text-secondary'}`}>
                 {d.day}
               </span>
             </div>
@@ -48,13 +48,13 @@ export function WeeklyChart({ data }: WeeklyChartProps) {
               {Array.from({ length: Math.min(d.contents, 4) }).map((_, j) => (
                 <div key={j} className="h-1.5 w-1.5 rounded-full bg-blue-500" />
               ))}
-              {d.contents === 0 && <div className="h-1.5 w-1.5 rounded-full bg-gray-100" />}
+              {d.contents === 0 && <div className="h-1.5 w-1.5 rounded-full bg-pulso-muted" />}
             </div>
           </div>
         ))}
       </div>
 
-      <div className="mt-3 flex items-center justify-center gap-4 text-[10px] text-gray-600">
+      <div className="mt-3 flex items-center justify-center gap-4 text-[10px] text-pulso-text-secondary">
         <span className="flex items-center gap-1">
           <span className="inline-block h-2 w-2 rounded-sm bg-emerald-600" /> Moedas
         </span>

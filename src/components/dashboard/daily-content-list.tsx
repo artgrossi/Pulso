@@ -48,11 +48,11 @@ export function DailyContentList({ contents, completedIds: initialCompletedIds }
 
   if (contents.length === 0) {
     return (
-      <div className="rounded-2xl border border-gray-100 bg-white shadow-sm p-8 text-center backdrop-blur-sm">
+      <div className="rounded-2xl border border-pulso-border-subtle bg-pulso-elevated shadow-sm p-8 text-center backdrop-blur-sm">
         <div className="mb-3 flex justify-center">
-          <Icon name="book-open" size={28} className="text-gray-300" />
+          <Icon name="book-open" size={28} className="text-pulso-text-muted" />
         </div>
-        <p className="text-sm text-gray-400">
+        <p className="text-sm text-pulso-text-muted">
           Nenhum conteudo disponivel ainda. Em breve teremos novidades para voce!
         </p>
       </div>
@@ -68,7 +68,7 @@ export function DailyContentList({ contents, completedIds: initialCompletedIds }
             <Icon name="trophy" size={36} className="text-emerald-400" />
           </div>
           <h3 className="text-lg font-bold text-emerald-400">Parabens!</h3>
-          <p className="mt-1 text-sm text-gray-600">
+          <p className="mt-1 text-sm text-pulso-text-secondary">
             Voce avancou para a trilha <strong>{trackAdvancement}</strong>!
           </p>
           <button
@@ -80,7 +80,7 @@ export function DailyContentList({ contents, completedIds: initialCompletedIds }
         </div>
       )}
 
-      <h3 className="text-xs font-medium uppercase tracking-wider text-gray-500">
+      <h3 className="text-xs font-medium uppercase tracking-wider text-pulso-text-secondary">
         Conteudo de Hoje
       </h3>
 
@@ -95,7 +95,7 @@ export function DailyContentList({ contents, completedIds: initialCompletedIds }
             className={`rounded-xl border transition-all ${
               isCompleted
                 ? 'border-emerald-500/20 bg-emerald-500/5'
-                : 'border-gray-100 bg-white shadow-sm hover:border-gray-200'
+                : 'border-pulso-border-subtle bg-pulso-elevated shadow-sm hover:border-pulso-border'
             } backdrop-blur-sm`}
           >
             <button
@@ -103,11 +103,11 @@ export function DailyContentList({ contents, completedIds: initialCompletedIds }
               className="flex w-full items-center gap-4 p-4 text-left"
             >
               <div className={`flex h-10 w-10 items-center justify-center rounded-xl ${
-                isCompleted ? 'bg-emerald-500/10' : 'bg-gray-100'
+                isCompleted ? 'bg-emerald-500/10' : 'bg-pulso-muted'
               }`}>
                 {isCompleted
                   ? <Icon name="check-circle" size={20} className="text-emerald-500" />
-                  : <Icon name={contentTypeIcon[content.content_type] ?? 'book-open'} size={20} className="text-gray-500" />
+                  : <Icon name={contentTypeIcon[content.content_type] ?? 'book-open'} size={20} className="text-pulso-text-secondary" />
                 }
               </div>
               <div className="flex-1">
@@ -119,7 +119,7 @@ export function DailyContentList({ contents, completedIds: initialCompletedIds }
                     </span>
                   )}
                 </div>
-                <div className="mt-0.5 flex items-center gap-2 text-xs text-gray-500">
+                <div className="mt-0.5 flex items-center gap-2 text-xs text-pulso-text-secondary">
                   <span>{contentTypeLabel[content.content_type]}</span>
                   <span>·</span>
                   <span>{content.duration_minutes} min</span>
@@ -128,7 +128,7 @@ export function DailyContentList({ contents, completedIds: initialCompletedIds }
                 </div>
               </div>
               <svg
-                className={`h-4 w-4 text-gray-500 transition-transform ${isExpanded ? 'rotate-180' : ''}`}
+                className={`h-4 w-4 text-pulso-text-secondary transition-transform ${isExpanded ? 'rotate-180' : ''}`}
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -138,11 +138,11 @@ export function DailyContentList({ contents, completedIds: initialCompletedIds }
             </button>
 
             {isExpanded && (
-              <div className="border-t border-gray-100 px-4 pb-4 pt-3">
+              <div className="border-t border-pulso-border-subtle px-4 pb-4 pt-3">
                 {content.body?.blocks?.map((block, i) => (
                   <div key={i} className="mb-3 last:mb-0">
                     {block.type === 'text' && (
-                      <p className="text-sm leading-relaxed text-gray-600 whitespace-pre-line">{block.content}</p>
+                      <p className="text-sm leading-relaxed text-pulso-text-secondary whitespace-pre-line">{block.content}</p>
                     )}
                     {block.type === 'tip' && (
                       <div className="flex items-start gap-2 rounded-lg bg-emerald-500/10 p-3 text-sm text-emerald-600">

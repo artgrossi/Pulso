@@ -34,8 +34,8 @@ export function LevelProgress({
   const multiplier = getStreakMultiplier(currentStreak);
 
   return (
-    <div className="rounded-2xl border border-gray-100 bg-white shadow-sm p-5 backdrop-blur-sm">
-      <h3 className="text-xs font-medium uppercase tracking-wider text-gray-500 mb-4">
+    <div className="rounded-2xl border border-pulso-border-subtle bg-pulso-elevated shadow-sm p-5 backdrop-blur-sm">
+      <h3 className="text-xs font-medium uppercase tracking-wider text-pulso-text-secondary mb-4">
         Sua Evolucao
       </h3>
 
@@ -46,17 +46,17 @@ export function LevelProgress({
             <Icon name="star" size={18} className="text-purple-500" />
             <span className="text-sm font-semibold">Nivel {level}</span>
           </div>
-          <span className="text-xs text-gray-400">
+          <span className="text-xs text-pulso-text-muted">
             {coinsInLevel}/{coinsNeeded} moedas
           </span>
         </div>
-        <div className="h-2.5 w-full rounded-full bg-gray-100 overflow-hidden">
+        <div className="h-2.5 w-full rounded-full bg-pulso-muted overflow-hidden">
           <div
             className="h-full rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 transition-all duration-500"
             style={{ width: `${levelProgress}%` }}
           />
         </div>
-        <p className="mt-1 text-[10px] text-gray-400">
+        <p className="mt-1 text-[10px] text-pulso-text-muted">
           {nextLevelCoins - totalCoins > 0
             ? `Faltam ${nextLevelCoins - totalCoins} moedas para o nivel ${level + 1}`
             : `Proximo nivel disponivel!`}
@@ -70,17 +70,17 @@ export function LevelProgress({
             <Icon name="book-open" size={18} className="text-emerald-500" />
             <span className="text-sm font-semibold">Trilha</span>
           </div>
-          <span className="text-xs text-gray-400">
+          <span className="text-xs text-pulso-text-muted">
             {completedContent}/{totalContent} conteudos
           </span>
         </div>
-        <div className="h-2.5 w-full rounded-full bg-gray-100 overflow-hidden">
+        <div className="h-2.5 w-full rounded-full bg-pulso-muted overflow-hidden">
           <div
             className="h-full rounded-full bg-gradient-to-r from-emerald-500 to-cyan-500 transition-all duration-500"
             style={{ width: `${trackProgress}%` }}
           />
         </div>
-        <p className="mt-1 text-[10px] text-gray-400">
+        <p className="mt-1 text-[10px] text-pulso-text-muted">
           {trackProgress >= 80
             ? 'Voce pode avancar de trilha!'
             : `${trackProgress}% concluido — 80% para avancar`}

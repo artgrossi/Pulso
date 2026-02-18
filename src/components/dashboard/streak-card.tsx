@@ -14,22 +14,22 @@ export function StreakCard({ streak }: StreakCardProps) {
     currentStreak >= 30 ? 'text-orange-500' :
     currentStreak >= 7 ? 'text-amber-500' :
     currentStreak >= 1 ? 'text-yellow-500' :
-    'text-gray-400';
+    'text-pulso-text-muted';
 
   return (
-    <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition-all hover:shadow-md">
+    <div className="rounded-2xl border border-pulso-border-subtle bg-pulso-elevated p-6 shadow-sm transition-all hover:shadow-md">
       <div className="flex items-center gap-4">
         <div className={flameIntensity}>
           <Icon name={currentStreak > 0 ? 'flame' : 'snowflake'} size={36} />
         </div>
         <div>
           <div className="flex items-baseline gap-2">
-            <span className="text-3xl font-bold text-gray-800">{currentStreak}</span>
-            <span className="text-sm text-gray-500">
+            <span className="text-3xl font-bold text-pulso-text">{currentStreak}</span>
+            <span className="text-sm text-pulso-text-secondary">
               {currentStreak === 1 ? 'dia' : 'dias'} consecutivos
             </span>
           </div>
-          <div className="mt-1 flex items-center gap-3 text-xs text-gray-400">
+          <div className="mt-1 flex items-center gap-3 text-xs text-pulso-text-muted">
             <span>Recorde: {longestStreak} dias</span>
             {multiplier > 1 && (
               <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-emerald-600">

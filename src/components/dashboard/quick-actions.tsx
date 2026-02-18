@@ -13,7 +13,7 @@ const actions: { href: string; label: string; icon: IconName; iconColor: string;
 export function QuickActions() {
   return (
     <div>
-      <h3 className="mb-2 text-xs font-medium uppercase tracking-wider text-gray-400">
+      <h3 className="mb-2 text-xs font-medium uppercase tracking-wider text-pulso-text-muted">
         Acoes Rapidas
       </h3>
       <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
@@ -21,10 +21,10 @@ export function QuickActions() {
           <Link
             key={action.href}
             href={action.href}
-            className={`flex flex-col items-center gap-1.5 rounded-xl border bg-white p-3 text-center transition-all ${action.color}`}
+            className={`flex flex-col items-center gap-1.5 rounded-xl border bg-pulso-elevated p-3 text-center transition-all ${action.color}`}
           >
             <Icon name={action.icon} size={22} className={action.iconColor} />
-            <span className="text-xs text-gray-600">{action.label}</span>
+            <span className="text-xs text-pulso-text-secondary">{action.label}</span>
           </Link>
         ))}
       </div>

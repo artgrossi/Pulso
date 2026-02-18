@@ -119,16 +119,16 @@ export function DebtCalculator() {
         </span>
         <div>
           <h3 className="font-bold text-amber-400">Quitacao de Dividas</h3>
-          <p className="text-xs text-gray-500">Compare estrategias Snowball vs Avalanche</p>
+          <p className="text-xs text-pulso-text-secondary">Compare estrategias Snowball vs Avalanche</p>
         </div>
       </div>
 
       {/* Existing debts */}
       {debts.map((debt) => (
-        <div key={debt.id} className="flex items-center gap-3 rounded-lg border border-gray-100 bg-white/80 p-3">
+        <div key={debt.id} className="flex items-center gap-3 rounded-lg border border-pulso-border-subtle bg-pulso-elevated/80 p-3">
           <div className="flex-1">
             <div className="text-sm font-medium">{debt.name}</div>
-            <div className="mt-0.5 flex flex-wrap gap-2 text-[10px] text-gray-500">
+            <div className="mt-0.5 flex flex-wrap gap-2 text-[10px] text-pulso-text-secondary">
               <span>Saldo: {formatCurrency(debt.balance)}</span>
               <span>Taxa: {debt.rate}% a.a.</span>
               <span>Min: {formatCurrency(debt.minPayment)}/mes</span>
@@ -136,7 +136,7 @@ export function DebtCalculator() {
           </div>
           <button
             onClick={() => removeDebt(debt.id)}
-            className="rounded p-1 text-gray-600 transition-colors hover:bg-red-500/10 hover:text-red-400"
+            className="rounded p-1 text-pulso-text-secondary transition-colors hover:bg-red-500/10 hover:text-red-400"
           >
             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -152,47 +152,47 @@ export function DebtCalculator() {
           placeholder="Nome (ex: Cartao)"
           value={newDebt.name}
           onChange={(e) => setNewDebt({ ...newDebt, name: e.target.value })}
-          className="rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder-gray-500 focus:border-amber-500 focus:outline-none"
+          className="rounded-lg border border-pulso-border bg-pulso-muted px-3 py-2 text-sm text-pulso-text placeholder-pulso-text-muted focus:border-amber-500 focus:outline-none"
         />
         <input
           type="number"
           placeholder="Saldo (R$)"
           value={newDebt.balance}
           onChange={(e) => setNewDebt({ ...newDebt, balance: e.target.value })}
-          className="rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder-gray-500 focus:border-amber-500 focus:outline-none"
+          className="rounded-lg border border-pulso-border bg-pulso-muted px-3 py-2 text-sm text-pulso-text placeholder-pulso-text-muted focus:border-amber-500 focus:outline-none"
         />
         <input
           type="number"
           placeholder="Taxa anual (%)"
           value={newDebt.rate}
           onChange={(e) => setNewDebt({ ...newDebt, rate: e.target.value })}
-          className="rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder-gray-500 focus:border-amber-500 focus:outline-none"
+          className="rounded-lg border border-pulso-border bg-pulso-muted px-3 py-2 text-sm text-pulso-text placeholder-pulso-text-muted focus:border-amber-500 focus:outline-none"
         />
         <input
           type="number"
           placeholder="Pagamento min (R$)"
           value={newDebt.minPayment}
           onChange={(e) => setNewDebt({ ...newDebt, minPayment: e.target.value })}
-          className="rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder-gray-500 focus:border-amber-500 focus:outline-none"
+          className="rounded-lg border border-pulso-border bg-pulso-muted px-3 py-2 text-sm text-pulso-text placeholder-pulso-text-muted focus:border-amber-500 focus:outline-none"
         />
       </div>
       <button
         onClick={addDebt}
-        className="w-full rounded-lg border border-dashed border-gray-300 py-2 text-sm text-gray-400 transition-colors hover:border-amber-500/50 hover:text-amber-400"
+        className="w-full rounded-lg border border-dashed border-pulso-border py-2 text-sm text-pulso-text-muted transition-colors hover:border-amber-500/50 hover:text-amber-400"
       >
         + Adicionar divida
       </button>
 
       {/* Extra payment */}
       <div>
-        <label className="mb-1 block text-xs text-gray-400">Valor extra mensal para abater dividas</label>
+        <label className="mb-1 block text-xs text-pulso-text-muted">Valor extra mensal para abater dividas</label>
         <div className="flex items-center gap-2">
-          <span className="text-sm text-gray-500">R$</span>
+          <span className="text-sm text-pulso-text-secondary">R$</span>
           <input
             type="number"
             value={extraPayment}
             onChange={(e) => setExtraPayment(parseFloat(e.target.value) || 0)}
-            className="flex-1 rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-900 focus:border-amber-500 focus:outline-none"
+            className="flex-1 rounded-lg border border-pulso-border bg-pulso-muted px-3 py-2 text-sm text-pulso-text focus:border-amber-500 focus:outline-none"
           />
         </div>
       </div>
@@ -208,7 +208,7 @@ export function DebtCalculator() {
       {/* Results */}
       {result && (
         <div className="space-y-3">
-          <h4 className="text-sm font-medium text-gray-600">Resultado da Simulacao</h4>
+          <h4 className="text-sm font-medium text-pulso-text-secondary">Resultado da Simulacao</h4>
           <div className="grid grid-cols-2 gap-3">
             <ResultCard
               title="Snowball"
@@ -250,23 +250,23 @@ function ResultCard({ title, subtitle, months, totalInterest, totalPaid, isBette
   formatCurrency: (v: number) => string;
 }) {
   return (
-    <div className={`rounded-xl border p-4 ${isBetter ? 'border-emerald-500/30 bg-emerald-500/5' : 'border-gray-100 bg-white/80'}`}>
+    <div className={`rounded-xl border p-4 ${isBetter ? 'border-emerald-500/30 bg-emerald-500/5' : 'border-pulso-border-subtle bg-pulso-elevated/80'}`}>
       <div className="flex items-center gap-2">
         <h5 className="text-sm font-bold">{title}</h5>
         {isBetter && <span className="rounded-full bg-emerald-500/20 px-2 py-0.5 text-[10px] text-emerald-400">Melhor</span>}
       </div>
-      <p className="text-[10px] text-gray-500">{subtitle}</p>
+      <p className="text-[10px] text-pulso-text-secondary">{subtitle}</p>
       <div className="mt-3 space-y-1.5">
         <div className="flex justify-between text-xs">
-          <span className="text-gray-400">Prazo</span>
+          <span className="text-pulso-text-muted">Prazo</span>
           <span className="font-medium">{months} meses ({(months / 12).toFixed(1)} anos)</span>
         </div>
         <div className="flex justify-between text-xs">
-          <span className="text-gray-400">Juros pagos</span>
+          <span className="text-pulso-text-muted">Juros pagos</span>
           <span className="font-medium text-red-400">{formatCurrency(totalInterest)}</span>
         </div>
         <div className="flex justify-between text-xs">
-          <span className="text-gray-400">Total pago</span>
+          <span className="text-pulso-text-muted">Total pago</span>
           <span className="font-medium">{formatCurrency(totalPaid)}</span>
         </div>
       </div>

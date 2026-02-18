@@ -74,45 +74,45 @@ export function CompoundInterestCalculator() {
         </span>
         <div>
           <h3 className="font-bold text-emerald-400">Juros Compostos</h3>
-          <p className="text-xs text-gray-500">Simule o crescimento do seu dinheiro ao longo do tempo</p>
+          <p className="text-xs text-pulso-text-secondary">Simule o crescimento do seu dinheiro ao longo do tempo</p>
         </div>
       </div>
 
       <div className="space-y-3">
         <div>
-          <label className="mb-1 block text-xs text-gray-400">Investimento inicial</label>
+          <label className="mb-1 block text-xs text-pulso-text-muted">Investimento inicial</label>
           <div className="flex items-center gap-2">
-            <span className="text-sm text-gray-500">R$</span>
+            <span className="text-sm text-pulso-text-secondary">R$</span>
             <input
               type="number"
               value={initialAmount}
               onChange={(e) => setInitialAmount(parseFloat(e.target.value) || 0)}
-              className="flex-1 rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-900 focus:border-emerald-500 focus:outline-none"
+              className="flex-1 rounded-lg border border-pulso-border bg-pulso-muted px-3 py-2 text-sm text-pulso-text focus:border-emerald-500 focus:outline-none"
             />
           </div>
         </div>
 
         <div>
-          <label className="mb-1 block text-xs text-gray-400">Aporte mensal</label>
+          <label className="mb-1 block text-xs text-pulso-text-muted">Aporte mensal</label>
           <div className="flex items-center gap-2">
-            <span className="text-sm text-gray-500">R$</span>
+            <span className="text-sm text-pulso-text-secondary">R$</span>
             <input
               type="number"
               value={monthlyDeposit}
               onChange={(e) => setMonthlyDeposit(parseFloat(e.target.value) || 0)}
-              className="flex-1 rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-900 focus:border-emerald-500 focus:outline-none"
+              className="flex-1 rounded-lg border border-pulso-border bg-pulso-muted px-3 py-2 text-sm text-pulso-text focus:border-emerald-500 focus:outline-none"
             />
           </div>
         </div>
 
         <div>
-          <label className="mb-1 block text-xs text-gray-400">Taxa de juros anual (%)</label>
+          <label className="mb-1 block text-xs text-pulso-text-muted">Taxa de juros anual (%)</label>
           <input
             type="number"
             step="0.1"
             value={annualRate}
             onChange={(e) => setAnnualRate(parseFloat(e.target.value) || 0)}
-            className="w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-900 focus:border-emerald-500 focus:outline-none"
+            className="w-full rounded-lg border border-pulso-border bg-pulso-muted px-3 py-2 text-sm text-pulso-text focus:border-emerald-500 focus:outline-none"
           />
           <div className="mt-2 flex flex-wrap gap-1.5">
             {presets.map((p) => (
@@ -122,7 +122,7 @@ export function CompoundInterestCalculator() {
                 className={`rounded-full border px-2.5 py-1 text-[10px] transition-colors ${
                   annualRate === p.rate
                     ? 'border-emerald-500 bg-emerald-500/10 text-emerald-400'
-                    : 'border-gray-200 text-gray-500 hover:text-gray-600'
+                    : 'border-pulso-border text-pulso-text-secondary hover:text-pulso-text-secondary'
                 }`}
               >
                 {p.label} ({p.rate}%)
@@ -132,7 +132,7 @@ export function CompoundInterestCalculator() {
         </div>
 
         <div>
-          <label className="mb-1 block text-xs text-gray-400">Periodo (anos): {years}</label>
+          <label className="mb-1 block text-xs text-pulso-text-muted">Periodo (anos): {years}</label>
           <input
             type="range"
             min="1"
@@ -141,7 +141,7 @@ export function CompoundInterestCalculator() {
             onChange={(e) => setYears(parseInt(e.target.value))}
             className="w-full accent-emerald-500"
           />
-          <div className="flex justify-between text-[10px] text-gray-600">
+          <div className="flex justify-between text-[10px] text-pulso-text-secondary">
             <span>1 ano</span>
             <span>10</span>
             <span>20</span>
@@ -162,7 +162,7 @@ export function CompoundInterestCalculator() {
         <div className="space-y-3">
           {/* Main result */}
           <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/5 p-4 text-center">
-            <div className="text-xs text-gray-400">Saldo final em {years} anos</div>
+            <div className="text-xs text-pulso-text-muted">Saldo final em {years} anos</div>
             <div className="mt-1 text-3xl font-bold text-emerald-400">
               {formatCurrency(result.finalBalance)}
             </div>
@@ -170,19 +170,19 @@ export function CompoundInterestCalculator() {
 
           {/* Breakdown */}
           <div className="grid grid-cols-2 gap-3">
-            <div className="rounded-xl border border-gray-100 bg-white/80 p-4 text-center">
+            <div className="rounded-xl border border-pulso-border-subtle bg-pulso-elevated/80 p-4 text-center">
               <div className="text-lg font-bold text-blue-400">{formatCurrency(result.totalInvested)}</div>
-              <div className="text-[10px] text-gray-500">Total investido</div>
+              <div className="text-[10px] text-pulso-text-secondary">Total investido</div>
             </div>
-            <div className="rounded-xl border border-gray-100 bg-white/80 p-4 text-center">
+            <div className="rounded-xl border border-pulso-border-subtle bg-pulso-elevated/80 p-4 text-center">
               <div className="text-lg font-bold text-amber-400">{formatCurrency(result.totalInterest)}</div>
-              <div className="text-[10px] text-gray-500">Juros ganhos</div>
+              <div className="text-[10px] text-pulso-text-secondary">Juros ganhos</div>
             </div>
           </div>
 
           {/* Visual ratio */}
-          <div className="rounded-xl border border-gray-100 bg-white/80 p-4">
-            <div className="mb-2 text-xs text-gray-400">Composicao do saldo final</div>
+          <div className="rounded-xl border border-pulso-border-subtle bg-pulso-elevated/80 p-4">
+            <div className="mb-2 text-xs text-pulso-text-muted">Composicao do saldo final</div>
             <div className="flex h-4 overflow-hidden rounded-full">
               <div
                 className="bg-blue-500 transition-all"
@@ -196,20 +196,20 @@ export function CompoundInterestCalculator() {
             <div className="mt-2 flex justify-between text-[10px]">
               <span className="flex items-center gap-1">
                 <span className="inline-block h-2 w-2 rounded-full bg-blue-500" />
-                <span className="text-gray-400">Investido ({((result.totalInvested / result.finalBalance) * 100).toFixed(0)}%)</span>
+                <span className="text-pulso-text-muted">Investido ({((result.totalInvested / result.finalBalance) * 100).toFixed(0)}%)</span>
               </span>
               <span className="flex items-center gap-1">
                 <span className="inline-block h-2 w-2 rounded-full bg-amber-500" />
-                <span className="text-gray-400">Juros ({((result.totalInterest / result.finalBalance) * 100).toFixed(0)}%)</span>
+                <span className="text-pulso-text-muted">Juros ({((result.totalInterest / result.finalBalance) * 100).toFixed(0)}%)</span>
               </span>
             </div>
           </div>
 
           {/* Year-by-year table */}
-          <div className="rounded-xl border border-gray-100 bg-white/80 overflow-hidden">
+          <div className="rounded-xl border border-pulso-border-subtle bg-pulso-elevated/80 overflow-hidden">
             <table className="w-full text-xs">
               <thead>
-                <tr className="border-b border-gray-200 text-gray-500">
+                <tr className="border-b border-pulso-border text-pulso-text-secondary">
                   <th className="px-3 py-2 text-left">Ano</th>
                   <th className="px-3 py-2 text-right">Investido</th>
                   <th className="px-3 py-2 text-right">Juros</th>
@@ -218,8 +218,8 @@ export function CompoundInterestCalculator() {
               </thead>
               <tbody>
                 {result.monthlyBreakdown.map((row) => (
-                  <tr key={row.month} className="border-b border-gray-100">
-                    <td className="px-3 py-2 text-gray-400">{row.month / 12}</td>
+                  <tr key={row.month} className="border-b border-pulso-border-subtle">
+                    <td className="px-3 py-2 text-pulso-text-muted">{row.month / 12}</td>
                     <td className="px-3 py-2 text-right text-blue-400">{formatCurrency(row.invested)}</td>
                     <td className="px-3 py-2 text-right text-amber-400">{formatCurrency(row.interest)}</td>
                     <td className="px-3 py-2 text-right font-medium text-emerald-400">{formatCurrency(row.balance)}</td>
