@@ -11,7 +11,6 @@ export default async function OnboardingPage() {
     redirect('/');
   }
 
-  // Check if already onboarded
   const { data: profile } = await supabase
     .from('profiles')
     .select('onboarding_completed')
@@ -23,22 +22,24 @@ export default async function OnboardingPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950 text-white">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50/50 via-white to-cyan-50/30 text-gray-900">
       <div className="mx-auto flex min-h-screen max-w-4xl flex-col items-center justify-center px-6 py-12">
         {/* Header */}
-        <div className="mb-10 text-center">
+        <div className="mb-10 text-center animate-fade-in">
           <div className="mb-4 flex justify-center">
             <Logo variant="full" size="md" animated />
           </div>
           <h1 className="mb-2 text-3xl font-bold tracking-tight pulso-gradient-text">
             Diagnóstico Financeiro
           </h1>
-          <p className="text-sm text-gray-400">
+          <p className="text-sm text-gray-500">
             Responda 5 perguntas rápidas para personalizarmos sua jornada
           </p>
         </div>
 
-        <DiagnosisWizard />
+        <div className="animate-slide-up delay-200 w-full">
+          <DiagnosisWizard />
+        </div>
       </div>
     </div>
   );

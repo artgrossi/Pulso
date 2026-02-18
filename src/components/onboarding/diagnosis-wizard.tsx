@@ -58,7 +58,7 @@ export function DiagnosisWizard() {
 
     return (
       <div className="mx-auto w-full max-w-lg">
-        <div className="rounded-2xl border border-gray-800 bg-gray-900/60 p-8 backdrop-blur-sm">
+        <div className="rounded-2xl border border-gray-100 bg-white shadow-sm p-8 backdrop-blur-sm">
           <div className="mb-6 text-center">
             <div className={`mx-auto mb-4 inline-flex h-16 w-16 items-center justify-center rounded-2xl ${track.bgColor} text-3xl`}>
               {track.icon}
@@ -68,7 +68,7 @@ export function DiagnosisWizard() {
           </div>
 
           <div className={`mb-6 rounded-xl border ${track.borderColor} ${track.bgColor} p-4`}>
-            <p className="text-sm text-gray-300">
+            <p className="text-sm text-gray-600">
               Preparamos uma jornada personalizada para você. Conteúdo diário de 5-10 minutos,
               quizzes e desafios práticos que vão te ajudar a evoluir no seu próprio ritmo.
             </p>
@@ -94,7 +94,7 @@ export function DiagnosisWizard() {
           <span>Pergunta {currentStep + 1} de {totalSteps}</span>
           <span>{Math.round(progress)}%</span>
         </div>
-        <div className="h-1.5 w-full overflow-hidden rounded-full bg-gray-800">
+        <div className="h-1.5 w-full overflow-hidden rounded-full bg-gray-100">
           <div
             className="h-full rounded-full bg-emerald-500 transition-all duration-500"
             style={{ width: `${progress}%` }}
@@ -103,7 +103,7 @@ export function DiagnosisWizard() {
       </div>
 
       {/* Question card */}
-      <div className="rounded-2xl border border-gray-800 bg-gray-900/60 p-8 backdrop-blur-sm">
+      <div className="rounded-2xl border border-gray-100 bg-white shadow-sm p-8 backdrop-blur-sm">
         <h2 className="mb-8 text-center text-xl font-semibold leading-relaxed">
           {question.question}
         </h2>
@@ -111,13 +111,13 @@ export function DiagnosisWizard() {
         <div className="space-y-3">
           <button
             onClick={() => handleAnswer(question.field === 'has_overdue_debt' ? true : true)}
-            className="w-full rounded-xl border border-gray-700 bg-gray-800/50 px-6 py-4 text-left text-sm font-medium text-white transition-all hover:border-emerald-500/50 hover:bg-emerald-500/10"
+            className="w-full rounded-xl border border-gray-200 bg-gray-50/50 px-6 py-4 text-left text-sm font-medium text-white transition-all hover:border-emerald-500/50 hover:bg-emerald-500/10"
           >
             {question.yes_label}
           </button>
           <button
             onClick={() => handleAnswer(question.field === 'has_overdue_debt' ? false : false)}
-            className="w-full rounded-xl border border-gray-700 bg-gray-800/50 px-6 py-4 text-left text-sm font-medium text-white transition-all hover:border-emerald-500/50 hover:bg-emerald-500/10"
+            className="w-full rounded-xl border border-gray-200 bg-gray-50/50 px-6 py-4 text-left text-sm font-medium text-white transition-all hover:border-emerald-500/50 hover:bg-emerald-500/10"
           >
             {question.no_label}
           </button>
@@ -126,7 +126,7 @@ export function DiagnosisWizard() {
         {currentStep > 0 && (
           <button
             onClick={handleBack}
-            className="mt-6 w-full text-center text-xs text-gray-500 transition-colors hover:text-gray-300"
+            className="mt-6 w-full text-center text-xs text-gray-500 transition-colors hover:text-gray-600"
           >
             Voltar para pergunta anterior
           </button>

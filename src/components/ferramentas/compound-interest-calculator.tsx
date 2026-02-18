@@ -84,7 +84,7 @@ export function CompoundInterestCalculator() {
               type="number"
               value={initialAmount}
               onChange={(e) => setInitialAmount(parseFloat(e.target.value) || 0)}
-              className="flex-1 rounded-lg border border-gray-700 bg-gray-800 px-3 py-2 text-sm text-white focus:border-emerald-500 focus:outline-none"
+              className="flex-1 rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-white focus:border-emerald-500 focus:outline-none"
             />
           </div>
         </div>
@@ -97,7 +97,7 @@ export function CompoundInterestCalculator() {
               type="number"
               value={monthlyDeposit}
               onChange={(e) => setMonthlyDeposit(parseFloat(e.target.value) || 0)}
-              className="flex-1 rounded-lg border border-gray-700 bg-gray-800 px-3 py-2 text-sm text-white focus:border-emerald-500 focus:outline-none"
+              className="flex-1 rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-white focus:border-emerald-500 focus:outline-none"
             />
           </div>
         </div>
@@ -109,7 +109,7 @@ export function CompoundInterestCalculator() {
             step="0.1"
             value={annualRate}
             onChange={(e) => setAnnualRate(parseFloat(e.target.value) || 0)}
-            className="w-full rounded-lg border border-gray-700 bg-gray-800 px-3 py-2 text-sm text-white focus:border-emerald-500 focus:outline-none"
+            className="w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-white focus:border-emerald-500 focus:outline-none"
           />
           <div className="mt-2 flex flex-wrap gap-1.5">
             {presets.map((p) => (
@@ -119,7 +119,7 @@ export function CompoundInterestCalculator() {
                 className={`rounded-full border px-2.5 py-1 text-[10px] transition-colors ${
                   annualRate === p.rate
                     ? 'border-emerald-500 bg-emerald-500/10 text-emerald-400'
-                    : 'border-gray-700 text-gray-500 hover:text-gray-300'
+                    : 'border-gray-200 text-gray-500 hover:text-gray-600'
                 }`}
               >
                 {p.label} ({p.rate}%)
@@ -167,18 +167,18 @@ export function CompoundInterestCalculator() {
 
           {/* Breakdown */}
           <div className="grid grid-cols-2 gap-3">
-            <div className="rounded-xl border border-gray-800 bg-gray-900/40 p-4 text-center">
+            <div className="rounded-xl border border-gray-100 bg-white/80 p-4 text-center">
               <div className="text-lg font-bold text-blue-400">{formatCurrency(result.totalInvested)}</div>
               <div className="text-[10px] text-gray-500">Total investido</div>
             </div>
-            <div className="rounded-xl border border-gray-800 bg-gray-900/40 p-4 text-center">
+            <div className="rounded-xl border border-gray-100 bg-white/80 p-4 text-center">
               <div className="text-lg font-bold text-amber-400">{formatCurrency(result.totalInterest)}</div>
               <div className="text-[10px] text-gray-500">Juros ganhos</div>
             </div>
           </div>
 
           {/* Visual ratio */}
-          <div className="rounded-xl border border-gray-800 bg-gray-900/40 p-4">
+          <div className="rounded-xl border border-gray-100 bg-white/80 p-4">
             <div className="mb-2 text-xs text-gray-400">Composicao do saldo final</div>
             <div className="flex h-4 overflow-hidden rounded-full">
               <div
@@ -203,10 +203,10 @@ export function CompoundInterestCalculator() {
           </div>
 
           {/* Year-by-year table */}
-          <div className="rounded-xl border border-gray-800 bg-gray-900/40 overflow-hidden">
+          <div className="rounded-xl border border-gray-100 bg-white/80 overflow-hidden">
             <table className="w-full text-xs">
               <thead>
-                <tr className="border-b border-gray-800 text-gray-500">
+                <tr className="border-b border-gray-200 text-gray-500">
                   <th className="px-3 py-2 text-left">Ano</th>
                   <th className="px-3 py-2 text-right">Investido</th>
                   <th className="px-3 py-2 text-right">Juros</th>
@@ -215,7 +215,7 @@ export function CompoundInterestCalculator() {
               </thead>
               <tbody>
                 {result.monthlyBreakdown.map((row) => (
-                  <tr key={row.month} className="border-b border-gray-800/50">
+                  <tr key={row.month} className="border-b border-gray-100">
                     <td className="px-3 py-2 text-gray-400">{row.month / 12}</td>
                     <td className="px-3 py-2 text-right text-blue-400">{formatCurrency(row.invested)}</td>
                     <td className="px-3 py-2 text-right text-amber-400">{formatCurrency(row.interest)}</td>
@@ -226,7 +226,7 @@ export function CompoundInterestCalculator() {
             </table>
           </div>
 
-          <div className="rounded-lg bg-emerald-500/10 p-3 text-xs text-emerald-300">
+          <div className="rounded-lg bg-emerald-500/10 p-3 text-xs text-emerald-600">
             💡 Com aportes de {formatCurrency(monthlyDeposit)}/mes a {annualRate}% a.a., seus juros ({formatCurrency(result.totalInterest)}) representam {((result.totalInterest / result.finalBalance) * 100).toFixed(0)}% do saldo final. Esse e o poder dos juros compostos!
           </div>
         </div>

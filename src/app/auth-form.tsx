@@ -54,8 +54,8 @@ export function AuthForm() {
   }
 
   return (
-    <div className="w-full max-w-sm rounded-2xl border border-gray-800 bg-gray-900/60 p-8 backdrop-blur-sm">
-      <h2 className="mb-6 text-center text-xl font-semibold">
+    <div className="w-full max-w-sm rounded-2xl border border-gray-100 bg-white/80 p-8 shadow-sm backdrop-blur-sm">
+      <h2 className="mb-6 text-center text-xl font-semibold text-gray-800">
         {mode === "login" ? "Entrar" : "Criar conta"}
       </h2>
 
@@ -63,7 +63,7 @@ export function AuthForm() {
         <div>
           <label
             htmlFor="email"
-            className="mb-1 block text-xs font-medium text-gray-400"
+            className="mb-1 block text-xs font-medium text-gray-500"
           >
             Email
           </label>
@@ -74,14 +74,14 @@ export function AuthForm() {
             onChange={(e) => setEmail(e.target.value)}
             required
             placeholder="seu@email.com"
-            className="w-full rounded-lg border border-gray-700 bg-gray-800/50 px-4 py-2.5 text-sm text-white placeholder-gray-500 outline-none transition-colors focus:border-pulso-primary focus:ring-1 focus:ring-pulso-primary"
+            className="w-full rounded-lg border border-gray-200 bg-gray-50 px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 outline-none transition-all focus:border-pulso-primary focus:ring-2 focus:ring-pulso-primary/20"
           />
         </div>
 
         <div>
           <label
             htmlFor="password"
-            className="mb-1 block text-xs font-medium text-gray-400"
+            className="mb-1 block text-xs font-medium text-gray-500"
           >
             Senha
           </label>
@@ -93,7 +93,7 @@ export function AuthForm() {
             required
             minLength={6}
             placeholder="Mínimo 6 caracteres"
-            className="w-full rounded-lg border border-gray-700 bg-gray-800/50 px-4 py-2.5 text-sm text-white placeholder-gray-500 outline-none transition-colors focus:border-pulso-primary focus:ring-1 focus:ring-pulso-primary"
+            className="w-full rounded-lg border border-gray-200 bg-gray-50 px-4 py-2.5 text-sm text-gray-900 placeholder-gray-400 outline-none transition-all focus:border-pulso-primary focus:ring-2 focus:ring-pulso-primary/20"
           />
         </div>
 
@@ -101,8 +101,8 @@ export function AuthForm() {
           <p
             className={`rounded-lg p-3 text-xs ${
               message.type === "error"
-                ? "bg-red-500/10 text-red-400"
-                : "bg-pulso-primary/10 text-pulso-primary"
+                ? "bg-red-50 text-red-500"
+                : "bg-pulso-primary/5 text-pulso-primary"
             }`}
           >
             {message.text}
@@ -112,7 +112,7 @@ export function AuthForm() {
         <button
           type="submit"
           disabled={loading}
-          className="w-full rounded-xl pulso-gradient px-4 py-2.5 text-sm font-semibold text-white transition-all hover:scale-105 hover:shadow-lg disabled:opacity-50 disabled:hover:scale-100"
+          className="w-full rounded-xl pulso-gradient px-4 py-2.5 text-sm font-semibold text-white transition-all hover:pulso-shadow disabled:opacity-50"
         >
           {loading
             ? "Carregando..."
@@ -122,14 +122,14 @@ export function AuthForm() {
         </button>
       </form>
 
-      <p className="mt-6 text-center text-xs text-gray-500">
+      <p className="mt-6 text-center text-xs text-gray-400">
         {mode === "login" ? "Não tem conta?" : "Já tem conta?"}{" "}
         <button
           onClick={() => {
             setMode(mode === "login" ? "signup" : "login");
             setMessage(null);
           }}
-          className="text-pulso-primary hover:underline"
+          className="text-pulso-primary font-medium hover:underline"
         >
           {mode === "login" ? "Criar conta" : "Entrar"}
         </button>

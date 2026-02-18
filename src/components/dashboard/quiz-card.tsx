@@ -137,7 +137,7 @@ export function QuizCard({ quizId, title, description, questions, coinsReward, a
   const isCorrect = selectedOption === question.correct_option_index;
 
   return (
-    <div className="rounded-xl border border-purple-500/20 bg-gray-900/80 p-5 backdrop-blur-sm">
+    <div className="rounded-xl border border-purple-500/20 bg-white/90 p-5 backdrop-blur-sm">
       {/* Progress */}
       <div className="mb-4 flex items-center justify-between">
         <span className="text-xs text-gray-500">Pergunta {currentQuestion + 1}/{questions.length}</span>
@@ -148,7 +148,7 @@ export function QuizCard({ quizId, title, description, questions, coinsReward, a
               className={`h-1.5 w-6 rounded-full ${
                 i < currentQuestion ? 'bg-purple-500' :
                 i === currentQuestion ? 'bg-purple-400' :
-                'bg-gray-700'
+                'bg-gray-200'
               }`}
             />
           ))}
@@ -161,14 +161,14 @@ export function QuizCard({ quizId, title, description, questions, coinsReward, a
       {/* Options */}
       <div className="space-y-2">
         {question.options.map((option, i) => {
-          let style = 'border-gray-700 hover:border-gray-600';
+          let style = 'border-gray-200 hover:border-gray-300';
           if (showExplanation) {
             if (i === question.correct_option_index) {
               style = 'border-emerald-500 bg-emerald-500/10';
             } else if (i === selectedOption && !isCorrect) {
               style = 'border-red-500 bg-red-500/10';
             } else {
-              style = 'border-gray-800 opacity-50';
+              style = 'border-gray-200 opacity-50';
             }
           } else if (selectedOption === i) {
             style = 'border-purple-500 bg-purple-500/10';
@@ -181,7 +181,7 @@ export function QuizCard({ quizId, title, description, questions, coinsReward, a
               disabled={showExplanation}
               className={`w-full rounded-lg border px-4 py-3 text-left text-sm transition-all ${style}`}
             >
-              <span className="mr-2 inline-flex h-5 w-5 items-center justify-center rounded-full bg-gray-800 text-[10px] text-gray-400">
+              <span className="mr-2 inline-flex h-5 w-5 items-center justify-center rounded-full bg-gray-100 text-[10px] text-gray-400">
                 {String.fromCharCode(65 + i)}
               </span>
               {option}
@@ -192,7 +192,7 @@ export function QuizCard({ quizId, title, description, questions, coinsReward, a
 
       {/* Explanation */}
       {showExplanation && question.explanation && (
-        <div className={`mt-3 rounded-lg p-3 text-xs ${isCorrect ? 'bg-emerald-500/10 text-emerald-300' : 'bg-amber-500/10 text-amber-300'}`}>
+        <div className={`mt-3 rounded-lg p-3 text-xs ${isCorrect ? 'bg-emerald-500/10 text-emerald-600' : 'bg-amber-500/10 text-amber-600'}`}>
           {isCorrect ? '✅ Correto! ' : '❌ Incorreto. '}
           {question.explanation}
         </div>

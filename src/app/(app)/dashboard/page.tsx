@@ -143,16 +143,16 @@ export default async function DashboardPage() {
   return (
     <>
       {/* Header */}
-      <header className="border-b border-gray-800/50 bg-gray-950/80 backdrop-blur-sm sticky top-0 z-40">
+      <header className="border-b border-gray-100 bg-white/80 backdrop-blur-md sticky top-0 z-40 animate-slide-down">
         <div className="mx-auto flex max-w-2xl items-center justify-between px-4 py-3">
           <Logo variant="full" size="sm" animated />
-          <div className="flex items-center gap-3">
-            <div className="flex items-center gap-1 rounded-full bg-amber-500/10 px-3 py-1 text-xs text-amber-400">
+          <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1 rounded-full bg-amber-50 px-3 py-1 text-xs text-amber-600">
               <span>🪙</span>
               <span className="font-semibold">{profile.total_coins}</span>
             </div>
             {streak && (streak as UserStreak).current_streak > 0 && (
-              <div className="flex items-center gap-1 rounded-full bg-orange-500/10 px-3 py-1 text-xs text-orange-400">
+              <div className="flex items-center gap-1 rounded-full bg-orange-50 px-3 py-1 text-xs text-orange-500">
                 <span>🔥</span>
                 <span className="font-semibold">{(streak as UserStreak).current_streak}</span>
               </div>
@@ -162,14 +162,14 @@ export default async function DashboardPage() {
       </header>
 
       {/* Main content */}
-      <main className="mx-auto max-w-2xl px-4 py-6">
+      <main className="mx-auto max-w-2xl px-4 py-6 animate-fade-in">
         <div className="space-y-6">
           {/* Greeting */}
           <div>
-            <h2 className="text-xl font-bold">
+            <h2 className="text-xl font-bold text-gray-800">
               Ola{profile.full_name ? `, ${profile.full_name.split(' ')[0]}` : ''}!
             </h2>
-            <p className="text-sm text-gray-400">
+            <p className="text-sm text-gray-500">
               Continue sua jornada de bem-estar financeiro.
             </p>
           </div>

@@ -47,7 +47,7 @@ export function DailyContentList({ contents, completedIds: initialCompletedIds }
 
   if (contents.length === 0) {
     return (
-      <div className="rounded-2xl border border-gray-800 bg-gray-900/60 p-8 text-center backdrop-blur-sm">
+      <div className="rounded-2xl border border-gray-100 bg-white shadow-sm p-8 text-center backdrop-blur-sm">
         <div className="mb-3 text-3xl">📚</div>
         <p className="text-sm text-gray-400">
           Nenhum conteúdo disponível ainda. Em breve teremos novidades para você!
@@ -63,7 +63,7 @@ export function DailyContentList({ contents, completedIds: initialCompletedIds }
         <div className="rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-6 text-center animate-pulse">
           <div className="mb-2 text-4xl">🎉</div>
           <h3 className="text-lg font-bold text-emerald-400">Parabéns!</h3>
-          <p className="mt-1 text-sm text-gray-300">
+          <p className="mt-1 text-sm text-gray-600">
             Você avançou para a trilha <strong>{trackAdvancement}</strong>!
           </p>
           <button
@@ -90,7 +90,7 @@ export function DailyContentList({ contents, completedIds: initialCompletedIds }
             className={`rounded-xl border transition-all ${
               isCompleted
                 ? 'border-emerald-500/20 bg-emerald-500/5'
-                : 'border-gray-800 bg-gray-900/60 hover:border-gray-700'
+                : 'border-gray-100 bg-white shadow-sm hover:border-gray-200'
             } backdrop-blur-sm`}
           >
             <button
@@ -98,7 +98,7 @@ export function DailyContentList({ contents, completedIds: initialCompletedIds }
               className="flex w-full items-center gap-4 p-4 text-left"
             >
               <div className={`flex h-10 w-10 items-center justify-center rounded-xl text-lg ${
-                isCompleted ? 'bg-emerald-500/10' : 'bg-gray-800'
+                isCompleted ? 'bg-emerald-500/10' : 'bg-gray-100'
               }`}>
                 {isCompleted ? '✅' : contentTypeIcon[content.content_type]}
               </div>
@@ -130,19 +130,19 @@ export function DailyContentList({ contents, completedIds: initialCompletedIds }
             </button>
 
             {isExpanded && (
-              <div className="border-t border-gray-800 px-4 pb-4 pt-3">
+              <div className="border-t border-gray-100 px-4 pb-4 pt-3">
                 {content.body?.blocks?.map((block, i) => (
                   <div key={i} className="mb-3 last:mb-0">
                     {block.type === 'text' && (
-                      <p className="text-sm leading-relaxed text-gray-300 whitespace-pre-line">{block.content}</p>
+                      <p className="text-sm leading-relaxed text-gray-600 whitespace-pre-line">{block.content}</p>
                     )}
                     {block.type === 'tip' && (
-                      <div className="rounded-lg bg-emerald-500/10 p-3 text-sm text-emerald-300">
+                      <div className="rounded-lg bg-emerald-500/10 p-3 text-sm text-emerald-600">
                         💡 {block.content}
                       </div>
                     )}
                     {block.type === 'warning' && (
-                      <div className="rounded-lg bg-red-500/10 p-3 text-sm text-red-300">
+                      <div className="rounded-lg bg-red-500/10 p-3 text-sm text-red-500">
                         ⚠️ {block.content}
                       </div>
                     )}

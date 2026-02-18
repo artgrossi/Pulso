@@ -70,7 +70,7 @@ export function InsightsCard({
   }
 
   return (
-    <div className="rounded-2xl border border-gray-800 bg-gray-900/60 p-5 backdrop-blur-sm">
+    <div className="rounded-2xl border border-gray-100 bg-white shadow-sm p-5 backdrop-blur-sm">
       <h3 className="mb-3 text-xs font-medium uppercase tracking-wider text-gray-500">
         Insights da Semana
       </h3>
@@ -80,10 +80,10 @@ export function InsightsCard({
             key={i}
             className={`rounded-lg p-3 text-sm ${
               insight.type === 'positive'
-                ? 'bg-emerald-500/10 text-emerald-300'
+                ? 'bg-emerald-500/10 text-emerald-600'
                 : insight.type === 'action'
-                  ? 'bg-amber-500/10 text-amber-300'
-                  : 'bg-gray-800/50 text-gray-400'
+                  ? 'bg-amber-500/10 text-amber-600'
+                  : 'bg-gray-50 text-gray-400'
             }`}
           >
             {insight.icon} {insight.text}

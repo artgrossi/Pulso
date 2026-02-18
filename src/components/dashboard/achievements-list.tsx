@@ -27,7 +27,7 @@ export function AchievementsList({ achievements, unlockedIds }: AchievementsList
               className={`rounded-xl border p-3 text-center transition-all ${
                 isUnlocked
                   ? 'border-amber-500/30 bg-amber-500/5'
-                  : 'border-gray-800 bg-gray-900/40 opacity-50'
+                  : 'border-gray-100 bg-white/80 opacity-50'
               }`}
             >
               <div className="mb-1 text-2xl">

@@ -27,7 +27,7 @@ export function WeeklyChart({ data }: WeeklyChartProps) {
                       ? 'bg-gradient-to-t from-emerald-600 to-emerald-400'
                       : d.coins > 0
                         ? 'bg-gradient-to-t from-emerald-800 to-emerald-600'
-                        : 'bg-gray-800'
+                        : 'bg-gray-100'
                   }`}
                   style={{ height: `${Math.max(height, 4)}%` }}
                 />
@@ -48,7 +48,7 @@ export function WeeklyChart({ data }: WeeklyChartProps) {
               {Array.from({ length: Math.min(d.contents, 4) }).map((_, j) => (
                 <div key={j} className="h-1.5 w-1.5 rounded-full bg-blue-500" />
               ))}
-              {d.contents === 0 && <div className="h-1.5 w-1.5 rounded-full bg-gray-800" />}
+              {d.contents === 0 && <div className="h-1.5 w-1.5 rounded-full bg-gray-100" />}
             </div>
           </div>
         ))}
