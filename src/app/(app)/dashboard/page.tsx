@@ -10,6 +10,7 @@ import { QuickActions } from '@/components/dashboard/quick-actions';
 import { QuizCard } from '@/components/dashboard/quiz-card';
 import type { Track, DailyContent, UserStreak, Achievement } from '@/lib/types/database';
 import { getTrackProgress } from '@/lib/actions/track-progression';
+import { DashboardIntents } from '@/components/metas/dashboard-intents';
 import Logo from '@/components/branding/Logo';
 
 export default async function DashboardPage() {
@@ -184,6 +185,9 @@ export default async function DashboardPage() {
 
           {/* Quick Actions */}
           <QuickActions />
+
+          {/* Active Intents */}
+          <DashboardIntents />
 
           {/* Track + Streak row */}
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
