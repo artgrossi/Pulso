@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { Icon, type IconName } from '@/components/ui/Icon';
+import { ChangePassword } from './change-password';
 
 const actions: { href: string; label: string; description: string; icon: IconName; iconColor: string }[] = [
   { href: '/ferramentas', label: 'Ferramentas Financeiras', description: 'Calculadoras de dividas, reserva e juros', icon: 'calculator', iconColor: 'text-amber-500' },
@@ -12,6 +13,10 @@ const actions: { href: string; label: string; description: string; icon: IconNam
 export function ProfileActions() {
   return (
     <div className="space-y-2">
+      <h3 className="text-xs font-medium uppercase tracking-wider text-pulso-text-secondary px-1 mb-1">
+        Acoes Rapidas
+      </h3>
+
       {actions.map((action) => (
         <Link
           key={action.href}
@@ -23,11 +28,13 @@ export function ProfileActions() {
             <div className="text-sm font-medium">{action.label}</div>
             <div className="text-[10px] text-pulso-text-secondary">{action.description}</div>
           </div>
-          <svg className="h-4 w-4 text-pulso-text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <svg className="h-4 w-4 text-pulso-text-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
           </svg>
         </Link>
       ))}
+
+      <ChangePassword />
     </div>
   );
 }
