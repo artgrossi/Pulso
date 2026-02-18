@@ -17,7 +17,12 @@ export type CoinSourceType =
   | 'referral'
   | 'conversion_to_aporte'
   | 'manual_adjustment'
-  | 'intent_milestone';
+  | 'intent_milestone'
+  | 'tool_unlock';
+
+// Tool unlock types
+export type ToolSlug = 'reserva' | 'dividas' | 'juros';
+export type ToolUnlockMethod = 'free' | 'coins' | 'criteria';
 
 // Intent Tracking enums
 export type IntentType =
@@ -210,6 +215,41 @@ export interface UserContentProgress {
   content_id: string;
   coins_earned: number;
   completed_at: string;
+}
+
+// ============================================================================
+// Tool Unlock Types
+// ============================================================================
+
+export interface UserToolUnlock {
+  id: string;
+  user_id: string;
+  tool_slug: ToolSlug;
+  unlock_method: ToolUnlockMethod;
+  coins_spent: number;
+  unlocked_at: string;
+}
+
+export type AutoUnlockCriteriaType = 'content_count' | 'streak_days';
+
+export interface ToolConfig {
+  slug: ToolSlug;
+  name: string;
+  description: string;
+  icon: string;
+  color: string;
+  bgColor: string;
+  borderColor: string;
+  gradientFrom: string;
+  gradientTo: string;
+  coinsCost: number;
+  autoUnlockCriteria: {
+    type: AutoUnlockCriteriaType;
+    value: number;
+    label: string;
+  } | null;
+  isFree: boolean;
+  href: string;
 }
 
 // ============================================================================
