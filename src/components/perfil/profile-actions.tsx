@@ -16,14 +16,14 @@ export function ProfileActions() {
         <Link
           key={action.href}
           href={action.href}
-          className="flex items-center gap-3 rounded-xl border border-gray-100 bg-white/80 p-4 transition-colors hover:border-gray-200"
+          className="flex items-center gap-3 rounded-xl border border-pulso-border-subtle bg-pulso-elevated/80 p-4 transition-colors hover:border-pulso-border"
         >
           <Icon name={action.icon} size={20} className={action.iconColor} />
           <div className="flex-1">
             <div className="text-sm font-medium">{action.label}</div>
-            <div className="text-[10px] text-gray-500">{action.description}</div>
+            <div className="text-[10px] text-pulso-text-secondary">{action.description}</div>
           </div>
-          <svg className="h-4 w-4 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <svg className="h-4 w-4 text-pulso-text-secondary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
           </svg>
         </Link>

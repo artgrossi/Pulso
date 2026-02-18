@@ -50,7 +50,7 @@ export function IntentCard({ intent, onUpdate }: IntentCardProps) {
       ? 'bg-blue-500'
       : intent.progress_percentage >= 25
         ? 'bg-amber-500'
-        : 'bg-gray-600';
+        : 'bg-pulso-text-muted';
 
   // Milestones achieved vs total
   const achievedMilestones = intent.milestones.filter((m) => m.is_achieved).length;
@@ -96,10 +96,10 @@ export function IntentCard({ intent, onUpdate }: IntentCardProps) {
   }
 
   return (
-    <div className="rounded-2xl border border-gray-800 bg-gray-900/60 p-4 backdrop-blur-sm transition-all">
+    <div className="rounded-2xl border border-pulso-border bg-pulso-elevated p-4 backdrop-blur-sm transition-all">
       {/* Header */}
       <div className="flex items-start gap-3">
-        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gray-800 text-xl">
+        <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-pulso-muted text-xl">
           {icon}
         </span>
         <div className="flex-1 min-w-0">
@@ -112,12 +112,12 @@ export function IntentCard({ intent, onUpdate }: IntentCardProps) {
             )}
           </div>
           {intent.description && (
-            <p className="mt-0.5 truncate text-[10px] text-gray-500">{intent.description}</p>
+            <p className="mt-0.5 truncate text-[10px] text-pulso-text-secondary">{intent.description}</p>
           )}
         </div>
         <button
           onClick={() => setShowActions(!showActions)}
-          className="shrink-0 rounded-lg p-1 text-gray-600 transition-colors hover:bg-gray-800 hover:text-gray-400"
+          className="shrink-0 rounded-lg p-1 text-pulso-text-secondary transition-colors hover:bg-pulso-muted hover:text-pulso-text-muted"
         >
           <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M12 6.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 12.75a.75.75 0 110-1.5.75.75 0 010 1.5zM12 18.75a.75.75 0 110-1.5.75.75 0 010 1.5z" />
@@ -155,12 +155,12 @@ export function IntentCard({ intent, onUpdate }: IntentCardProps) {
       {/* Progress bar */}
       <div className="mt-3">
         <div className="mb-1 flex items-center justify-between text-[10px]">
-          <span className="text-gray-500">
+          <span className="text-pulso-text-secondary">
             {formatValue(intent.current_progress)} / {formatValue(intent.target_value)}
           </span>
-          <span className="font-medium text-gray-400">{intent.progress_percentage}%</span>
+          <span className="font-medium text-pulso-text-muted">{intent.progress_percentage}%</span>
         </div>
-        <div className="h-2 w-full overflow-hidden rounded-full bg-gray-800">
+        <div className="h-2 w-full overflow-hidden rounded-full bg-pulso-muted">
           <div
             className={`h-full rounded-full transition-all duration-500 ${progressColor}`}
             style={{ width: `${Math.min(100, intent.progress_percentage)}%` }}
@@ -170,7 +170,7 @@ export function IntentCard({ intent, onUpdate }: IntentCardProps) {
 
       {/* Footer info */}
       <div className="mt-3 flex items-center justify-between">
-        <div className="flex items-center gap-3 text-[10px] text-gray-500">
+        <div className="flex items-center gap-3 text-[10px] text-pulso-text-secondary">
           <span>{intent.days_remaining > 0 ? `${intent.days_remaining} dias restantes` : 'Prazo encerrado'}</span>
           {totalMilestones > 0 && (
             <span className="flex items-center gap-1">
@@ -196,7 +196,7 @@ export function IntentCard({ intent, onUpdate }: IntentCardProps) {
               className={`flex-1 rounded-md p-1.5 text-center text-[9px] ${
                 m.is_achieved
                   ? 'bg-amber-500/10 text-amber-400'
-                  : 'bg-gray-800/50 text-gray-600'
+                  : 'bg-pulso-muted/50 text-pulso-text-secondary'
               }`}
               title={m.milestone_name}
             >
@@ -208,7 +208,7 @@ export function IntentCard({ intent, onUpdate }: IntentCardProps) {
 
       {/* Progress input */}
       {showProgress && (
-        <div className="mt-3 space-y-2 border-t border-gray-800 pt-3">
+        <div className="mt-3 space-y-2 border-t border-pulso-border pt-3">
           <div className="flex gap-2">
             <input
               type="number"
@@ -217,12 +217,12 @@ export function IntentCard({ intent, onUpdate }: IntentCardProps) {
               placeholder={`Valor de hoje ${metricLabel ? `(${metricLabel})` : ''}`}
               min="0"
               step={intent.target_metric === 'currency_brl' ? '0.01' : '1'}
-              className="flex-1 rounded-lg border border-gray-700 bg-gray-800 px-3 py-2 text-xs text-white placeholder-gray-500 focus:border-emerald-500 focus:outline-none"
+              className="flex-1 rounded-lg border border-pulso-border bg-pulso-muted px-3 py-2 text-xs text-pulso-text placeholder-pulso-text-muted focus:border-emerald-500 focus:outline-none"
             />
             <button
               onClick={handleProgressSubmit}
               disabled={isSubmitting || !progressValue}
-              className="rounded-lg bg-emerald-600 px-4 py-2 text-xs font-medium text-white transition-colors hover:bg-emerald-500 disabled:opacity-50"
+              className="rounded-lg bg-emerald-600 px-4 py-2 text-xs font-medium text-pulso-text transition-colors hover:bg-emerald-500 disabled:opacity-50"
             >
               {isSubmitting ? '...' : 'Salvar'}
             </button>
@@ -232,7 +232,7 @@ export function IntentCard({ intent, onUpdate }: IntentCardProps) {
             value={progressNote}
             onChange={(e) => setProgressNote(e.target.value)}
             placeholder="Nota (opcional)"
-            className="w-full rounded-lg border border-gray-700 bg-gray-800 px-3 py-2 text-xs text-white placeholder-gray-500 focus:border-emerald-500 focus:outline-none"
+            className="w-full rounded-lg border border-pulso-border bg-pulso-muted px-3 py-2 text-xs text-pulso-text placeholder-pulso-text-muted focus:border-emerald-500 focus:outline-none"
           />
         </div>
       )}

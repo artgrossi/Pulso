@@ -35,26 +35,26 @@ export function EmergencyFundCalculator() {
         </span>
         <div>
           <h3 className="font-bold text-blue-400">Reserva de Emergencia</h3>
-          <p className="text-xs text-gray-500">Descubra quanto voce precisa e em quanto tempo chega la</p>
+          <p className="text-xs text-pulso-text-secondary">Descubra quanto voce precisa e em quanto tempo chega la</p>
         </div>
       </div>
 
       <div className="space-y-3">
         <div>
-          <label className="mb-1 block text-xs text-gray-400">Gasto mensal total (moradia, alimentacao, contas...)</label>
+          <label className="mb-1 block text-xs text-pulso-text-muted">Gasto mensal total (moradia, alimentacao, contas...)</label>
           <div className="flex items-center gap-2">
-            <span className="text-sm text-gray-500">R$</span>
+            <span className="text-sm text-pulso-text-secondary">R$</span>
             <input
               type="number"
               value={monthlyExpenses}
               onChange={(e) => setMonthlyExpenses(parseFloat(e.target.value) || 0)}
-              className="flex-1 rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-900 focus:border-blue-500 focus:outline-none"
+              className="flex-1 rounded-lg border border-pulso-border bg-pulso-muted px-3 py-2 text-sm text-pulso-text focus:border-blue-500 focus:outline-none"
             />
           </div>
         </div>
 
         <div>
-          <label className="mb-1 block text-xs text-gray-400">Meses de cobertura desejados</label>
+          <label className="mb-1 block text-xs text-pulso-text-muted">Meses de cobertura desejados</label>
           <div className="flex gap-2">
             {[3, 6, 9, 12].map((m) => (
               <button
@@ -63,7 +63,7 @@ export function EmergencyFundCalculator() {
                 className={`flex-1 rounded-lg border px-3 py-2 text-sm transition-colors ${
                   targetMonths === m
                     ? 'border-blue-500 bg-blue-500/10 text-blue-400'
-                    : 'border-gray-200 text-gray-400 hover:border-gray-300'
+                    : 'border-pulso-border text-pulso-text-muted hover:border-pulso-border'
                 }`}
               >
                 {m} meses
@@ -73,27 +73,27 @@ export function EmergencyFundCalculator() {
         </div>
 
         <div>
-          <label className="mb-1 block text-xs text-gray-400">Quanto voce ja tem guardado?</label>
+          <label className="mb-1 block text-xs text-pulso-text-muted">Quanto voce ja tem guardado?</label>
           <div className="flex items-center gap-2">
-            <span className="text-sm text-gray-500">R$</span>
+            <span className="text-sm text-pulso-text-secondary">R$</span>
             <input
               type="number"
               value={currentSavings}
               onChange={(e) => setCurrentSavings(parseFloat(e.target.value) || 0)}
-              className="flex-1 rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-900 focus:border-blue-500 focus:outline-none"
+              className="flex-1 rounded-lg border border-pulso-border bg-pulso-muted px-3 py-2 text-sm text-pulso-text focus:border-blue-500 focus:outline-none"
             />
           </div>
         </div>
 
         <div>
-          <label className="mb-1 block text-xs text-gray-400">Quanto pode guardar por mes?</label>
+          <label className="mb-1 block text-xs text-pulso-text-muted">Quanto pode guardar por mes?</label>
           <div className="flex items-center gap-2">
-            <span className="text-sm text-gray-500">R$</span>
+            <span className="text-sm text-pulso-text-secondary">R$</span>
             <input
               type="number"
               value={monthlySaving}
               onChange={(e) => setMonthlySaving(parseFloat(e.target.value) || 0)}
-              className="flex-1 rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-900 focus:border-blue-500 focus:outline-none"
+              className="flex-1 rounded-lg border border-pulso-border bg-pulso-muted px-3 py-2 text-sm text-pulso-text focus:border-blue-500 focus:outline-none"
             />
           </div>
         </div>
@@ -109,46 +109,46 @@ export function EmergencyFundCalculator() {
       {calculated && (
         <div className="space-y-3">
           {/* Profile */}
-          <div className="rounded-lg border border-gray-100 bg-white/80 p-4">
+          <div className="rounded-lg border border-pulso-border-subtle bg-pulso-elevated/80 p-4">
             <div className="flex items-center gap-2">
               <span className={`text-sm font-medium ${profileType.color}`}>Perfil: {profileType.label}</span>
             </div>
-            <p className="mt-1 text-xs text-gray-500">{profileType.desc}</p>
+            <p className="mt-1 text-xs text-pulso-text-secondary">{profileType.desc}</p>
           </div>
 
           {/* Target */}
           <div className="rounded-xl border border-blue-500/20 bg-blue-500/5 p-4">
             <div className="mb-3 flex items-center justify-between">
-              <span className="text-xs text-gray-400">Meta da reserva</span>
+              <span className="text-xs text-pulso-text-muted">Meta da reserva</span>
               <span className="text-lg font-bold text-blue-400">{formatCurrency(targetAmount)}</span>
             </div>
 
             {/* Progress bar */}
-            <div className="mb-2 h-3 w-full overflow-hidden rounded-full bg-gray-100">
+            <div className="mb-2 h-3 w-full overflow-hidden rounded-full bg-pulso-muted">
               <div
                 className="h-full rounded-full bg-gradient-to-r from-blue-600 to-blue-400 transition-all duration-500"
                 style={{ width: `${progress}%` }}
               />
             </div>
             <div className="flex items-center justify-between text-xs">
-              <span className="text-gray-500">Guardado: {formatCurrency(currentSavings)}</span>
+              <span className="text-pulso-text-secondary">Guardado: {formatCurrency(currentSavings)}</span>
               <span className="font-medium text-blue-400">{progress.toFixed(0)}%</span>
             </div>
           </div>
 
           {/* Time to goal */}
           <div className="grid grid-cols-2 gap-3">
-            <div className="rounded-xl border border-gray-100 bg-white/80 p-4 text-center">
-              <div className="text-2xl font-bold text-gray-700">
+            <div className="rounded-xl border border-pulso-border-subtle bg-pulso-elevated/80 p-4 text-center">
+              <div className="text-2xl font-bold text-pulso-text-secondary">
                 {remaining <= 0 ? '0' : monthsToGoal === Infinity ? '∞' : monthsToGoal}
               </div>
-              <div className="text-xs text-gray-500">meses para meta</div>
+              <div className="text-xs text-pulso-text-secondary">meses para meta</div>
             </div>
-            <div className="rounded-xl border border-gray-100 bg-white/80 p-4 text-center">
-              <div className="text-2xl font-bold text-gray-700">
+            <div className="rounded-xl border border-pulso-border-subtle bg-pulso-elevated/80 p-4 text-center">
+              <div className="text-2xl font-bold text-pulso-text-secondary">
                 {formatCurrency(remaining)}
               </div>
-              <div className="text-xs text-gray-500">faltam</div>
+              <div className="text-xs text-pulso-text-secondary">faltam</div>
             </div>
           </div>
 

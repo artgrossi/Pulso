@@ -22,7 +22,7 @@ const sizeStyles = {
 const variantStyles = {
   primary:
     'bg-gradient-to-r from-[#4facfe] to-[#00f2fe] text-white hover:shadow-lg hover:scale-105 disabled:opacity-50 disabled:hover:scale-100',
-  secondary: 'bg-gray-100 text-gray-900 hover:bg-gray-200',
+  secondary: 'bg-pulso-muted text-pulso-text hover:bg-pulso-muted',
   outline:
     'border-2 border-[#4facfe] text-[#4facfe] hover:bg-[#4facfe] hover:text-white',
   ghost: 'text-[#4facfe] hover:bg-blue-50',

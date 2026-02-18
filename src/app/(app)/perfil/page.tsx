@@ -88,7 +88,7 @@ export default async function PerfilPage() {
 
   return (
     <>
-      <header className="border-b border-gray-100 bg-white/80 backdrop-blur-sm sticky top-0 z-40">
+      <header className="border-b border-pulso-border-subtle bg-pulso-elevated/80 backdrop-blur-sm sticky top-0 z-40">
         <div className="mx-auto flex max-w-2xl items-center justify-between px-4 py-3">
           <h1 className="text-lg font-bold">
             <span className="pulso-gradient-text">
@@ -98,7 +98,7 @@ export default async function PerfilPage() {
           <form action="/auth/signout" method="post">
             <button
               type="submit"
-              className="rounded-lg px-3 py-1.5 text-xs text-gray-500 transition-colors hover:bg-red-50 hover:text-red-500"
+              className="rounded-lg px-3 py-1.5 text-xs text-pulso-text-secondary transition-colors hover:bg-red-50 hover:text-red-500"
             >
               Sair
             </button>
@@ -109,15 +109,15 @@ export default async function PerfilPage() {
       <main className="mx-auto max-w-2xl px-4 py-6">
         <div className="space-y-6">
           {/* Profile card */}
-          <div className="rounded-2xl border border-gray-100 bg-white shadow-sm p-6 backdrop-blur-sm">
+          <div className="rounded-2xl border border-pulso-border-subtle bg-pulso-elevated shadow-sm p-6 backdrop-blur-sm">
             <div className="flex items-center gap-4">
               <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-emerald-500 to-cyan-500 text-2xl font-bold text-white">
                 {profile.full_name ? profile.full_name.charAt(0).toUpperCase() : '?'}
               </div>
               <div>
                 <h2 className="text-xl font-bold">{profile.full_name || 'Usuario'}</h2>
-                <p className="text-xs text-gray-500">{user.email}</p>
-                <p className="text-xs text-gray-600">Membro desde {memberSince}</p>
+                <p className="text-xs text-pulso-text-secondary">{user.email}</p>
+                <p className="text-xs text-pulso-text-secondary">Membro desde {memberSince}</p>
               </div>
             </div>
 
@@ -161,8 +161,8 @@ export default async function PerfilPage() {
 
           {/* Diagnosis summary */}
           {diagnosis && (
-            <div className="rounded-2xl border border-gray-100 bg-white shadow-sm p-5 backdrop-blur-sm">
-              <h3 className="mb-3 text-xs font-medium uppercase tracking-wider text-gray-500">
+            <div className="rounded-2xl border border-pulso-border-subtle bg-pulso-elevated shadow-sm p-5 backdrop-blur-sm">
+              <h3 className="mb-3 text-xs font-medium uppercase tracking-wider text-pulso-text-secondary">
                 Seu Diagnostico Financeiro
               </h3>
               <div className="space-y-2">
@@ -172,7 +172,7 @@ export default async function PerfilPage() {
                 <DiagnosisItem label="Sabe meta de aposentadoria" value={diagnosis.knows_retirement_target} positive />
                 <DiagnosisItem label="Entende PGBL/VGBL" value={diagnosis.understands_pgbl_vgbl} positive />
               </div>
-              <p className="mt-3 text-xs text-gray-600">
+              <p className="mt-3 text-xs text-pulso-text-secondary">
                 Trilha atribuida: {trackConfig?.name ?? diagnosis.assigned_track_slug}
               </p>
             </div>
@@ -191,12 +191,12 @@ export default async function PerfilPage() {
 
 function StatCard({ label, value, icon, color }: { label: string; value: string; icon: IconName; color: string }) {
   return (
-    <div className="rounded-xl border border-gray-100 bg-white/80 p-3 text-center">
+    <div className="rounded-xl border border-pulso-border-subtle bg-pulso-elevated/80 p-3 text-center">
       <div className="flex justify-center">
         <Icon name={icon} size={20} className={color} />
       </div>
       <div className={`text-lg font-bold ${color}`}>{value}</div>
-      <div className="text-[10px] text-gray-500">{label}</div>
+      <div className="text-[10px] text-pulso-text-secondary">{label}</div>
     </div>
   );
 }
@@ -204,8 +204,8 @@ function StatCard({ label, value, icon, color }: { label: string; value: string;
 function DiagnosisItem({ label, value, positive }: { label: string; value: boolean | null; positive?: boolean }) {
   const isGood = positive ? value : !value;
   return (
-    <div className="flex items-center justify-between rounded-lg bg-gray-50 px-3 py-2">
-      <span className="text-xs text-gray-400">{label}</span>
+    <div className="flex items-center justify-between rounded-lg bg-pulso-muted px-3 py-2">
+      <span className="text-xs text-pulso-text-muted">{label}</span>
       <span className={`text-xs font-medium ${isGood ? 'text-emerald-400' : 'text-amber-400'}`}>
         {value ? 'Sim' : 'Nao'}
       </span>

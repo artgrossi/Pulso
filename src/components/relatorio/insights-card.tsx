@@ -72,8 +72,8 @@ export function InsightsCard({
   }
 
   return (
-    <div className="rounded-2xl border border-gray-100 bg-white shadow-sm p-5 backdrop-blur-sm">
-      <h3 className="mb-3 text-xs font-medium uppercase tracking-wider text-gray-500">
+    <div className="rounded-2xl border border-pulso-border-subtle bg-pulso-elevated shadow-sm p-5 backdrop-blur-sm">
+      <h3 className="mb-3 text-xs font-medium uppercase tracking-wider text-pulso-text-secondary">
         Insights da Semana
       </h3>
       <div className="space-y-3">
@@ -85,7 +85,7 @@ export function InsightsCard({
                 ? 'bg-emerald-500/10 text-emerald-600'
                 : insight.type === 'action'
                   ? 'bg-amber-500/10 text-amber-600'
-                  : 'bg-gray-50 text-gray-400'
+                  : 'bg-pulso-muted text-pulso-text-muted'
             }`}
           >
             <Icon name={insight.icon} size={16} className="mt-0.5 shrink-0" />

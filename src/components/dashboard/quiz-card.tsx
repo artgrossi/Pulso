@@ -77,7 +77,7 @@ export function QuizCard({ quizId, title, description, questions, coinsReward, a
           </span>
           <div>
             <h4 className="text-sm font-medium">{title}</h4>
-            <p className="text-xs text-gray-500">Quiz ja respondido</p>
+            <p className="text-xs text-pulso-text-secondary">Quiz ja respondido</p>
           </div>
         </div>
       </div>
@@ -93,8 +93,8 @@ export function QuizCard({ quizId, title, description, questions, coinsReward, a
           </span>
           <div className="flex-1">
             <h4 className="text-sm font-medium">{title}</h4>
-            {description && <p className="text-xs text-gray-500">{description}</p>}
-            <div className="mt-1 flex items-center gap-2 text-[10px] text-gray-600">
+            {description && <p className="text-xs text-pulso-text-secondary">{description}</p>}
+            <div className="mt-1 flex items-center gap-2 text-[10px] text-pulso-text-secondary">
               <span>{questions.length} perguntas</span>
               <span>·</span>
               <span>{coinsReward} moedas (gabarito perfeito)</span>
@@ -121,7 +121,7 @@ export function QuizCard({ quizId, title, description, questions, coinsReward, a
             <Icon name={isPerfect ? 'trophy' : 'document-text'} size={36} className={isPerfect ? 'text-emerald-400' : 'text-amber-400'} />
           </div>
           <h4 className="text-lg font-bold">{isPerfect ? 'Perfeito!' : 'Bom trabalho!'}</h4>
-          <p className="mt-1 text-sm text-gray-400">
+          <p className="mt-1 text-sm text-pulso-text-muted">
             Voce acertou <strong className={isPerfect ? 'text-emerald-400' : 'text-amber-400'}>{result.score}</strong> de {result.total} perguntas
           </p>
           {result.coinsEarned > 0 && (
@@ -131,7 +131,7 @@ export function QuizCard({ quizId, title, description, questions, coinsReward, a
             </div>
           )}
           {!isPerfect && (
-            <p className="mt-3 text-xs text-gray-500">
+            <p className="mt-3 text-xs text-pulso-text-secondary">
               Acerte todas para ganhar as moedas! Revise o conteudo e tente novamente.
             </p>
           )}
@@ -145,10 +145,10 @@ export function QuizCard({ quizId, title, description, questions, coinsReward, a
   const isCorrect = selectedOption === question.correct_option_index;
 
   return (
-    <div className="rounded-xl border border-purple-500/20 bg-white/90 p-5 backdrop-blur-sm">
+    <div className="rounded-xl border border-purple-500/20 bg-pulso-elevated/90 p-5 backdrop-blur-sm">
       {/* Progress */}
       <div className="mb-4 flex items-center justify-between">
-        <span className="text-xs text-gray-500">Pergunta {currentQuestion + 1}/{questions.length}</span>
+        <span className="text-xs text-pulso-text-secondary">Pergunta {currentQuestion + 1}/{questions.length}</span>
         <div className="flex gap-1">
           {questions.map((_, i) => (
             <div
@@ -156,7 +156,7 @@ export function QuizCard({ quizId, title, description, questions, coinsReward, a
               className={`h-1.5 w-6 rounded-full ${
                 i < currentQuestion ? 'bg-purple-500' :
                 i === currentQuestion ? 'bg-purple-400' :
-                'bg-gray-200'
+                'bg-pulso-border'
               }`}
             />
           ))}
@@ -169,14 +169,14 @@ export function QuizCard({ quizId, title, description, questions, coinsReward, a
       {/* Options */}
       <div className="space-y-2">
         {question.options.map((option, i) => {
-          let style = 'border-gray-200 hover:border-gray-300';
+          let style = 'border-pulso-border hover:border-pulso-border';
           if (showExplanation) {
             if (i === question.correct_option_index) {
               style = 'border-emerald-500 bg-emerald-500/10';
             } else if (i === selectedOption && !isCorrect) {
               style = 'border-red-500 bg-red-500/10';
             } else {
-              style = 'border-gray-200 opacity-50';
+              style = 'border-pulso-border opacity-50';
             }
           } else if (selectedOption === i) {
             style = 'border-purple-500 bg-purple-500/10';
@@ -189,7 +189,7 @@ export function QuizCard({ quizId, title, description, questions, coinsReward, a
               disabled={showExplanation}
               className={`w-full rounded-lg border px-4 py-3 text-left text-sm transition-all ${style}`}
             >
-              <span className="mr-2 inline-flex h-5 w-5 items-center justify-center rounded-full bg-gray-100 text-[10px] text-gray-400">
+              <span className="mr-2 inline-flex h-5 w-5 items-center justify-center rounded-full bg-pulso-muted text-[10px] text-pulso-text-muted">
                 {String.fromCharCode(65 + i)}
               </span>
               {option}

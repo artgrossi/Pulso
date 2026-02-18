@@ -35,7 +35,7 @@ export function IntentsList() {
     return (
       <div className="space-y-3">
         {[1, 2].map((i) => (
-          <div key={i} className="h-32 animate-pulse rounded-2xl border border-gray-800 bg-gray-900/60" />
+          <div key={i} className="h-32 animate-pulse rounded-2xl border border-pulso-border bg-pulso-elevated" />
         ))}
       </div>
     );
@@ -51,7 +51,7 @@ export function IntentsList() {
       ) : (
         <button
           onClick={() => setShowCreate(true)}
-          className="flex w-full items-center justify-center gap-2 rounded-2xl border border-dashed border-gray-700 bg-gray-900/30 p-4 text-sm text-gray-400 transition-all hover:border-emerald-500/40 hover:bg-emerald-500/5 hover:text-emerald-400"
+          className="flex w-full items-center justify-center gap-2 rounded-2xl border border-dashed border-pulso-border bg-pulso-muted/30 p-4 text-sm text-pulso-text-muted transition-all hover:border-emerald-500/40 hover:bg-emerald-500/5 hover:text-emerald-400"
         >
           <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
@@ -62,10 +62,10 @@ export function IntentsList() {
 
       {/* Active intents */}
       {intents.length === 0 && !showCreate ? (
-        <div className="rounded-2xl border border-gray-800 bg-gray-900/60 p-8 text-center backdrop-blur-sm">
+        <div className="rounded-2xl border border-pulso-border bg-pulso-elevated p-8 text-center backdrop-blur-sm">
           <div className="mb-3 text-4xl">🎯</div>
           <h3 className="text-sm font-medium">Nenhuma meta ativa</h3>
-          <p className="mt-1 text-xs text-gray-500">
+          <p className="mt-1 text-xs text-pulso-text-secondary">
             Crie sua primeira meta para comecar a acompanhar seu progresso financeiro.
           </p>
         </div>
