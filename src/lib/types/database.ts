@@ -16,7 +16,29 @@ export type CoinSourceType =
   | 'weekly_checkin'
   | 'referral'
   | 'conversion_to_aporte'
-  | 'manual_adjustment';
+  | 'manual_adjustment'
+  | 'intent_milestone';
+
+// Intent Tracking enums
+export type IntentType =
+  | 'complete_track'
+  | 'maintain_streak'
+  | 'complete_content'
+  | 'build_habit'
+  | 'save_amount'
+  | 'reduce_spending';
+
+export type IntentStatus = 'active' | 'paused' | 'completed' | 'abandoned';
+
+export type IntentPeriod = 'weekly' | 'monthly' | 'custom';
+
+export type IntentProgressStatus = 'on_track' | 'behind' | 'exceeded';
+
+export type ValidationSource = 'app_automatic' | 'manual' | 'external';
+
+export type MilestoneType = 'day_3' | 'week_1' | 'halfway' | 'day_21' | 'completed';
+
+export type TargetMetric = 'currency_brl' | 'streak_days' | 'content_count' | 'percentage' | 'custom';
 
 // ============================================================================
 // Table Row Types
@@ -172,6 +194,54 @@ export interface UserContentProgress {
 }
 
 // ============================================================================
+// Intent Tracking Table Types
+// ============================================================================
+
+export interface UserIntent {
+  id: string;
+  user_id: string;
+  track_id: string | null;
+  title: string;
+  description: string | null;
+  intent_type: IntentType;
+  period_type: IntentPeriod;
+  target_value: number;
+  target_metric: TargetMetric;
+  target_category: string | null;
+  start_date: string;
+  end_date: string;
+  status: IntentStatus;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface IntentProgress {
+  id: string;
+  intent_id: string;
+  tracked_date: string;
+  actual_value: number;
+  data_point_count: number;
+  status: IntentProgressStatus;
+  validation_source: ValidationSource;
+  notes: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface IntentMilestone {
+  id: string;
+  intent_id: string;
+  milestone_type: MilestoneType;
+  milestone_name: string;
+  target_progress: number | null;
+  coins_reward: number;
+  achievement_id: string | null;
+  is_achieved: boolean;
+  achieved_at: string | null;
+  created_at: string;
+}
+
+// ============================================================================
 // Composite / View Types (for queries with joins)
 // ============================================================================
 
@@ -194,6 +264,36 @@ export interface UserDashboard {
   todayContent: DailyContent[];
   recentCoins: CoinLedgerEntry[];
   achievements: AchievementWithStatus[];
+}
+
+// Intent composite types
+export interface IntentWithProgress extends UserIntent {
+  progress: IntentProgress[];
+  milestones: IntentMilestone[];
+  current_progress: number;       // Accumulated actual_value
+  progress_percentage: number;    // 0-100
+  days_remaining: number;
+  days_elapsed: number;
+}
+
+export interface CreateIntentInput {
+  title: string;
+  description?: string;
+  intent_type: IntentType;
+  period_type: IntentPeriod;
+  target_value: number;
+  target_metric: TargetMetric;
+  target_category?: string;
+  track_id?: string;
+  start_date?: string;            // Defaults to today
+  end_date: string;
+}
+
+export interface UpdateIntentProgressInput {
+  actual_value: number;
+  data_point_count?: number;
+  validation_source?: ValidationSource;
+  notes?: string;
 }
 
 // ============================================================================
