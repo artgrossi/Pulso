@@ -2,6 +2,7 @@
 
 import { useState, useTransition } from 'react';
 import { submitQuizAttempt } from '@/lib/actions/content';
+import { Icon } from '@/components/ui/Icon';
 
 interface QuizQuestion {
   id: string;
@@ -71,7 +72,9 @@ export function QuizCard({ quizId, title, description, questions, coinsReward, a
     return (
       <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/5 p-4 backdrop-blur-sm">
         <div className="flex items-center gap-3">
-          <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-500/10 text-lg">✅</span>
+          <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-500/10">
+            <Icon name="check-circle" size={20} className="text-emerald-500" />
+          </span>
           <div>
             <h4 className="text-sm font-medium">{title}</h4>
             <p className="text-xs text-gray-500">Quiz ja respondido</p>
@@ -85,7 +88,9 @@ export function QuizCard({ quizId, title, description, questions, coinsReward, a
     return (
       <div className="rounded-xl border border-purple-500/20 bg-purple-500/5 p-4 backdrop-blur-sm">
         <div className="flex items-center gap-3">
-          <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-500/10 text-lg">🧠</span>
+          <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-500/10">
+            <Icon name="lightbulb" size={20} className="text-purple-400" />
+          </span>
           <div className="flex-1">
             <h4 className="text-sm font-medium">{title}</h4>
             {description && <p className="text-xs text-gray-500">{description}</p>}
@@ -112,14 +117,17 @@ export function QuizCard({ quizId, title, description, questions, coinsReward, a
     return (
       <div className={`rounded-xl border p-5 backdrop-blur-sm ${isPerfect ? 'border-emerald-500/30 bg-emerald-500/5' : 'border-amber-500/30 bg-amber-500/5'}`}>
         <div className="text-center">
-          <div className="mb-2 text-4xl">{isPerfect ? '🎉' : '📝'}</div>
+          <div className="mb-2 flex justify-center">
+            <Icon name={isPerfect ? 'trophy' : 'document-text'} size={36} className={isPerfect ? 'text-emerald-400' : 'text-amber-400'} />
+          </div>
           <h4 className="text-lg font-bold">{isPerfect ? 'Perfeito!' : 'Bom trabalho!'}</h4>
           <p className="mt-1 text-sm text-gray-400">
             Voce acertou <strong className={isPerfect ? 'text-emerald-400' : 'text-amber-400'}>{result.score}</strong> de {result.total} perguntas
           </p>
           {result.coinsEarned > 0 && (
-            <div className="mt-3 inline-flex items-center gap-1 rounded-full bg-amber-500/20 px-3 py-1 text-sm text-amber-400">
-              🪙 +{result.coinsEarned} moedas
+            <div className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-amber-500/20 px-3 py-1 text-sm text-amber-400">
+              <Icon name="coin" size={14} />
+              +{result.coinsEarned} moedas
             </div>
           )}
           {!isPerfect && (
@@ -192,9 +200,9 @@ export function QuizCard({ quizId, title, description, questions, coinsReward, a
 
       {/* Explanation */}
       {showExplanation && question.explanation && (
-        <div className={`mt-3 rounded-lg p-3 text-xs ${isCorrect ? 'bg-emerald-500/10 text-emerald-600' : 'bg-amber-500/10 text-amber-600'}`}>
-          {isCorrect ? '✅ Correto! ' : '❌ Incorreto. '}
-          {question.explanation}
+        <div className={`mt-3 flex items-start gap-2 rounded-lg p-3 text-xs ${isCorrect ? 'bg-emerald-500/10 text-emerald-600' : 'bg-amber-500/10 text-amber-600'}`}>
+          <Icon name={isCorrect ? 'check-circle' : 'x-circle'} size={14} className="mt-0.5 shrink-0" />
+          <span>{isCorrect ? 'Correto! ' : 'Incorreto. '}{question.explanation}</span>
         </div>
       )}
 

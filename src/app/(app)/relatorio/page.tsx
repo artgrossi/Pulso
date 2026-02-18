@@ -4,6 +4,7 @@ import { TRACK_CONFIG } from '@/lib/constants';
 import type { TrackSlug } from '@/lib/types/database';
 import { WeeklyChart } from '@/components/relatorio/weekly-chart';
 import { InsightsCard } from '@/components/relatorio/insights-card';
+import { Icon, type IconName } from '@/components/ui/Icon';
 
 export default async function RelatorioPage() {
   const supabase = await createClient();
@@ -138,25 +139,25 @@ export default async function RelatorioPage() {
               label="Moedas ganhas"
               value={`+${weekCoins}`}
               trend={coinsTrend}
-              icon="🪙"
+              icon="coin"
               color="text-amber-400"
             />
             <SummaryCard
               label="Conteudos"
               value={weekContents.toString()}
-              icon="📚"
+              icon="book-open"
               color="text-blue-400"
             />
             <SummaryCard
               label="Dias ativos"
               value={`${activeDays}/7`}
-              icon="📅"
+              icon="calendar"
               color="text-emerald-400"
             />
             <SummaryCard
               label="Trilha"
               value={`${trackPercentage}%`}
-              icon={trackConfig?.icon ?? '📊'}
+              icon={trackConfig?.icon ?? 'chart-bar'}
               color={trackConfig?.color ?? 'text-purple-400'}
             />
           </div>
@@ -187,8 +188,8 @@ export default async function RelatorioPage() {
               Status do Streak
             </h3>
             <div className="flex items-center gap-4">
-              <div className={`text-4xl ${(streak?.current_streak ?? 0) >= 7 ? 'text-orange-400' : 'text-gray-600'}`}>
-                {(streak?.current_streak ?? 0) > 0 ? '🔥' : '❄️'}
+              <div className={(streak?.current_streak ?? 0) >= 7 ? 'text-orange-400' : 'text-gray-600'}>
+                <Icon name={(streak?.current_streak ?? 0) > 0 ? 'flame' : 'snowflake'} size={36} />
               </div>
               <div className="flex-1">
                 <div className="text-2xl font-bold">{streak?.current_streak ?? 0} dias</div>
@@ -228,7 +229,7 @@ export default async function RelatorioPage() {
               Progresso da Trilha {trackConfig?.name}
             </h3>
             <div className="mb-3 flex items-center gap-3">
-              <span className="text-3xl">{trackConfig?.icon ?? '📊'}</span>
+              <Icon name={trackConfig?.icon ?? 'chart-bar'} size={28} className={trackConfig?.color ?? 'text-purple-400'} />
               <div className="flex-1">
                 <div className={`text-lg font-bold ${trackConfig?.color ?? 'text-white'}`}>
                   {trackPercentage}% completo
@@ -265,13 +266,13 @@ function SummaryCard({ label, value, trend, icon, color }: {
   label: string;
   value: string;
   trend?: number;
-  icon: string;
+  icon: IconName;
   color: string;
 }) {
   return (
     <div className="rounded-xl border border-gray-100 bg-white shadow-sm p-4 backdrop-blur-sm">
       <div className="flex items-center justify-between">
-        <span className="text-xl">{icon}</span>
+        <Icon name={icon} size={20} className={color} />
         {trend !== undefined && trend !== 0 && (
           <span className={`rounded-full px-1.5 py-0.5 text-[10px] ${
             trend > 0 ? 'bg-emerald-500/10 text-emerald-400' : 'bg-red-500/10 text-red-400'

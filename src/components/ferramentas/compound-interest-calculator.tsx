@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { Icon } from '@/components/ui/Icon';
 
 interface SimulationResult {
   months: number;
@@ -68,7 +69,9 @@ export function CompoundInterestCalculator() {
   return (
     <div id="juros" className="space-y-4">
       <div className="flex items-center gap-3">
-        <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-500/10 text-xl">📈</span>
+        <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-500/10">
+          <Icon name="trending-up" size={22} className="text-emerald-400" />
+        </span>
         <div>
           <h3 className="font-bold text-emerald-400">Juros Compostos</h3>
           <p className="text-xs text-gray-500">Simule o crescimento do seu dinheiro ao longo do tempo</p>
@@ -84,7 +87,7 @@ export function CompoundInterestCalculator() {
               type="number"
               value={initialAmount}
               onChange={(e) => setInitialAmount(parseFloat(e.target.value) || 0)}
-              className="flex-1 rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-white focus:border-emerald-500 focus:outline-none"
+              className="flex-1 rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-900 focus:border-emerald-500 focus:outline-none"
             />
           </div>
         </div>
@@ -97,7 +100,7 @@ export function CompoundInterestCalculator() {
               type="number"
               value={monthlyDeposit}
               onChange={(e) => setMonthlyDeposit(parseFloat(e.target.value) || 0)}
-              className="flex-1 rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-white focus:border-emerald-500 focus:outline-none"
+              className="flex-1 rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-900 focus:border-emerald-500 focus:outline-none"
             />
           </div>
         </div>
@@ -109,7 +112,7 @@ export function CompoundInterestCalculator() {
             step="0.1"
             value={annualRate}
             onChange={(e) => setAnnualRate(parseFloat(e.target.value) || 0)}
-            className="w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-white focus:border-emerald-500 focus:outline-none"
+            className="w-full rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-900 focus:border-emerald-500 focus:outline-none"
           />
           <div className="mt-2 flex flex-wrap gap-1.5">
             {presets.map((p) => (
@@ -226,8 +229,9 @@ export function CompoundInterestCalculator() {
             </table>
           </div>
 
-          <div className="rounded-lg bg-emerald-500/10 p-3 text-xs text-emerald-600">
-            💡 Com aportes de {formatCurrency(monthlyDeposit)}/mes a {annualRate}% a.a., seus juros ({formatCurrency(result.totalInterest)}) representam {((result.totalInterest / result.finalBalance) * 100).toFixed(0)}% do saldo final. Esse e o poder dos juros compostos!
+          <div className="flex items-start gap-2 rounded-lg bg-emerald-500/10 p-3 text-xs text-emerald-600">
+            <Icon name="lightbulb" size={14} className="mt-0.5 shrink-0" />
+            <span>Com aportes de {formatCurrency(monthlyDeposit)}/mes a {annualRate}% a.a., seus juros ({formatCurrency(result.totalInterest)}) representam {((result.totalInterest / result.finalBalance) * 100).toFixed(0)}% do saldo final. Esse e o poder dos juros compostos!</span>
           </div>
         </div>
       )}

@@ -10,7 +10,9 @@ import { QuickActions } from '@/components/dashboard/quick-actions';
 import { QuizCard } from '@/components/dashboard/quiz-card';
 import type { Track, DailyContent, UserStreak, Achievement } from '@/lib/types/database';
 import { getTrackProgress } from '@/lib/actions/track-progression';
+import { DashboardIntents } from '@/components/metas/dashboard-intents';
 import Logo from '@/components/branding/Logo';
+import { Icon } from '@/components/ui/Icon';
 
 export default async function DashboardPage() {
   const supabase = await createClient();
@@ -147,13 +149,13 @@ export default async function DashboardPage() {
         <div className="mx-auto flex max-w-2xl items-center justify-between px-4 py-3">
           <Logo variant="full" size="sm" animated />
           <div className="flex items-center gap-2">
-            <div className="flex items-center gap-1 rounded-full bg-amber-50 px-3 py-1 text-xs text-amber-600">
-              <span>🪙</span>
+            <div className="flex items-center gap-1.5 rounded-full bg-amber-50 px-3 py-1 text-xs text-amber-600">
+              <Icon name="coin" size={14} />
               <span className="font-semibold">{profile.total_coins}</span>
             </div>
             {streak && (streak as UserStreak).current_streak > 0 && (
-              <div className="flex items-center gap-1 rounded-full bg-orange-50 px-3 py-1 text-xs text-orange-500">
-                <span>🔥</span>
+              <div className="flex items-center gap-1.5 rounded-full bg-orange-50 px-3 py-1 text-xs text-orange-500">
+                <Icon name="flame" size={14} />
                 <span className="font-semibold">{(streak as UserStreak).current_streak}</span>
               </div>
             )}
@@ -184,6 +186,9 @@ export default async function DashboardPage() {
 
           {/* Quick Actions */}
           <QuickActions />
+
+          {/* Active Intents */}
+          <DashboardIntents />
 
           {/* Track + Streak row */}
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">

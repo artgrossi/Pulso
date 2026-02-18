@@ -1,5 +1,6 @@
 import type { Track } from '@/lib/types/database';
 import { TRACK_CONFIG } from '@/lib/constants';
+import { Icon } from '@/components/ui/Icon';
 
 interface TrackCardProps {
   track: Track;
@@ -20,7 +21,7 @@ export function TrackCard({ track, contentCompletedToday, totalContentToday, ove
   return (
     <div className={`rounded-2xl border ${config.borderColor} ${config.bgColor} p-6 transition-all hover:shadow-md`}>
       <div className="flex items-center gap-3">
-        <span className="text-3xl">{config.icon}</span>
+        <Icon name={config.icon} size={28} className={config.color} />
         <div>
           <h3 className={`text-lg font-bold ${config.color}`}>
             Trilha {config.name}

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { Icon } from '@/components/ui/Icon';
 
 interface Debt {
   id: string;
@@ -113,7 +114,9 @@ export function DebtCalculator() {
   return (
     <div id="dividas" className="space-y-4">
       <div className="flex items-center gap-3">
-        <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-500/10 text-xl">🧮</span>
+        <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-500/10">
+          <Icon name="calculator" size={22} className="text-amber-400" />
+        </span>
         <div>
           <h3 className="font-bold text-amber-400">Quitacao de Dividas</h3>
           <p className="text-xs text-gray-500">Compare estrategias Snowball vs Avalanche</p>
@@ -189,7 +192,7 @@ export function DebtCalculator() {
             type="number"
             value={extraPayment}
             onChange={(e) => setExtraPayment(parseFloat(e.target.value) || 0)}
-            className="flex-1 rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-white focus:border-amber-500 focus:outline-none"
+            className="flex-1 rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-900 focus:border-amber-500 focus:outline-none"
           />
         </div>
       </div>
@@ -227,8 +230,9 @@ export function DebtCalculator() {
             />
           </div>
 
-          <div className="rounded-lg bg-emerald-500/10 p-3 text-xs text-emerald-600">
-            💡 <strong>Snowball</strong> paga a menor divida primeiro (motivacao psicologica). <strong>Avalanche</strong> ataca a maior taxa primeiro (economiza mais em juros).
+          <div className="flex items-start gap-2 rounded-lg bg-emerald-500/10 p-3 text-xs text-emerald-600">
+            <Icon name="lightbulb" size={14} className="mt-0.5 shrink-0" />
+            <span><strong>Snowball</strong> paga a menor divida primeiro (motivacao psicologica). <strong>Avalanche</strong> ataca a maior taxa primeiro (economiza mais em juros).</span>
           </div>
         </div>
       )}

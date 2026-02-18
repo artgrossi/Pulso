@@ -2,6 +2,7 @@ import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 import { AuthForm } from "./auth-form";
 import Logo from "@/components/branding/Logo";
+import { Icon, type IconName } from "@/components/ui/Icon";
 
 export default async function Home() {
   const supabase = await createClient();
@@ -50,33 +51,39 @@ export default async function Home() {
 
         {/* Features */}
         <div className="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-4">
-          {[
+          {([
             {
-              icon: "🔄",
+              icon: "arrow-path" as IconName,
+              color: "text-amber-500",
               title: "Retomada",
-              desc: "Organize dívidas e retome o controle",
+              desc: "Organize dividas e retome o controle",
             },
             {
-              icon: "🏗️",
-              title: "Fundação",
-              desc: "Construa sua reserva de emergência",
+              icon: "building" as IconName,
+              color: "text-blue-500",
+              title: "Fundacao",
+              desc: "Construa sua reserva de emergencia",
             },
             {
-              icon: "📈",
+              icon: "trending-up" as IconName,
+              color: "text-emerald-500",
               title: "Crescimento",
-              desc: "Otimize investimentos e previdência",
+              desc: "Otimize investimentos e previdencia",
             },
             {
-              icon: "🎓",
+              icon: "academic-cap" as IconName,
+              color: "text-purple-500",
               title: "Expertise",
-              desc: "Conteúdo avançado e ferramentas pro",
+              desc: "Conteudo avancado e ferramentas pro",
             },
-          ].map((feature, i) => (
+          ]).map((feature, i) => (
             <div
               key={feature.title}
               className={`animate-slide-up rounded-xl border border-gray-100 bg-white/70 p-6 text-center transition-all hover:shadow-md hover:-translate-y-0.5 delay-${(i + 3) * 100}`}
             >
-              <div className="mb-3 text-2xl">{feature.icon}</div>
+              <div className="mb-3 flex justify-center">
+                <Icon name={feature.icon} size={26} className={feature.color} />
+              </div>
               <h3 className="mb-1 text-sm font-semibold text-gray-800">{feature.title}</h3>
               <p className="text-xs text-gray-400">{feature.desc}</p>
             </div>

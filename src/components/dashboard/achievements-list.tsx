@@ -1,4 +1,4 @@
-import type { Achievement, UserAchievement } from '@/lib/types/database';
+import type { Achievement } from '@/lib/types/database';
 
 interface AchievementsListProps {
   achievements: Achievement[];
@@ -30,8 +30,14 @@ export function AchievementsList({ achievements, unlockedIds }: AchievementsList
                   : 'border-gray-100 bg-white/80 opacity-50'
               }`}
             >
-              <div className="mb-1 text-2xl">
-                {isUnlocked ? achievement.icon : '🔒'}
+              <div className="mb-1 flex items-center justify-center">
+                {isUnlocked ? (
+                  <span className="text-2xl">{achievement.icon}</span>
+                ) : (
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="h-6 w-6 text-gray-400">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+                  </svg>
+                )}
               </div>
               <p className="text-xs font-medium">
                 {achievement.title}
