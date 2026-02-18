@@ -40,6 +40,23 @@ export type MilestoneType = 'day_3' | 'week_1' | 'halfway' | 'day_21' | 'complet
 
 export type TargetMetric = 'currency_brl' | 'streak_days' | 'content_count' | 'percentage' | 'custom';
 
+export type IncomeRange =
+  | 'ate_2k'
+  | '2k_5k'
+  | '5k_10k'
+  | '10k_20k'
+  | 'acima_20k'
+  | 'prefiro_nao_dizer';
+
+export const INCOME_RANGE_LABELS: Record<IncomeRange, string> = {
+  ate_2k: 'Ate R$ 2.000',
+  '2k_5k': 'R$ 2.000 - R$ 5.000',
+  '5k_10k': 'R$ 5.000 - R$ 10.000',
+  '10k_20k': 'R$ 10.000 - R$ 20.000',
+  acima_20k: 'Acima de R$ 20.000',
+  prefiro_nao_dizer: 'Prefiro nao dizer',
+};
+
 // ============================================================================
 // Table Row Types
 // ============================================================================
@@ -64,6 +81,8 @@ export interface Profile {
   total_coins: number;
   convertible_coins: number;
   level: number;
+  birth_date: string | null;
+  income_range: IncomeRange | null;
   created_at: string;
   updated_at: string;
 }
