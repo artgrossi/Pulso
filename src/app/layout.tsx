@@ -6,7 +6,13 @@ export const metadata: Metadata = {
   description:
     "Transforme sua vida financeira com gamificação. Acompanhe, aprenda e evolua suas finanças pessoais.",
   icons: {
-    icon: "/logo/pulso-icon.svg",
+    icon: [
+      { url: "/logo/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/logo/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/logo/favicon-192x192.png", sizes: "192x192", type: "image/png" },
+      { url: "/logo/favicon-512x512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: "/logo/apple-touch-icon.png",
   },
 };
 
