@@ -1,0 +1,229 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1520" viewBox="0 0 900 1520">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4facfe"/>
+      <stop offset="100%" style="stop-color:#00f2fe"/>
+    </linearGradient>
+    <style>
+      text { font-family: 'Inter', 'Segoe UI', Arial, sans-serif; }
+      .title { font-size: 28px; font-weight: 800; fill: url(#grad); }
+      .subtitle { font-size: 14px; fill: #4A5568; }
+      .section-title { font-size: 18px; font-weight: 700; fill: #1A2332; }
+      .color-name { font-size: 13px; font-weight: 700; fill: #1A2332; }
+      .color-hex { font-size: 12px; fill: #8896A6; font-family: monospace; }
+      .color-use { font-size: 11px; fill: #4A5568; }
+      .label-white { font-size: 13px; font-weight: 600; fill: white; }
+      .label-dark { font-size: 13px; font-weight: 600; fill: #4A5568; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="1520" fill="#F7F9FC" rx="0"/>
+
+  <!-- Header -->
+  <text x="40" y="50" class="title">Pulso — Paleta de Cores</text>
+  <text x="40" y="72" class="subtitle">Proposta de identidade visual para padronizar o desenvolvimento</text>
+
+  <!-- ==================== GRADIENTE ==================== -->
+  <text x="40" y="115" class="section-title">Gradiente Principal</text>
+  <rect x="40" y="130" width="820" height="64" rx="12" fill="url(#grad)"/>
+  <text x="450" y="168" text-anchor="middle" font-size="22" font-weight="800" fill="white">PULSO</text>
+  <text x="60" y="215" class="color-hex">#4FACFE → #00F2FE (135°)</text>
+
+  <!-- ==================== CORES PRIMARIAS ==================== -->
+  <text x="40" y="258" class="section-title">Cores Primarias (Marca)</text>
+
+  <!-- Primary -->
+  <rect x="40" y="272" width="190" height="80" rx="10" fill="#4facfe"/>
+  <text x="135" y="318" text-anchor="middle" class="label-white">Aa</text>
+  <rect x="40" y="352" width="190" height="52" rx="0 0 10 10" fill="white" stroke="#E8EDF3" stroke-width="1"/>
+  <text x="50" y="370" class="color-name">Primary</text>
+  <text x="50" y="392" class="color-hex">#4FACFE</text>
+
+  <!-- Secondary -->
+  <rect x="250" y="272" width="190" height="80" rx="10" fill="#00f2fe"/>
+  <text x="345" y="318" text-anchor="middle" class="label-white">Aa</text>
+  <rect x="250" y="352" width="190" height="52" rx="0 0 10 10" fill="white" stroke="#E8EDF3" stroke-width="1"/>
+  <text x="260" y="370" class="color-name">Secondary</text>
+  <text x="260" y="392" class="color-hex">#00F2FE</text>
+
+  <!-- Primary Dark -->
+  <rect x="460" y="272" width="190" height="80" rx="10" fill="#1a73c7"/>
+  <text x="555" y="318" text-anchor="middle" class="label-white">Aa</text>
+  <rect x="460" y="352" width="190" height="52" rx="0 0 10 10" fill="white" stroke="#E8EDF3" stroke-width="1"/>
+  <text x="470" y="370" class="color-name">Primary Dark</text>
+  <text x="470" y="392" class="color-hex">#1A73C7</text>
+
+  <!-- Primary Light -->
+  <rect x="670" y="272" width="190" height="80" rx="10" fill="#7dc4ff"/>
+  <text x="765" y="318" text-anchor="middle" class="label-white">Aa</text>
+  <rect x="670" y="352" width="190" height="52" rx="0 0 10 10" fill="white" stroke="#E8EDF3" stroke-width="1"/>
+  <text x="680" y="370" class="color-name">Primary Light</text>
+  <text x="680" y="392" class="color-hex">#7DC4FF</text>
+
+  <!-- ==================== NEUTROS ==================== -->
+  <text x="40" y="445" class="section-title">Neutros (Superficies)</text>
+
+  <!-- Surface -->
+  <rect x="40" y="460" width="155" height="70" rx="10" fill="#F7F9FC" stroke="#DAE1EA" stroke-width="1"/>
+  <text x="118" y="500" text-anchor="middle" class="label-dark">Fundo App</text>
+  <rect x="40" y="530" width="155" height="52" fill="white" stroke="#E8EDF3" stroke-width="1"/>
+  <text x="50" y="550" class="color-name">Surface</text>
+  <text x="50" y="570" class="color-hex">#F7F9FC</text>
+
+  <!-- Surface Elevated -->
+  <rect x="210" y="460" width="155" height="70" rx="10" fill="#FFFFFF" stroke="#DAE1EA" stroke-width="1"/>
+  <text x="288" y="500" text-anchor="middle" class="label-dark">Cards</text>
+  <rect x="210" y="530" width="155" height="52" fill="white" stroke="#E8EDF3" stroke-width="1"/>
+  <text x="220" y="550" class="color-name">Elevated</text>
+  <text x="220" y="570" class="color-hex">#FFFFFF</text>
+
+  <!-- Surface Muted -->
+  <rect x="380" y="460" width="155" height="70" rx="10" fill="#EEF2F7"/>
+  <text x="458" y="500" text-anchor="middle" class="label-dark">Secoes</text>
+  <rect x="380" y="530" width="155" height="52" fill="white" stroke="#E8EDF3" stroke-width="1"/>
+  <text x="390" y="550" class="color-name">Muted</text>
+  <text x="390" y="570" class="color-hex">#EEF2F7</text>
+
+  <!-- Border -->
+  <rect x="550" y="460" width="155" height="70" rx="10" fill="#DAE1EA"/>
+  <text x="628" y="500" text-anchor="middle" class="label-dark">Bordas</text>
+  <rect x="550" y="530" width="155" height="52" fill="white" stroke="#E8EDF3" stroke-width="1"/>
+  <text x="560" y="550" class="color-name">Border</text>
+  <text x="560" y="570" class="color-hex">#DAE1EA</text>
+
+  <!-- Border Subtle -->
+  <rect x="720" y="460" width="140" height="70" rx="10" fill="#E8EDF3"/>
+  <text x="790" y="500" text-anchor="middle" class="label-dark">Sutil</text>
+  <rect x="720" y="530" width="140" height="52" fill="white" stroke="#E8EDF3" stroke-width="1"/>
+  <text x="730" y="550" class="color-name">Subtle</text>
+  <text x="730" y="570" class="color-hex">#E8EDF3</text>
+
+  <!-- ==================== TEXTO ==================== -->
+  <text x="40" y="625" class="section-title">Texto</text>
+
+  <!-- Text Primary -->
+  <rect x="40" y="640" width="190" height="70" rx="10" fill="#1A2332"/>
+  <text x="135" y="682" text-anchor="middle" font-size="20" font-weight="700" fill="white">Aa</text>
+  <rect x="40" y="710" width="190" height="52" fill="white" stroke="#E8EDF3" stroke-width="1"/>
+  <text x="50" y="730" class="color-name">Text Primary</text>
+  <text x="50" y="748" class="color-hex">#1A2332 — Titulos</text>
+
+  <!-- Text Secondary -->
+  <rect x="250" y="640" width="190" height="70" rx="10" fill="#4A5568"/>
+  <text x="345" y="682" text-anchor="middle" font-size="20" font-weight="700" fill="white">Aa</text>
+  <rect x="250" y="710" width="190" height="52" fill="white" stroke="#E8EDF3" stroke-width="1"/>
+  <text x="260" y="730" class="color-name">Text Secondary</text>
+  <text x="260" y="748" class="color-hex">#4A5568 — Corpo</text>
+
+  <!-- Text Muted -->
+  <rect x="460" y="640" width="190" height="70" rx="10" fill="#8896A6"/>
+  <text x="555" y="682" text-anchor="middle" font-size="20" font-weight="700" fill="white">Aa</text>
+  <rect x="460" y="710" width="190" height="52" fill="white" stroke="#E8EDF3" stroke-width="1"/>
+  <text x="470" y="730" class="color-name">Text Muted</text>
+  <text x="470" y="748" class="color-hex">#8896A6 — Hints</text>
+
+  <!-- Text on Primary -->
+  <rect x="670" y="640" width="190" height="70" rx="10" fill="url(#grad)"/>
+  <text x="765" y="682" text-anchor="middle" font-size="20" font-weight="700" fill="white">Aa</text>
+  <rect x="670" y="710" width="190" height="52" fill="white" stroke="#E8EDF3" stroke-width="1"/>
+  <text x="680" y="730" class="color-name">On Primary</text>
+  <text x="680" y="748" class="color-hex">#FFFFFF sobre azul</text>
+
+  <!-- Demo de hierarquia de texto -->
+  <rect x="40" y="775" width="820" height="100" rx="12" fill="#F7F9FC" stroke="#E8EDF3" stroke-width="1"/>
+  <text x="60" y="802" font-size="18" font-weight="800" fill="#1A2332">Este e um titulo principal — Text Primary</text>
+  <text x="60" y="828" font-size="14" fill="#4A5568">Texto de descricao usando Text Secondary para reduzir peso visual sem perder legibilidade.</text>
+  <text x="60" y="852" font-size="12" fill="#8896A6">Informacao auxiliar, hint ou placeholder — Text Muted</text>
+
+  <!-- ==================== SEMANTICAS ==================== -->
+  <text x="40" y="920" class="section-title">Cores Semanticas (Status)</text>
+
+  <!-- Success -->
+  <rect x="40" y="935" width="250" height="70" rx="10" fill="#10B981"/>
+  <text x="165" y="976" text-anchor="middle" class="label-white">Sucesso / Progresso</text>
+  <rect x="40" y="1005" width="250" height="36" fill="white" stroke="#E8EDF3" stroke-width="1"/>
+  <text x="50" y="1028" class="color-name">Success</text>
+  <text x="200" y="1028" class="color-hex">#10B981</text>
+
+  <!-- Warning -->
+  <rect x="320" y="935" width="250" height="70" rx="10" fill="#F59E0B"/>
+  <text x="445" y="976" text-anchor="middle" class="label-white">Alerta / Atencao</text>
+  <rect x="320" y="1005" width="250" height="36" fill="white" stroke="#E8EDF3" stroke-width="1"/>
+  <text x="330" y="1028" class="color-name">Warning</text>
+  <text x="480" y="1028" class="color-hex">#F59E0B</text>
+
+  <!-- Error -->
+  <rect x="600" y="935" width="260" height="70" rx="10" fill="#EF4444"/>
+  <text x="730" y="976" text-anchor="middle" class="label-white">Erro / Destrutivo</text>
+  <rect x="600" y="1005" width="260" height="36" fill="white" stroke="#E8EDF3" stroke-width="1"/>
+  <text x="610" y="1028" class="color-name">Error</text>
+  <text x="770" y="1028" class="color-hex">#EF4444</text>
+
+  <!-- ==================== TRILHAS ==================== -->
+  <text x="40" y="1090" class="section-title">Cores das Trilhas</text>
+
+  <!-- Retomada -->
+  <rect x="40" y="1105" width="195" height="110" rx="12" fill="rgba(245,158,11,0.1)" stroke="#F59E0B" stroke-width="2" stroke-opacity="0.4"/>
+  <circle cx="138" cy="1145" r="22" fill="#F59E0B"/>
+  <text x="138" y="1195" text-anchor="middle" font-size="14" font-weight="700" fill="#D97706">Retomada</text>
+  <text x="138" y="1210" text-anchor="middle" class="color-hex">#F59E0B</text>
+
+  <!-- Fundacao -->
+  <rect x="255" y="1105" width="195" height="110" rx="12" fill="rgba(59,130,246,0.1)" stroke="#3B82F6" stroke-width="2" stroke-opacity="0.4"/>
+  <circle cx="353" cy="1145" r="22" fill="#3B82F6"/>
+  <text x="353" y="1195" text-anchor="middle" font-size="14" font-weight="700" fill="#2563EB">Fundacao</text>
+  <text x="353" y="1210" text-anchor="middle" class="color-hex">#3B82F6</text>
+
+  <!-- Crescimento -->
+  <rect x="470" y="1105" width="195" height="110" rx="12" fill="rgba(16,185,129,0.1)" stroke="#10B981" stroke-width="2" stroke-opacity="0.4"/>
+  <circle cx="568" cy="1145" r="22" fill="#10B981"/>
+  <text x="568" y="1195" text-anchor="middle" font-size="14" font-weight="700" fill="#059669">Crescimento</text>
+  <text x="568" y="1210" text-anchor="middle" class="color-hex">#10B981</text>
+
+  <!-- Expertise -->
+  <rect x="685" y="1105" width="175" height="110" rx="12" fill="rgba(139,92,246,0.1)" stroke="#8B5CF6" stroke-width="2" stroke-opacity="0.4"/>
+  <circle cx="773" cy="1145" r="22" fill="#8B5CF6"/>
+  <text x="773" y="1195" text-anchor="middle" font-size="14" font-weight="700" fill="#7C3AED">Expertise</text>
+  <text x="773" y="1210" text-anchor="middle" class="color-hex">#8B5CF6</text>
+
+  <!-- ==================== MOCK UI ==================== -->
+  <text x="40" y="1268" class="section-title">Preview — Como fica na interface</text>
+
+  <!-- Mock app background -->
+  <rect x="40" y="1283" width="820" height="220" rx="14" fill="#F7F9FC" stroke="#DAE1EA" stroke-width="1"/>
+
+  <!-- Mock header -->
+  <rect x="52" y="1295" width="796" height="44" rx="10" fill="url(#grad)"/>
+  <text x="72" y="1323" font-size="16" font-weight="800" fill="white">Pulso</text>
+  <text x="780" y="1323" text-anchor="end" font-size="12" fill="white" opacity="0.8">Ola, Arthur</text>
+
+  <!-- Mock cards -->
+  <rect x="52" y="1350" width="255" height="80" rx="10" fill="white" stroke="#DAE1EA" stroke-width="1"/>
+  <text x="68" y="1372" font-size="10" font-weight="600" fill="#8896A6" letter-spacing="0.5">PROGRESSO</text>
+  <text x="68" y="1400" font-size="24" font-weight="800" fill="#4facfe">72%</text>
+  <text x="120" y="1400" font-size="11" font-weight="600" fill="#10B981">+5% esta semana</text>
+
+  <rect x="322" y="1350" width="255" height="80" rx="10" fill="white" stroke="#DAE1EA" stroke-width="1"/>
+  <text x="338" y="1372" font-size="10" font-weight="600" fill="#8896A6" letter-spacing="0.5">TRILHA ATUAL</text>
+  <text x="338" y="1400" font-size="22" font-weight="800" fill="#1A2332">Fundacao</text>
+  <text x="338" y="1420" font-size="11" font-weight="600" fill="#3B82F6">Modulo 3 de 8</text>
+
+  <rect x="592" y="1350" width="255" height="80" rx="10" fill="white" stroke="#DAE1EA" stroke-width="1"/>
+  <text x="608" y="1372" font-size="10" font-weight="600" fill="#8896A6" letter-spacing="0.5">STREAK</text>
+  <text x="608" y="1400" font-size="22" font-weight="800" fill="#1A2332">14 dias</text>
+  <text x="608" y="1420" font-size="11" font-weight="600" fill="#F59E0B">Recorde pessoal!</text>
+
+  <!-- Mock buttons -->
+  <rect x="52" y="1445" width="150" height="36" rx="8" fill="url(#grad)"/>
+  <text x="127" y="1468" text-anchor="middle" font-size="12" font-weight="700" fill="white">Continuar Modulo</text>
+
+  <rect x="215" y="1445" width="100" height="36" rx="8" fill="#EEF2F7"/>
+  <text x="265" y="1468" text-anchor="middle" font-size="12" font-weight="700" fill="#1A2332">Ver Trilha</text>
+
+  <rect x="328" y="1445" width="95" height="36" rx="8" fill="none" stroke="#4facfe" stroke-width="2"/>
+  <text x="376" y="1468" text-anchor="middle" font-size="12" font-weight="700" fill="#4facfe">Historico</text>
+
+  <!-- Footer -->
+  <text x="450" y="1510" text-anchor="middle" font-size="12" fill="#8896A6">Pulso — Paleta de Cores v1.0 — Preview para aprovacao</text>
+</svg>
