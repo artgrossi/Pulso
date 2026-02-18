@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pulso — Paleta de Cores</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #F7F9FC;
+      color: #1A2332;
+      padding: 40px 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      color: #4A5568;
+      font-size: 1rem;
+      margin-bottom: 48px;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #1A2332;
+      margin-bottom: 16px;
+      margin-top: 48px;
+    }
+
+    h2:first-of-type { margin-top: 0; }
+
+    .section {
+      background: #FFFFFF;
+      border: 1px solid #DAE1EA;
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .color-card {
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #E8EDF3;
+      background: #FFFFFF;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .color-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px -5px rgba(79, 172, 254, 0.15);
+    }
+
+    .color-swatch {
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.5px;
+    }
+
+    .color-info {
+      padding: 12px 14px;
+    }
+
+    .color-name {
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: #1A2332;
+    }
+
+    .color-hex {
+      font-size: 0.8rem;
+      color: #8896A6;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      margin-top: 2px;
+    }
+
+    .color-use {
+      font-size: 0.75rem;
+      color: #4A5568;
+      margin-top: 6px;
+      line-height: 1.4;
+    }
+
+    /* Gradient showcase */
+    .gradient-bar {
+      height: 80px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+
+    /* Comparison section */
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 16px;
+    }
+
+    .comp-box {
+      border-radius: 16px;
+      padding: 28px;
+      min-height: 200px;
+    }
+
+    .comp-box h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .comp-box p {
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .comp-before {
+      background: #FFFFFF;
+      border: 1px solid #e5e7eb;
+      color: #111827;
+    }
+
+    .comp-before h3 { color: #111827; }
+    .comp-before p { color: #6b7280; }
+
+    .comp-after {
+      background: #FFFFFF;
+      border: 1px solid #DAE1EA;
+      color: #1A2332;
+    }
+
+    .comp-after h3 { color: #1A2332; }
+    .comp-after p { color: #4A5568; }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-right: 6px;
+      margin-top: 8px;
+    }
+
+    /* Mock UI section */
+    .mock-app {
+      background: #F7F9FC;
+      border-radius: 16px;
+      padding: 24px;
+      margin-top: 16px;
+    }
+
+    .mock-header {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      border-radius: 12px;
+      padding: 20px 24px;
+      color: white;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .mock-header h3 {
+      font-weight: 800;
+      font-size: 1.2rem;
+    }
+
+    .mock-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .mock-card {
+      background: #FFFFFF;
+      border: 1px solid #DAE1EA;
+      border-radius: 12px;
+      padding: 20px;
+      transition: all 0.2s;
+    }
+
+    .mock-card:hover {
+      border-color: rgba(79, 172, 254, 0.3);
+      box-shadow: 0 4px 14px rgba(79, 172, 254, 0.12);
+    }
+
+    .mock-card .label {
+      font-size: 0.75rem;
+      color: #8896A6;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-weight: 600;
+    }
+
+    .mock-card .value {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #1A2332;
+      margin-top: 4px;
+    }
+
+    .mock-card .sub {
+      font-size: 0.8rem;
+      margin-top: 4px;
+      font-weight: 600;
+    }
+
+    .mock-sidebar-item {
+      background: #EEF2F7;
+      border-radius: 10px;
+      padding: 14px 18px;
+      margin-bottom: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #4A5568;
+      border-left: 3px solid transparent;
+      transition: all 0.2s;
+    }
+
+    .mock-sidebar-item.active {
+      background: rgba(79, 172, 254, 0.08);
+      color: #4facfe;
+      border-left-color: #4facfe;
+    }
+
+    .mock-btn {
+      display: inline-block;
+      padding: 10px 24px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+    }
+
+    .mock-btn-primary {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+    }
+
+    .mock-btn-secondary {
+      background: #EEF2F7;
+      color: #1A2332;
+    }
+
+    .mock-btn-outline {
+      background: transparent;
+      color: #4facfe;
+      border: 2px solid #4facfe;
+    }
+
+    /* Track colors */
+    .track-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+
+    .track-card {
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .track-card .track-name {
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-top: 8px;
+    }
+
+    .track-card .track-hex {
+      font-size: 0.75rem;
+      opacity: 0.7;
+      font-family: monospace;
+      margin-top: 4px;
+    }
+
+    .text-demo {
+      padding: 20px 0;
+    }
+
+    .text-demo p {
+      margin-bottom: 12px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .comparison { grid-template-columns: 1fr; }
+      .mock-cards { grid-template-columns: 1fr; }
+      .track-grid { grid-template-columns: repeat(2, 1fr); }
+      .color-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Pulso — Paleta de Cores</h1>
+  <p class="subtitle">Proposta de identidade visual para padronizar todo o desenvolvimento</p>
+
+  <!-- GRADIENT -->
+  <div class="section">
+    <h2>Gradiente Principal da Marca</h2>
+    <div class="gradient-bar">PULSO</div>
+    <p style="color: #4A5568; font-size: 0.9rem;">
+      <code style="background: #EEF2F7; padding: 2px 8px; border-radius: 4px;">#4facfe</code> &rarr;
+      <code style="background: #EEF2F7; padding: 2px 8px; border-radius: 4px;">#00f2fe</code>
+      &nbsp; (135&deg;)
+    </p>
+  </div>
+
+  <!-- PRIMARIAS -->
+  <div class="section">
+    <h2>Cores Primarias (Marca)</h2>
+    <div class="color-grid">
+      <div class="color-card">
+        <div class="color-swatch" style="background: #4facfe; color: white;">Aa</div>
+        <div class="color-info">
+          <div class="color-name">Primary</div>
+          <div class="color-hex">#4FACFE</div>
+          <div class="color-use">Botoes, links, destaques</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background: #00f2fe; color: white;">Aa</div>
+        <div class="color-info">
+          <div class="color-name">Secondary</div>
+          <div class="color-hex">#00F2FE</div>
+          <div class="color-use">Gradientes, acentos</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background: #1a73c7; color: white;">Aa</div>
+        <div class="color-info">
+          <div class="color-name">Primary Dark</div>
+          <div class="color-hex">#1A73C7</div>
+          <div class="color-use">Hover, texto enfatico</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background: #7dc4ff; color: white;">Aa</div>
+        <div class="color-info">
+          <div class="color-name">Primary Light</div>
+          <div class="color-hex">#7DC4FF</div>
+          <div class="color-use">Badges, tags, estados leves</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEUTROS -->
+  <div class="section">
+    <h2>Neutros (Superficies)</h2>
+    <div class="color-grid">
+      <div class="color-card">
+        <div class="color-swatch" style="background: #F7F9FC; color: #8896A6; border-bottom: 1px solid #E8EDF3;">Fundo App</div>
+        <div class="color-info">
+          <div class="color-name">Surface</div>
+          <div class="color-hex">#F7F9FC</div>
+          <div class="color-use">Fundo geral — substitui o branco puro</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background: #FFFFFF; color: #8896A6; border-bottom: 1px solid #E8EDF3;">Cards</div>
+        <div class="color-info">
+          <div class="color-name">Surface Elevated</div>
+          <div class="color-hex">#FFFFFF</div>
+          <div class="color-use">Cards, modais, elementos elevados</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background: #EEF2F7; color: #8896A6;">Secoes</div>
+        <div class="color-info">
+          <div class="color-name">Surface Muted</div>
+          <div class="color-hex">#EEF2F7</div>
+          <div class="color-use">Sidebars, secoes alternadas, inputs</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background: #DAE1EA; color: #4A5568;">Bordas</div>
+        <div class="color-info">
+          <div class="color-name">Border</div>
+          <div class="color-hex">#DAE1EA</div>
+          <div class="color-use">Bordas de cards e divisores</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background: #E8EDF3; color: #8896A6;">Sutil</div>
+        <div class="color-info">
+          <div class="color-name">Border Subtle</div>
+          <div class="color-hex">#E8EDF3</div>
+          <div class="color-use">Bordas internas, separadores leves</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TEXTOS -->
+  <div class="section">
+    <h2>Texto</h2>
+    <div class="color-grid">
+      <div class="color-card">
+        <div class="color-swatch" style="background: #1A2332; color: white;">Aa</div>
+        <div class="color-info">
+          <div class="color-name">Text Primary</div>
+          <div class="color-hex">#1A2332</div>
+          <div class="color-use">Titulos, texto principal</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background: #4A5568; color: white;">Aa</div>
+        <div class="color-info">
+          <div class="color-name">Text Secondary</div>
+          <div class="color-hex">#4A5568</div>
+          <div class="color-use">Descricoes, corpo de texto</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background: #8896A6; color: white;">Aa</div>
+        <div class="color-info">
+          <div class="color-name">Text Muted</div>
+          <div class="color-hex">#8896A6</div>
+          <div class="color-use">Placeholders, hints, labels</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background: #4facfe; color: white;">Aa</div>
+        <div class="color-info">
+          <div class="color-name">Text On Primary</div>
+          <div class="color-hex">#FFFFFF</div>
+          <div class="color-use">Texto sobre fundo azul</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-demo" style="margin-top: 20px; background: #F7F9FC; padding: 24px; border-radius: 12px;">
+      <p style="font-size: 1.3rem; font-weight: 800; color: #1A2332;">Este e um titulo principal — Text Primary</p>
+      <p style="font-size: 1rem; color: #4A5568;">Este e um texto de descricao ou corpo. Ele usa o tom Text Secondary para reduzir peso visual sem perder legibilidade.</p>
+      <p style="font-size: 0.85rem; color: #8896A6;">Informacao auxiliar, hint ou placeholder — Text Muted</p>
+      <p style="font-size: 0.9rem; color: #4facfe; font-weight: 600; margin-top: 8px;">Link ou acao destacada &rarr;</p>
+    </div>
+  </div>
+
+  <!-- SEMANTICAS -->
+  <div class="section">
+    <h2>Cores Semanticas (Status)</h2>
+    <div class="color-grid">
+      <div class="color-card">
+        <div class="color-swatch" style="background: #10B981; color: white;">Sucesso</div>
+        <div class="color-info">
+          <div class="color-name">Success</div>
+          <div class="color-hex">#10B981</div>
+          <div class="color-use">Confirmacoes, progresso, check</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background: #F59E0B; color: white;">Alerta</div>
+        <div class="color-info">
+          <div class="color-name">Warning</div>
+          <div class="color-hex">#F59E0B</div>
+          <div class="color-use">Alertas, atencao</div>
+        </div>
+      </div>
+      <div class="color-card">
+        <div class="color-swatch" style="background: #EF4444; color: white;">Erro</div>
+        <div class="color-info">
+          <div class="color-name">Error</div>
+          <div class="color-hex">#EF4444</div>
+          <div class="color-use">Erros, falhas, destrutivo</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRILHAS -->
+  <div class="section">
+    <h2>Cores das Trilhas</h2>
+    <div class="track-grid">
+      <div class="track-card" style="background: rgba(245, 158, 11, 0.1); border: 2px solid rgba(245, 158, 11, 0.3);">
+        <div style="width: 40px; height: 40px; border-radius: 50%; background: #F59E0B; margin: 0 auto;"></div>
+        <div class="track-name" style="color: #D97706;">Retomada</div>
+        <div class="track-hex">#F59E0B</div>
+      </div>
+      <div class="track-card" style="background: rgba(59, 130, 246, 0.1); border: 2px solid rgba(59, 130, 246, 0.3);">
+        <div style="width: 40px; height: 40px; border-radius: 50%; background: #3B82F6; margin: 0 auto;"></div>
+        <div class="track-name" style="color: #2563EB;">Fundacao</div>
+        <div class="track-hex">#3B82F6</div>
+      </div>
+      <div class="track-card" style="background: rgba(16, 185, 129, 0.1); border: 2px solid rgba(16, 185, 129, 0.3);">
+        <div style="width: 40px; height: 40px; border-radius: 50%; background: #10B981; margin: 0 auto;"></div>
+        <div class="track-name" style="color: #059669;">Crescimento</div>
+        <div class="track-hex">#10B981</div>
+      </div>
+      <div class="track-card" style="background: rgba(139, 92, 246, 0.1); border: 2px solid rgba(139, 92, 246, 0.3);">
+        <div style="width: 40px; height: 40px; border-radius: 50%; background: #8B5CF6; margin: 0 auto;"></div>
+        <div class="track-name" style="color: #7C3AED;">Expertise</div>
+        <div class="track-hex">#8B5CF6</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPARACAO -->
+  <div class="section">
+    <h2>Antes vs Depois</h2>
+    <div class="comparison">
+      <div class="comp-box comp-before">
+        <h3>Antes (branco puro)</h3>
+        <p>Fundo <code style="background:#f3f4f6; padding: 1px 6px; border-radius: 3px;">#FFFFFF</code>, bordas <code style="background:#f3f4f6; padding: 1px 6px; border-radius: 3px;">gray-200</code>, textos <code style="background:#f3f4f6; padding: 1px 6px; border-radius: 3px;">gray-900</code>.</p>
+        <p style="margin-top: 12px;">Cards e fundo se confundem. Sem identidade coesa — poderia ser qualquer app.</p>
+        <div style="margin-top: 16px;">
+          <span class="badge" style="background: #f3f4f6; color: #6b7280;">Tag generica</span>
+          <span class="badge" style="background: #dbeafe; color: #3b82f6;">Info</span>
+        </div>
+      </div>
+      <div class="comp-box comp-after">
+        <h3>Depois (neutros azulados)</h3>
+        <p>Fundo <code style="background:#EEF2F7; padding: 1px 6px; border-radius: 3px;">#F7F9FC</code>, bordas <code style="background:#EEF2F7; padding: 1px 6px; border-radius: 3px;">#DAE1EA</code>, textos <code style="background:#EEF2F7; padding: 1px 6px; border-radius: 3px;">#1A2332</code>.</p>
+        <p style="margin-top: 12px;">Cards se destacam do fundo. Tom azulado sutil cria conexao com a marca.</p>
+        <div style="margin-top: 16px;">
+          <span class="badge" style="background: #EEF2F7; color: #4A5568;">Tag coesa</span>
+          <span class="badge" style="background: rgba(79,172,254,0.1); color: #4facfe;">Info Pulso</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MOCK UI -->
+  <div class="section">
+    <h2>Preview — Como fica na interface</h2>
+    <div class="mock-app">
+      <div class="mock-header">
+        <h3>Pulso</h3>
+        <div>
+          <span class="mock-btn mock-btn-primary" style="background: rgba(255,255,255,0.2); margin-right: 8px;">Dashboard</span>
+          <span style="opacity: 0.7; font-size: 0.9rem;">Ola, Arthur</span>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 200px 1fr; gap: 16px;">
+        <!-- Sidebar -->
+        <div>
+          <div class="mock-sidebar-item active">Dashboard</div>
+          <div class="mock-sidebar-item">Modulos</div>
+          <div class="mock-sidebar-item">Perfil</div>
+          <div class="mock-sidebar-item">Config</div>
+        </div>
+
+        <!-- Content -->
+        <div>
+          <div class="mock-cards">
+            <div class="mock-card">
+              <div class="label">PROGRESSO</div>
+              <div class="value" style="color: #4facfe;">72%</div>
+              <div class="sub" style="color: #10B981;">+5% esta semana</div>
+            </div>
+            <div class="mock-card">
+              <div class="label">TRILHA ATUAL</div>
+              <div class="value">Fundacao</div>
+              <div class="sub" style="color: #3B82F6;">Modulo 3 de 8</div>
+            </div>
+            <div class="mock-card">
+              <div class="label">STREAK</div>
+              <div class="value">14 dias</div>
+              <div class="sub" style="color: #F59E0B;">Recorde pessoal!</div>
+            </div>
+          </div>
+
+          <div style="margin-top: 16px; display: flex; gap: 10px;">
+            <span class="mock-btn mock-btn-primary">Continuar Modulo</span>
+            <span class="mock-btn mock-btn-secondary">Ver Trilha</span>
+            <span class="mock-btn mock-btn-outline">Historico</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTOES -->
+  <div class="section">
+    <h2>Botoes e Interacoes</h2>
+    <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+      <button class="mock-btn mock-btn-primary" style="padding: 12px 28px; font-size: 0.9rem;">Primary</button>
+      <button class="mock-btn mock-btn-secondary" style="padding: 12px 28px; font-size: 0.9rem;">Secondary</button>
+      <button class="mock-btn mock-btn-outline" style="padding: 12px 28px; font-size: 0.9rem;">Outline</button>
+      <button class="mock-btn" style="padding: 12px 28px; font-size: 0.9rem; background: transparent; color: #4facfe;">Ghost</button>
+      <button class="mock-btn" style="padding: 12px 28px; font-size: 0.9rem; background: #EF4444; color: white;">Destructive</button>
+    </div>
+
+    <div style="margin-top: 24px; display: flex; gap: 8px; flex-wrap: wrap;">
+      <span class="badge" style="background: rgba(79,172,254,0.1); color: #4facfe;">Em andamento</span>
+      <span class="badge" style="background: rgba(16,185,129,0.1); color: #10B981;">Concluido</span>
+      <span class="badge" style="background: rgba(245,158,11,0.1); color: #D97706;">Pendente</span>
+      <span class="badge" style="background: rgba(239,68,68,0.1); color: #EF4444;">Atrasado</span>
+      <span class="badge" style="background: #EEF2F7; color: #4A5568;">Neutro</span>
+    </div>
+  </div>
+
+  <div style="text-align: center; padding: 40px 0 20px; color: #8896A6; font-size: 0.85rem;">
+    Pulso &mdash; Paleta de Cores v1.0 &mdash; Preview para aprovacao
+  </div>
+
+</body>
+</html>
