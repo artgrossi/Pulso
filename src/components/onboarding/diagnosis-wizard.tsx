@@ -4,6 +4,7 @@ import { useState, useTransition } from 'react';
 import { DIAGNOSIS_QUESTIONS, assignTrack, type TrackSlug } from '@/lib/types/database';
 import { TRACK_CONFIG } from '@/lib/constants';
 import { submitDiagnosis } from '@/lib/actions/diagnosis';
+import { Icon } from '@/components/ui/Icon';
 
 type Answers = Record<string, boolean>;
 
@@ -60,8 +61,8 @@ export function DiagnosisWizard() {
       <div className="mx-auto w-full max-w-lg">
         <div className="rounded-2xl border border-gray-100 bg-white shadow-sm p-8 backdrop-blur-sm">
           <div className="mb-6 text-center">
-            <div className={`mx-auto mb-4 inline-flex h-16 w-16 items-center justify-center rounded-2xl ${track.bgColor} text-3xl`}>
-              {track.icon}
+            <div className={`mx-auto mb-4 inline-flex h-16 w-16 items-center justify-center rounded-2xl ${track.bgColor}`}>
+              <Icon name={track.icon} size={32} className={track.color} />
             </div>
             <h2 className="mb-2 text-2xl font-bold">Sua trilha: {track.name}</h2>
             <p className="text-gray-400">{track.description}</p>
