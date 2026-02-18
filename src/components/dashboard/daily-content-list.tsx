@@ -1,8 +1,9 @@
 'use client';
 
 import { useState, useTransition } from 'react';
-import type { DailyContent, UserContentProgress } from '@/lib/types/database';
+import type { DailyContent } from '@/lib/types/database';
 import { completeContent } from '@/lib/actions/content';
+import { Icon, type IconName } from '@/components/ui/Icon';
 
 interface DailyContentListProps {
   contents: DailyContent[];
@@ -32,25 +33,27 @@ export function DailyContentList({ contents, completedIds: initialCompletedIds }
   }
 
   const contentTypeLabel: Record<string, string> = {
-    micro_lesson: 'Micro-lição',
+    micro_lesson: 'Micro-licao',
     quiz: 'Quiz',
-    practical_action: 'Ação prática',
+    practical_action: 'Acao pratica',
     weekly_checkin: 'Check-in semanal',
   };
 
-  const contentTypeIcon: Record<string, string> = {
-    micro_lesson: '📖',
-    quiz: '❓',
-    practical_action: '🎯',
-    weekly_checkin: '📋',
+  const contentTypeIcon: Record<string, IconName> = {
+    micro_lesson: 'book-open',
+    quiz: 'question-mark',
+    practical_action: 'target',
+    weekly_checkin: 'clipboard',
   };
 
   if (contents.length === 0) {
     return (
       <div className="rounded-2xl border border-gray-100 bg-white shadow-sm p-8 text-center backdrop-blur-sm">
-        <div className="mb-3 text-3xl">📚</div>
+        <div className="mb-3 flex justify-center">
+          <Icon name="book-open" size={28} className="text-gray-300" />
+        </div>
         <p className="text-sm text-gray-400">
-          Nenhum conteúdo disponível ainda. Em breve teremos novidades para você!
+          Nenhum conteudo disponivel ainda. Em breve teremos novidades para voce!
         </p>
       </div>
     );
@@ -61,10 +64,12 @@ export function DailyContentList({ contents, completedIds: initialCompletedIds }
       {/* Track Advancement Celebration */}
       {trackAdvancement && (
         <div className="rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-6 text-center animate-pulse">
-          <div className="mb-2 text-4xl">🎉</div>
-          <h3 className="text-lg font-bold text-emerald-400">Parabéns!</h3>
+          <div className="mb-2 flex justify-center">
+            <Icon name="trophy" size={36} className="text-emerald-400" />
+          </div>
+          <h3 className="text-lg font-bold text-emerald-400">Parabens!</h3>
           <p className="mt-1 text-sm text-gray-600">
-            Você avançou para a trilha <strong>{trackAdvancement}</strong>!
+            Voce avancou para a trilha <strong>{trackAdvancement}</strong>!
           </p>
           <button
             onClick={() => window.location.reload()}
@@ -76,7 +81,7 @@ export function DailyContentList({ contents, completedIds: initialCompletedIds }
       )}
 
       <h3 className="text-xs font-medium uppercase tracking-wider text-gray-500">
-        Conteúdo de Hoje
+        Conteudo de Hoje
       </h3>
 
       {contents.map((content) => {
@@ -97,10 +102,13 @@ export function DailyContentList({ contents, completedIds: initialCompletedIds }
               onClick={() => setExpandedId(isExpanded ? null : content.id)}
               className="flex w-full items-center gap-4 p-4 text-left"
             >
-              <div className={`flex h-10 w-10 items-center justify-center rounded-xl text-lg ${
+              <div className={`flex h-10 w-10 items-center justify-center rounded-xl ${
                 isCompleted ? 'bg-emerald-500/10' : 'bg-gray-100'
               }`}>
-                {isCompleted ? '✅' : contentTypeIcon[content.content_type]}
+                {isCompleted
+                  ? <Icon name="check-circle" size={20} className="text-emerald-500" />
+                  : <Icon name={contentTypeIcon[content.content_type] ?? 'book-open'} size={20} className="text-gray-500" />
+                }
               </div>
               <div className="flex-1">
                 <div className="flex items-center gap-2">
@@ -137,13 +145,15 @@ export function DailyContentList({ contents, completedIds: initialCompletedIds }
                       <p className="text-sm leading-relaxed text-gray-600 whitespace-pre-line">{block.content}</p>
                     )}
                     {block.type === 'tip' && (
-                      <div className="rounded-lg bg-emerald-500/10 p-3 text-sm text-emerald-600">
-                        💡 {block.content}
+                      <div className="flex items-start gap-2 rounded-lg bg-emerald-500/10 p-3 text-sm text-emerald-600">
+                        <Icon name="lightbulb" size={16} className="mt-0.5 shrink-0" />
+                        <span>{block.content}</span>
                       </div>
                     )}
                     {block.type === 'warning' && (
-                      <div className="rounded-lg bg-red-500/10 p-3 text-sm text-red-500">
-                        ⚠️ {block.content}
+                      <div className="flex items-start gap-2 rounded-lg bg-red-500/10 p-3 text-sm text-red-500">
+                        <Icon name="exclamation-triangle" size={16} className="mt-0.5 shrink-0" />
+                        <span>{block.content}</span>
                       </div>
                     )}
                   </div>
@@ -155,7 +165,7 @@ export function DailyContentList({ contents, completedIds: initialCompletedIds }
                     disabled={isPending}
                     className="mt-4 w-full rounded-lg bg-emerald-600 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-emerald-500 disabled:opacity-50"
                   >
-                    {isPending ? 'Salvando...' : 'Marcar como concluído'}
+                    {isPending ? 'Salvando...' : 'Marcar como concluido'}
                   </button>
                 )}
               </div>
