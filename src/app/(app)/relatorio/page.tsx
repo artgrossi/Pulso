@@ -119,10 +119,10 @@ export default async function RelatorioPage() {
 
   return (
     <>
-      <header className="border-b border-gray-800/50 bg-gray-950/80 backdrop-blur-sm sticky top-0 z-40">
+      <header className="border-b border-gray-100 bg-white/80 backdrop-blur-sm sticky top-0 z-40">
         <div className="mx-auto max-w-2xl px-4 py-3">
           <h1 className="text-lg font-bold">
-            <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
+            <span className="pulso-gradient-text">
               Relatorio Semanal
             </span>
           </h1>
@@ -162,7 +162,7 @@ export default async function RelatorioPage() {
           </div>
 
           {/* Weekly Activity Chart */}
-          <div className="rounded-2xl border border-gray-800 bg-gray-900/60 p-5 backdrop-blur-sm">
+          <div className="rounded-2xl border border-gray-100 bg-white shadow-sm p-5 backdrop-blur-sm">
             <h3 className="mb-4 text-xs font-medium uppercase tracking-wider text-gray-500">
               Atividade Diaria
             </h3>
@@ -182,7 +182,7 @@ export default async function RelatorioPage() {
           />
 
           {/* Streak insights */}
-          <div className="rounded-2xl border border-gray-800 bg-gray-900/60 p-5 backdrop-blur-sm">
+          <div className="rounded-2xl border border-gray-100 bg-white shadow-sm p-5 backdrop-blur-sm">
             <h3 className="mb-3 text-xs font-medium uppercase tracking-wider text-gray-500">
               Status do Streak
             </h3>
@@ -211,7 +211,7 @@ export default async function RelatorioPage() {
                     <span className="text-gray-500">Proximo marco: {next} dias</span>
                     <span className="text-orange-400">{next - current} dias restantes</span>
                   </div>
-                  <div className="h-2 w-full overflow-hidden rounded-full bg-gray-800">
+                  <div className="h-2 w-full overflow-hidden rounded-full bg-gray-100">
                     <div
                       className="h-full rounded-full bg-gradient-to-r from-orange-600 to-orange-400 transition-all"
                       style={{ width: `${progress}%` }}
@@ -223,7 +223,7 @@ export default async function RelatorioPage() {
           </div>
 
           {/* Track progress detail */}
-          <div className="rounded-2xl border border-gray-800 bg-gray-900/60 p-5 backdrop-blur-sm">
+          <div className="rounded-2xl border border-gray-100 bg-white shadow-sm p-5 backdrop-blur-sm">
             <h3 className="mb-3 text-xs font-medium uppercase tracking-wider text-gray-500">
               Progresso da Trilha {trackConfig?.name}
             </h3>
@@ -238,7 +238,7 @@ export default async function RelatorioPage() {
                 </div>
               </div>
             </div>
-            <div className="h-3 w-full overflow-hidden rounded-full bg-gray-800">
+            <div className="h-3 w-full overflow-hidden rounded-full bg-gray-100">
               <div
                 className="h-full rounded-full bg-gradient-to-r from-emerald-600 to-emerald-400 transition-all"
                 style={{ width: `${trackPercentage}%` }}
@@ -269,7 +269,7 @@ function SummaryCard({ label, value, trend, icon, color }: {
   color: string;
 }) {
   return (
-    <div className="rounded-xl border border-gray-800 bg-gray-900/60 p-4 backdrop-blur-sm">
+    <div className="rounded-xl border border-gray-100 bg-white shadow-sm p-4 backdrop-blur-sm">
       <div className="flex items-center justify-between">
         <span className="text-xl">{icon}</span>
         {trend !== undefined && trend !== 0 && (

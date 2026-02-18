@@ -33,7 +33,7 @@ interface CoinHistoryProps {
 export function CoinHistory({ entries }: CoinHistoryProps) {
   if (entries.length === 0) {
     return (
-      <div className="rounded-2xl border border-gray-800 bg-gray-900/60 p-6 text-center backdrop-blur-sm">
+      <div className="rounded-2xl border border-gray-100 bg-white shadow-sm p-6 text-center backdrop-blur-sm">
         <div className="mb-2 text-2xl">🪙</div>
         <p className="text-sm text-gray-500">Nenhuma transacao ainda.</p>
       </div>
@@ -41,13 +41,13 @@ export function CoinHistory({ entries }: CoinHistoryProps) {
   }
 
   return (
-    <div className="rounded-2xl border border-gray-800 bg-gray-900/60 backdrop-blur-sm">
+    <div className="rounded-2xl border border-gray-100 bg-white shadow-sm backdrop-blur-sm">
       <div className="px-5 pt-5">
         <h3 className="text-xs font-medium uppercase tracking-wider text-gray-500">
           Historico de Moedas
         </h3>
       </div>
-      <div className="mt-3 divide-y divide-gray-800/50">
+      <div className="mt-3 divide-y divide-gray-100">
         {entries.map((entry) => (
           <div key={entry.id} className="flex items-center gap-3 px-5 py-3">
             <span className="text-lg">{sourceIcons[entry.source_type] ?? '🪙'}</span>

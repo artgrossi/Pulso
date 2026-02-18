@@ -122,7 +122,7 @@ export function DebtCalculator() {
 
       {/* Existing debts */}
       {debts.map((debt) => (
-        <div key={debt.id} className="flex items-center gap-3 rounded-lg border border-gray-800 bg-gray-900/40 p-3">
+        <div key={debt.id} className="flex items-center gap-3 rounded-lg border border-gray-100 bg-white/80 p-3">
           <div className="flex-1">
             <div className="text-sm font-medium">{debt.name}</div>
             <div className="mt-0.5 flex flex-wrap gap-2 text-[10px] text-gray-500">
@@ -149,33 +149,33 @@ export function DebtCalculator() {
           placeholder="Nome (ex: Cartao)"
           value={newDebt.name}
           onChange={(e) => setNewDebt({ ...newDebt, name: e.target.value })}
-          className="rounded-lg border border-gray-700 bg-gray-800 px-3 py-2 text-sm text-white placeholder-gray-500 focus:border-amber-500 focus:outline-none"
+          className="rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder-gray-500 focus:border-amber-500 focus:outline-none"
         />
         <input
           type="number"
           placeholder="Saldo (R$)"
           value={newDebt.balance}
           onChange={(e) => setNewDebt({ ...newDebt, balance: e.target.value })}
-          className="rounded-lg border border-gray-700 bg-gray-800 px-3 py-2 text-sm text-white placeholder-gray-500 focus:border-amber-500 focus:outline-none"
+          className="rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder-gray-500 focus:border-amber-500 focus:outline-none"
         />
         <input
           type="number"
           placeholder="Taxa anual (%)"
           value={newDebt.rate}
           onChange={(e) => setNewDebt({ ...newDebt, rate: e.target.value })}
-          className="rounded-lg border border-gray-700 bg-gray-800 px-3 py-2 text-sm text-white placeholder-gray-500 focus:border-amber-500 focus:outline-none"
+          className="rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder-gray-500 focus:border-amber-500 focus:outline-none"
         />
         <input
           type="number"
           placeholder="Pagamento min (R$)"
           value={newDebt.minPayment}
           onChange={(e) => setNewDebt({ ...newDebt, minPayment: e.target.value })}
-          className="rounded-lg border border-gray-700 bg-gray-800 px-3 py-2 text-sm text-white placeholder-gray-500 focus:border-amber-500 focus:outline-none"
+          className="rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder-gray-500 focus:border-amber-500 focus:outline-none"
         />
       </div>
       <button
         onClick={addDebt}
-        className="w-full rounded-lg border border-dashed border-gray-700 py-2 text-sm text-gray-400 transition-colors hover:border-amber-500/50 hover:text-amber-400"
+        className="w-full rounded-lg border border-dashed border-gray-300 py-2 text-sm text-gray-400 transition-colors hover:border-amber-500/50 hover:text-amber-400"
       >
         + Adicionar divida
       </button>
@@ -189,7 +189,7 @@ export function DebtCalculator() {
             type="number"
             value={extraPayment}
             onChange={(e) => setExtraPayment(parseFloat(e.target.value) || 0)}
-            className="flex-1 rounded-lg border border-gray-700 bg-gray-800 px-3 py-2 text-sm text-white focus:border-amber-500 focus:outline-none"
+            className="flex-1 rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-white focus:border-amber-500 focus:outline-none"
           />
         </div>
       </div>
@@ -205,7 +205,7 @@ export function DebtCalculator() {
       {/* Results */}
       {result && (
         <div className="space-y-3">
-          <h4 className="text-sm font-medium text-gray-300">Resultado da Simulacao</h4>
+          <h4 className="text-sm font-medium text-gray-600">Resultado da Simulacao</h4>
           <div className="grid grid-cols-2 gap-3">
             <ResultCard
               title="Snowball"
@@ -227,7 +227,7 @@ export function DebtCalculator() {
             />
           </div>
 
-          <div className="rounded-lg bg-emerald-500/10 p-3 text-xs text-emerald-300">
+          <div className="rounded-lg bg-emerald-500/10 p-3 text-xs text-emerald-600">
             💡 <strong>Snowball</strong> paga a menor divida primeiro (motivacao psicologica). <strong>Avalanche</strong> ataca a maior taxa primeiro (economiza mais em juros).
           </div>
         </div>
@@ -246,7 +246,7 @@ function ResultCard({ title, subtitle, months, totalInterest, totalPaid, isBette
   formatCurrency: (v: number) => string;
 }) {
   return (
-    <div className={`rounded-xl border p-4 ${isBetter ? 'border-emerald-500/30 bg-emerald-500/5' : 'border-gray-800 bg-gray-900/40'}`}>
+    <div className={`rounded-xl border p-4 ${isBetter ? 'border-emerald-500/30 bg-emerald-500/5' : 'border-gray-100 bg-white/80'}`}>
       <div className="flex items-center gap-2">
         <h5 className="text-sm font-bold">{title}</h5>
         {isBetter && <span className="rounded-full bg-emerald-500/20 px-2 py-0.5 text-[10px] text-emerald-400">Melhor</span>}

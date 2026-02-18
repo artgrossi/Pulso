@@ -6,7 +6,7 @@ export default function AppLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950 text-white pb-20">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50/50 via-white to-cyan-50/30 text-gray-900 pb-20">
       {children}
       <BottomNav />
     </div>

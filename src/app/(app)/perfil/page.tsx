@@ -87,17 +87,17 @@ export default async function PerfilPage() {
 
   return (
     <>
-      <header className="border-b border-gray-800/50 bg-gray-950/80 backdrop-blur-sm sticky top-0 z-40">
+      <header className="border-b border-gray-100 bg-white/80 backdrop-blur-sm sticky top-0 z-40">
         <div className="mx-auto flex max-w-2xl items-center justify-between px-4 py-3">
           <h1 className="text-lg font-bold">
-            <span className="bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent">
+            <span className="pulso-gradient-text">
               Perfil
             </span>
           </h1>
           <form action="/auth/signout" method="post">
             <button
               type="submit"
-              className="rounded-lg px-3 py-1.5 text-xs text-gray-500 transition-colors hover:bg-gray-800 hover:text-red-400"
+              className="rounded-lg px-3 py-1.5 text-xs text-gray-500 transition-colors hover:bg-red-50 hover:text-red-500"
             >
               Sair
             </button>
@@ -108,7 +108,7 @@ export default async function PerfilPage() {
       <main className="mx-auto max-w-2xl px-4 py-6">
         <div className="space-y-6">
           {/* Profile card */}
-          <div className="rounded-2xl border border-gray-800 bg-gray-900/60 p-6 backdrop-blur-sm">
+          <div className="rounded-2xl border border-gray-100 bg-white shadow-sm p-6 backdrop-blur-sm">
             <div className="flex items-center gap-4">
               <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-emerald-500 to-cyan-500 text-2xl font-bold text-white">
                 {profile.full_name ? profile.full_name.charAt(0).toUpperCase() : '?'}
@@ -160,7 +160,7 @@ export default async function PerfilPage() {
 
           {/* Diagnosis summary */}
           {diagnosis && (
-            <div className="rounded-2xl border border-gray-800 bg-gray-900/60 p-5 backdrop-blur-sm">
+            <div className="rounded-2xl border border-gray-100 bg-white shadow-sm p-5 backdrop-blur-sm">
               <h3 className="mb-3 text-xs font-medium uppercase tracking-wider text-gray-500">
                 Seu Diagnostico Financeiro
               </h3>
@@ -190,7 +190,7 @@ export default async function PerfilPage() {
 
 function StatCard({ label, value, icon, color }: { label: string; value: string; icon: string; color: string }) {
   return (
-    <div className="rounded-xl border border-gray-800 bg-gray-900/40 p-3 text-center">
+    <div className="rounded-xl border border-gray-100 bg-white/80 p-3 text-center">
       <div className="text-lg">{icon}</div>
       <div className={`text-lg font-bold ${color}`}>{value}</div>
       <div className="text-[10px] text-gray-500">{label}</div>
@@ -201,7 +201,7 @@ function StatCard({ label, value, icon, color }: { label: string; value: string;
 function DiagnosisItem({ label, value, positive }: { label: string; value: boolean | null; positive?: boolean }) {
   const isGood = positive ? value : !value;
   return (
-    <div className="flex items-center justify-between rounded-lg bg-gray-800/30 px-3 py-2">
+    <div className="flex items-center justify-between rounded-lg bg-gray-50 px-3 py-2">
       <span className="text-xs text-gray-400">{label}</span>
       <span className={`text-xs font-medium ${isGood ? 'text-emerald-400' : 'text-amber-400'}`}>
         {value ? 'Sim' : 'Nao'}

@@ -7,7 +7,7 @@ export function ProfileActions() {
     <div className="space-y-2">
       <Link
         href="/ferramentas"
-        className="flex items-center gap-3 rounded-xl border border-gray-800 bg-gray-900/40 p-4 transition-colors hover:border-gray-700"
+        className="flex items-center gap-3 rounded-xl border border-gray-100 bg-white/80 p-4 transition-colors hover:border-gray-200"
       >
         <span className="text-lg">🧮</span>
         <div className="flex-1">
@@ -21,7 +21,7 @@ export function ProfileActions() {
 
       <Link
         href="/relatorio"
-        className="flex items-center gap-3 rounded-xl border border-gray-800 bg-gray-900/40 p-4 transition-colors hover:border-gray-700"
+        className="flex items-center gap-3 rounded-xl border border-gray-100 bg-white/80 p-4 transition-colors hover:border-gray-200"
       >
         <span className="text-lg">📊</span>
         <div className="flex-1">
@@ -35,7 +35,7 @@ export function ProfileActions() {
 
       <Link
         href="/onboarding"
-        className="flex items-center gap-3 rounded-xl border border-gray-800 bg-gray-900/40 p-4 transition-colors hover:border-gray-700"
+        className="flex items-center gap-3 rounded-xl border border-gray-100 bg-white/80 p-4 transition-colors hover:border-gray-200"
       >
         <span className="text-lg">🔄</span>
         <div className="flex-1">
