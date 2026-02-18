@@ -1,8 +1,9 @@
 import type { TrackSlug } from './types/database';
+import type { IconName } from '@/components/ui/Icon';
 
 export const TRACK_CONFIG: Record<TrackSlug, {
   name: string;
-  icon: string;
+  icon: IconName;
   color: string;
   bgColor: string;
   borderColor: string;
@@ -10,7 +11,7 @@ export const TRACK_CONFIG: Record<TrackSlug, {
 }> = {
   retomada: {
     name: 'Retomada',
-    icon: '🔄',
+    icon: 'arrow-path',
     color: 'text-amber-400',
     bgColor: 'bg-amber-500/10',
     borderColor: 'border-amber-500/30',
@@ -18,7 +19,7 @@ export const TRACK_CONFIG: Record<TrackSlug, {
   },
   fundacao: {
     name: 'Fundação',
-    icon: '🏗️',
+    icon: 'building',
     color: 'text-blue-400',
     bgColor: 'bg-blue-500/10',
     borderColor: 'border-blue-500/30',
@@ -26,7 +27,7 @@ export const TRACK_CONFIG: Record<TrackSlug, {
   },
   crescimento: {
     name: 'Crescimento',
-    icon: '📈',
+    icon: 'trending-up',
     color: 'text-emerald-400',
     bgColor: 'bg-emerald-500/10',
     borderColor: 'border-emerald-500/30',
@@ -34,7 +35,7 @@ export const TRACK_CONFIG: Record<TrackSlug, {
   },
   expertise: {
     name: 'Expertise',
-    icon: '🎓',
+    icon: 'academic-cap',
     color: 'text-purple-400',
     bgColor: 'bg-purple-500/10',
     borderColor: 'border-purple-500/30',

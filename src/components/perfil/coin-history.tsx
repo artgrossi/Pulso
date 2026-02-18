@@ -1,6 +1,7 @@
 'use client';
 
 import type { CoinLedgerEntry } from '@/lib/types/database';
+import { Icon, type IconName } from '@/components/ui/Icon';
 
 const sourceLabels: Record<string, string> = {
   content_completion: 'Conteudo completado',
@@ -14,16 +15,16 @@ const sourceLabels: Record<string, string> = {
   manual_adjustment: 'Ajuste manual',
 };
 
-const sourceIcons: Record<string, string> = {
-  content_completion: '📖',
-  quiz_completion: '❓',
-  achievement_unlock: '🏅',
-  streak_bonus: '🔥',
-  practical_action: '🎯',
-  weekly_checkin: '📋',
-  referral: '👥',
-  conversion_to_aporte: '💸',
-  manual_adjustment: '⚙️',
+const sourceIcons: Record<string, IconName> = {
+  content_completion: 'book-open',
+  quiz_completion: 'question-mark',
+  achievement_unlock: 'medal',
+  streak_bonus: 'flame',
+  practical_action: 'target',
+  weekly_checkin: 'clipboard',
+  referral: 'users',
+  conversion_to_aporte: 'arrow-right',
+  manual_adjustment: 'cog',
 };
 
 interface CoinHistoryProps {
@@ -34,7 +35,9 @@ export function CoinHistory({ entries }: CoinHistoryProps) {
   if (entries.length === 0) {
     return (
       <div className="rounded-2xl border border-gray-100 bg-white shadow-sm p-6 text-center backdrop-blur-sm">
-        <div className="mb-2 text-2xl">🪙</div>
+        <div className="mb-2 flex justify-center">
+          <Icon name="coin" size={24} className="text-gray-300" />
+        </div>
         <p className="text-sm text-gray-500">Nenhuma transacao ainda.</p>
       </div>
     );
@@ -50,7 +53,7 @@ export function CoinHistory({ entries }: CoinHistoryProps) {
       <div className="mt-3 divide-y divide-gray-100">
         {entries.map((entry) => (
           <div key={entry.id} className="flex items-center gap-3 px-5 py-3">
-            <span className="text-lg">{sourceIcons[entry.source_type] ?? '🪙'}</span>
+            <Icon name={sourceIcons[entry.source_type] ?? 'coin'} size={18} className="text-gray-400 shrink-0" />
             <div className="flex-1">
               <div className="text-sm">{entry.description || sourceLabels[entry.source_type] || entry.source_type}</div>
               <div className="text-[10px] text-gray-600">

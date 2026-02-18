@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { Icon } from '@/components/ui/Icon';
 
 export function EmergencyFundCalculator() {
   const [monthlyExpenses, setMonthlyExpenses] = useState(3000);
@@ -29,7 +30,9 @@ export function EmergencyFundCalculator() {
   return (
     <div id="reserva" className="space-y-4">
       <div className="flex items-center gap-3">
-        <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-500/10 text-xl">🛡️</span>
+        <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-500/10">
+          <Icon name="shield-check" size={22} className="text-blue-400" />
+        </span>
         <div>
           <h3 className="font-bold text-blue-400">Reserva de Emergencia</h3>
           <p className="text-xs text-gray-500">Descubra quanto voce precisa e em quanto tempo chega la</p>
@@ -150,13 +153,15 @@ export function EmergencyFundCalculator() {
           </div>
 
           {remaining <= 0 ? (
-            <div className="rounded-lg bg-emerald-500/10 p-3 text-xs text-emerald-600">
-              🎉 Parabens! Voce ja atingiu sua meta de reserva de emergencia!
+            <div className="flex items-start gap-2 rounded-lg bg-emerald-500/10 p-3 text-xs text-emerald-600">
+              <Icon name="trophy" size={14} className="mt-0.5 shrink-0" />
+              <span>Parabens! Voce ja atingiu sua meta de reserva de emergencia!</span>
             </div>
           ) : (
-            <div className="rounded-lg bg-blue-500/10 p-3 text-xs text-blue-600">
-              💡 Guardando {formatCurrency(monthlySaving)}/mes, voce atinge a meta em {monthsToGoal === Infinity ? 'nunca (aumente sua economia!)' : `${monthsToGoal} meses (${(monthsToGoal / 12).toFixed(1)} anos)`}.
-              {monthlySaving < monthlyExpenses * 0.1 && ' Tente guardar pelo menos 10% da sua renda!'}
+            <div className="flex items-start gap-2 rounded-lg bg-blue-500/10 p-3 text-xs text-blue-600">
+              <Icon name="lightbulb" size={14} className="mt-0.5 shrink-0" />
+              <span>Guardando {formatCurrency(monthlySaving)}/mes, voce atinge a meta em {monthsToGoal === Infinity ? 'nunca (aumente sua economia!)' : `${monthsToGoal} meses (${(monthsToGoal / 12).toFixed(1)} anos)`}.
+              {monthlySaving < monthlyExpenses * 0.1 && ' Tente guardar pelo menos 10% da sua renda!'}</span>
             </div>
           )}
         </div>

@@ -1,4 +1,5 @@
 import type { UserStreak } from '@/lib/types/database';
+import { Icon } from '@/components/ui/Icon';
 
 interface StreakCardProps {
   streak: UserStreak | null;
@@ -18,8 +19,8 @@ export function StreakCard({ streak }: StreakCardProps) {
   return (
     <div className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition-all hover:shadow-md">
       <div className="flex items-center gap-4">
-        <div className={`text-4xl ${flameIntensity}`}>
-          {currentStreak > 0 ? '🔥' : '❄️'}
+        <div className={flameIntensity}>
+          <Icon name={currentStreak > 0 ? 'flame' : 'snowflake'} size={36} />
         </div>
         <div>
           <div className="flex items-baseline gap-2">

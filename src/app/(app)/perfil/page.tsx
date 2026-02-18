@@ -4,6 +4,7 @@ import { TRACK_CONFIG } from '@/lib/constants';
 import type { TrackSlug, CoinLedgerEntry } from '@/lib/types/database';
 import { ProfileActions } from '@/components/perfil/profile-actions';
 import { CoinHistory } from '@/components/perfil/coin-history';
+import { Icon, type IconName } from '@/components/ui/Icon';
 
 export default async function PerfilPage() {
   const supabase = await createClient();
@@ -123,7 +124,7 @@ export default async function PerfilPage() {
             {/* Track badge */}
             {trackConfig && (
               <div className={`mt-4 inline-flex items-center gap-2 rounded-full ${trackConfig.bgColor} ${trackConfig.borderColor} border px-3 py-1.5`}>
-                <span>{trackConfig.icon}</span>
+                <Icon name={trackConfig.icon} size={16} className={trackConfig.color} />
                 <span className={`text-sm font-medium ${trackConfig.color}`}>Trilha {trackConfig.name}</span>
               </div>
             )}
@@ -131,29 +132,29 @@ export default async function PerfilPage() {
 
           {/* Stats grid */}
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-            <StatCard label="Moedas" value={profile.total_coins.toString()} icon="🪙" color="text-amber-400" />
-            <StatCard label="Nivel" value={profile.level.toString()} icon="⭐" color="text-purple-400" />
-            <StatCard label="Streak" value={`${streak?.current_streak ?? 0}d`} icon="🔥" color="text-orange-400" />
-            <StatCard label="Recorde" value={`${streak?.longest_streak ?? 0}d`} icon="🏆" color="text-yellow-400" />
+            <StatCard label="Moedas" value={profile.total_coins.toString()} icon="coin" color="text-amber-400" />
+            <StatCard label="Nivel" value={profile.level.toString()} icon="star" color="text-purple-400" />
+            <StatCard label="Streak" value={`${streak?.current_streak ?? 0}d`} icon="flame" color="text-orange-400" />
+            <StatCard label="Recorde" value={`${streak?.longest_streak ?? 0}d`} icon="trophy" color="text-yellow-400" />
           </div>
 
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
             <StatCard
               label="Conteudos"
               value={`${completedCount ?? 0}/${trackContentCount ?? 0}`}
-              icon="📚"
+              icon="book-open"
               color="text-blue-400"
             />
             <StatCard
               label="Conquistas"
               value={`${unlockedAchievements ?? 0}/${totalAchievements ?? 0}`}
-              icon="🏅"
+              icon="medal"
               color="text-emerald-400"
             />
             <StatCard
               label="Conversiveis"
               value={`R$${profile.convertible_coins}`}
-              icon="💰"
+              icon="banknotes"
               color="text-green-400"
             />
           </div>
@@ -188,10 +189,12 @@ export default async function PerfilPage() {
   );
 }
 
-function StatCard({ label, value, icon, color }: { label: string; value: string; icon: string; color: string }) {
+function StatCard({ label, value, icon, color }: { label: string; value: string; icon: IconName; color: string }) {
   return (
     <div className="rounded-xl border border-gray-100 bg-white/80 p-3 text-center">
-      <div className="text-lg">{icon}</div>
+      <div className="flex justify-center">
+        <Icon name={icon} size={20} className={color} />
+      </div>
       <div className={`text-lg font-bold ${color}`}>{value}</div>
       <div className="text-[10px] text-gray-500">{label}</div>
     </div>

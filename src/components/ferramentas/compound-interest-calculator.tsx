@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { Icon } from '@/components/ui/Icon';
 
 interface SimulationResult {
   months: number;
@@ -68,7 +69,9 @@ export function CompoundInterestCalculator() {
   return (
     <div id="juros" className="space-y-4">
       <div className="flex items-center gap-3">
-        <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-500/10 text-xl">📈</span>
+        <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-500/10">
+          <Icon name="trending-up" size={22} className="text-emerald-400" />
+        </span>
         <div>
           <h3 className="font-bold text-emerald-400">Juros Compostos</h3>
           <p className="text-xs text-gray-500">Simule o crescimento do seu dinheiro ao longo do tempo</p>
@@ -226,8 +229,9 @@ export function CompoundInterestCalculator() {
             </table>
           </div>
 
-          <div className="rounded-lg bg-emerald-500/10 p-3 text-xs text-emerald-600">
-            💡 Com aportes de {formatCurrency(monthlyDeposit)}/mes a {annualRate}% a.a., seus juros ({formatCurrency(result.totalInterest)}) representam {((result.totalInterest / result.finalBalance) * 100).toFixed(0)}% do saldo final. Esse e o poder dos juros compostos!
+          <div className="flex items-start gap-2 rounded-lg bg-emerald-500/10 p-3 text-xs text-emerald-600">
+            <Icon name="lightbulb" size={14} className="mt-0.5 shrink-0" />
+            <span>Com aportes de {formatCurrency(monthlyDeposit)}/mes a {annualRate}% a.a., seus juros ({formatCurrency(result.totalInterest)}) representam {((result.totalInterest / result.finalBalance) * 100).toFixed(0)}% do saldo final. Esse e o poder dos juros compostos!</span>
           </div>
         </div>
       )}
